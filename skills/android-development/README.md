@@ -54,7 +54,7 @@ side by side.
 ### Via [skills.sh](https://skills.sh)
 
 ```bash
-npx skills add <owner>/<repo>
+npx skills add D1ZZY4/android-development
 ```
 
 ### Other agents
