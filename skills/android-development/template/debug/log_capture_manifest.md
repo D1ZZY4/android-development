@@ -1,6 +1,6 @@
 # Log capture output manifest
 
-`scripts/capture_logs.sh` writes files in this layout under the output
+`scripts/debug/capture_logs.sh` writes files in this layout under the output
 directory it's given (default `./debug_logs_<timestamp>/`):
 
 ```

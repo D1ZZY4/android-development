@@ -51,8 +51,8 @@ Interpretation:
 Workflow:
 
 ```bash
-scripts/build_error_triage.py build.log --format markdown
-scripts/property_context_doctor.py --log build.log --repo . --board-config device/<vendor>/<device>/BoardConfig.mk --format markdown
+scripts/selinux-repair/build_error_triage.py build.log --format markdown
+scripts/selinux-repair/property_context_doctor.py --log build.log --repo . --board-config device/<vendor>/<device>/BoardConfig.mk --format markdown
 rg -n "vendor.streamin\.|ro.vendor.audio\.|ro.vendor.mtk_cam_dualzoom_support" . --glob '*property_contexts'
 ```
 
@@ -131,7 +131,7 @@ Every repair should answer:
 Before applying a build-error fix, resolve the active policy roots from BoardConfig and included makefiles:
 
 ```bash
-scripts/sepolicy_path_resolver.py --repo . --board-config device/<vendor>/<device>/BoardConfig.mk --format markdown
+scripts/selinux-repair/sepolicy_path_resolver.py --repo . --board-config device/<vendor>/<device>/BoardConfig.mk --format markdown
 ```
 
 Search the resolved roots before broad repository search. Missing inherited `SEPolicy.mk` or `BoardConfigVendor.mk` files are build-input problems and should be fixed before creating duplicate local policy declarations.

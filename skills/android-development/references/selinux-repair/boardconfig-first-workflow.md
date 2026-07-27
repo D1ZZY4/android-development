@@ -5,7 +5,7 @@ Device-tree SELinux repair should begin from the build inputs, not from a broad 
 ## Required first step
 
 ```bash
-scripts/sepolicy_path_resolver.py \
+scripts/selinux-repair/sepolicy_path_resolver.py \
   --repo . \
   --board-config device/<vendor>/<device>/BoardConfig.mk \
   --format markdown
