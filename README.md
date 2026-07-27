@@ -1,6 +1,6 @@
 # android-development skill
 
-A [skills.sh](https://skills.sh)-compatible skill package covering five Android
+A [skills.sh](https://skills.sh)-compatible skill package covering six Android
 platform engineering workflows. Install it into any AI coding agent that supports
 the Agent Skills convention and it will gain structured, evidence-first guidance
 for custom Android ROM, kernel, GKI kernel, device debugging, and SELinux policy

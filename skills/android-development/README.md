@@ -7,7 +7,7 @@ agent that supports the Agent Skills convention -- not tied to a single vendor.
 ## What this is
 
 A structured set of instructions, command references, fill-in-the-blank
-templates, and executable tooling covering five related but distinct
+templates, and executable tooling covering six related but distinct
 Android platform engineering workflows:
 
 | Domain | Covers |
@@ -19,7 +19,7 @@ Android platform engineering workflows:
 | SELinux repair | Build-time policy failures and runtime AVC denials -- policy source-map resolution, property-context conflicts, neverallow triage, least-privilege patch shapes |
 | Port ROM | Adapting stock or OEM firmware (Transsion/XOS and others) to a custom ROM base -- image extraction, extra partition handling, vendor 64-bit conversion, OEM file removals, prop fixes |
 
-The core operating principle across all five domains: evidence before
+The core operating principle across all six domains: evidence before
 diagnosis, narrow fixes over broad ones, and never mutate a live device
 without explicit confirmation.
 
@@ -49,7 +49,7 @@ android-development/
     port-rom/          partition strategy, XOS/Transsion boot fix guide
 ```
 
-`template/` and `scripts/` share the same five subfolder names by design --
+`template/` and `scripts/` share the same six subfolder names by design --
 the tooling and the fill-in-the-blank material for a given domain live
 side by side.
 
