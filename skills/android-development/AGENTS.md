@@ -109,7 +109,7 @@ confusion.
 1. Confirm which GKI generation: GKI 1.0 vs GKI 2.0 (module signing, vendor_boot
    vs boot, KernelSU/KSU integration if present). Check BUILD.bazel or
    build.config.* files for hints.
-2. Use build/build.sh (older trees) or tools/bazel build //... (newer AOSP kernel
+2. Use build/build.sh (older trees) or tools/bazel run //... (newer AOSP kernel
    trees with Kleaf). Do not hand-roll make flags for these unless the tree
    explicitly still supports it.
 3. Watch for ABI or symbol issues (abi_gki_*.xml/.stg files, KMI mismatches).

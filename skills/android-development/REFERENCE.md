@@ -149,7 +149,7 @@ Output lands in `out/<branch>/dist/` — look for `Image`, `Image.lz4`, `System.
 ### Bazel/Kleaf-based GKI build (newer AOSP kernel trees, e.g. android13-5.15+ using Kleaf)
 
 ```bash
-tools/bazel build //common:kernel_aarch64_dist
+tools/bazel run //common:kernel_aarch64_dist
 tools/bazel run //common:kernel_aarch64_dist -- --dist_dir=out/dist
 ```
 
