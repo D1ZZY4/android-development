@@ -2,10 +2,9 @@
 
 Detailed commands and patterns for each workflow. Read the relevant section only -- do not load this whole file into a response.
 
-> Command verification status: Context7 MCP was unavailable during the last cleanup
-> pass. All commands in this file have not been verified against current upstream
-> documentation. Treat all as needing manual verification until re-checked against
-> https://source.android.com and the relevant kernel and AOSP documentation.
+> Command verification status: Context7 MCP action calls are unavailable in this
+> workspace. All commands in this file need manual verification against current
+> upstream documentation. Do not treat an example as verified.
 
 ---
 
@@ -175,7 +174,8 @@ See `template/gki-kernel/` for a `build.config` template and a minimal Bazel mod
 
 ## SELinux Repair
 
-Full workflow lives in `SKILL.md` § SELinux Repair Workflow — this section is just the tool/command index.
+Full workflow lives in `AGENTS.md` under **SELinux Repair Workflow**. This section
+is just the tool and command index.
 
 ### Tools (`scripts/selinux-repair/`)
 

@@ -54,7 +54,7 @@ side by side.
 ### Via [skills.sh](https://skills.sh)
 
 ```bash
-npx skills add <github-user>/android-development
+npx skills add <owner>/<repo>
 ```
 
 ### Other agents
@@ -74,7 +74,7 @@ Any agent that reads a project-level instructions file can use either:
 - Standard AOSP/kernel host build dependencies for the branch being targeted
 - Python 3.8 or later for the SELinux repair tooling in scripts/selinux-repair/
 - Recommended: a documentation-lookup MCP (such as Context7) wired into the agent,
-  so build/kernel/SELinux commands get verified against current upstream docs
+  so build/kernel/SELinux commands can be checked against current upstream docs
   rather than pulled from the model's training data alone
 
 ## Safety notes
@@ -109,4 +109,5 @@ skill and folded in here as part of the broader Android development skill.
 
 ## License
 
-Add your preferred license here before publishing.
+This project is distributed under the GNU General Public License, version 3.
+See the repository root [LICENSE.md](../../LICENSE.md) for the complete text.

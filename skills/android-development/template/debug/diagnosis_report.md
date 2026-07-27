@@ -1,7 +1,7 @@
 # Diagnosis report template
 
 Fill this in only after completing Steps 1-3 of the Debug Workflow in
-SKILL.md with real evidence. Every bracketed field must come from an
+AGENTS.md with real evidence. Every bracketed field must come from an
 actual log line, source file, or adb command output gathered in this
 session — never fill a field with a plausible-sounding guess.
 
