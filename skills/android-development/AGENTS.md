@@ -1,4 +1,4 @@
-# Android Development -- AI Agent Entry Point
+# Android Development - AI Agent Entry Point
 
 This skill covers five Android platform engineering workflows: building a custom
 ROM (AOSP/LineageOS), building a legacy kernel, building a GKI kernel, debugging

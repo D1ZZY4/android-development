@@ -9,10 +9,8 @@ repair work.
 ## Install
 
 ```bash
-npx skills add <owner>/<repo>
+npx skills add D1ZZY4/android-development
 ```
-
-Replace `<owner>/<repo>` with the GitHub repository that hosts this skill package.
 
 ## Domains covered
 

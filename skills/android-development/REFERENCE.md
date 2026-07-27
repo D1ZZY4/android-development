@@ -2,10 +2,6 @@
 
 Detailed commands and patterns for each workflow. Read the relevant section only -- do not load this whole file into a response.
 
-> Command verification status: Context7 MCP action calls are unavailable in this
-> workspace. All commands in this file need manual verification against current
-> upstream documentation. Do not treat an example as verified.
-
 ---
 
 ## ROM Build
