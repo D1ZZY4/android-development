@@ -23,7 +23,7 @@ build-environment setup, BoardConfig.mk/Android.bp fixes, and kernel diff review
 |---|---|---|---|
 | ROM build | repo sync, manifest, lunch, breakfast, mka, mka bacon, AOSP, LineageOS, device tree, won't compile the ROM | REFERENCE.md section ROM Build; template/rom/; scripts/rom/ | General constraints only |
 | Kernel build (legacy) | defconfig, Image.gz-dtb, make ARCH=arm64, kernel won't compile, monolithic kernel, non-GKI | REFERENCE.md section Kernel Build; template/kernel/; scripts/kernel/ | General constraints only |
-| GKI kernel build | build.config, tools/bazel, common/, GKI, KMI/ABI, vendor_boot, Kleaf, android-kernel | REFERENCE.md section GKI Kernel Build; template/gki-kernel/; scripts/gki-kernel/ | General constraints only |
+| GKI kernel build | build.config, tools/bazel, common/, GKI, KMI/ABI, vendor_boot, Kleaf, android-kernel, KernelSU-Next, KSU-Next, KSUN, build.sh GKI | REFERENCE.md section GKI Kernel Build; template/gki-kernel/; scripts/gki-kernel/; references/gki-kernel/ | General constraints only |
 | Debug / fix a bug | crashes, bootloops, misbehaves, live device, tombstones, logcat, dmesg, kernel panic, ANR, HAL issues, service death | template/debug/; scripts/debug/ | Evidence-first -- never diagnose without a real log line to back the claim |
 | SELinux repair | avc: denied, neverallow, sepolicy, property_contexts, checkpolicy, checkfc, host_init_verifier, AVC denial, policy build failure | REFERENCE.md section SELinux Repair; template/selinux-repair/; scripts/selinux-repair/; references/selinux-repair/ | Evidence-first, classify before fixing, label-first discipline, ask before any runtime-mutating capture flags |
 | Port ROM | porting ROM, port from stock, donor ROM, extract partition, system.img, vendor.img, tr_product, tr_region, XOS port, Transsion port, vendor 64-bit conversion, tranwifi, vfy_boot, port checklist | REFERENCE.md section Port ROM; references/port-rom/; template/port-rom/; scripts/port-rom/ | No flashing or partition writes without explicit user confirmation; never mount images read-write unless required |
@@ -292,16 +292,16 @@ skills/android-development/
   scripts/
     rom/                 build_rom.sh
     kernel/              build_kernel.sh
-    gki-kernel/          build_gki_kernel.sh
+    gki-kernel/          build_gki_kernel.sh, build_gki_ksun.sh
     debug/               capture_logs.sh, verify_device.sh (read-only ADB helper)
     selinux-repair/      Python and shell tools listed above
                          tests/ -- selftest.sh and sample fixture logs
     port-rom/            check_port_images.sh
   references/
     selinux-repair/      deep-dive playbooks (see README.md in that folder for index)
+    gki-kernel/          kernelsu-next-build.md -- GKI + KSU-Next workspace and build guide
     port-rom/            porting playbooks (partition-strategy.md, transsion-xos-boot-fixes.md)
     debug/               (reserved, currently empty)
-    gki-kernel/          (reserved, currently empty)
     kernel/              (reserved, currently empty)
     rom/                 (reserved, currently empty)
 ```
@@ -330,6 +330,9 @@ Prefer evidence sources in this order:
 
 - User mentions repo sync, lunch, breakfast, mka, or "ROM won't compile":
   ROM Build workflow.
+- User mentions KernelSU-Next, KSU-Next, KSUN, integrating KSU into a GKI tree,
+  or build.sh with a setup.sh patch script:
+  GKI Kernel Build workflow -- see references/gki-kernel/kernelsu-next-build.md.
 - User mentions defconfig, Image.gz-dtb, make ARCH=arm64, or "kernel won't compile"
   (single monolithic kernel repo): Kernel Build (legacy) workflow.
 - User mentions build.config, tools/bazel, common/, GKI, KMI/ABI, or vendor_boot:

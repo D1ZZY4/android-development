@@ -166,6 +166,48 @@ Target names vary per tree — check `common/BUILD.bazel` for the actual target 
 
 See `template/gki-kernel/` for a `build.config` template and a minimal Bazel module skeleton.
 
+### KernelSU-Next integration (build.sh-era trees)
+
+KernelSU-Next integrates into a GKI tree via an official setup script that patches
+`common/fs/`, `drivers/input/`, and related subsystems automatically.
+
+```bash
+# 1. Set up the workspace (example branch: android12-5.10)
+mkdir -p android-kernel && cd android-kernel
+repo init \
+  -u https://android.googlesource.com/kernel/manifest \
+  -b common-android12-5.10 \
+  --depth=1
+repo sync -c --no-tags --no-clone-bundle --optimized-fetch -j"$(nproc)"
+
+# 2. Apply KernelSU-Next patches
+curl -LSs \
+  "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/refs/heads/dev/kernel/setup.sh" \
+  | bash -
+
+# 3. Commit the changes (required -- build computes version from git describe)
+cd common
+git add -A
+git commit -m "kernel: add KernelSU-Next"
+cd ..
+
+# 4. Build with full LTO
+LTO=full BUILD_CONFIG=common/build.config.gki.aarch64 ./build/build.sh
+```
+
+Or use the helper script (handles repo sync, KSU-Next setup, and build in one run):
+
+```bash
+bash scripts/gki-kernel/build_gki_ksun.sh \
+  common-android12-5.10 \
+  common/build.config.gki.aarch64 \
+  full
+```
+
+LTO values: `full` (production, slower link), `thin` (faster iterations), omit for no LTO.
+Deep-dive: `references/gki-kernel/kernelsu-next-build.md` (branch compatibility table,
+common post-integration failures, Kleaf notes).
+
 ---
 
 ## SELinux Repair
