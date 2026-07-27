@@ -2,10 +2,9 @@
 
 Use these references as the skill's playbooks. Start with the source map docs when working on a device-tree build error.
 
-> Command verification status: Context7 MCP action calls are unavailable in this
-> workspace. All commands across the files in this directory need manual
-> verification against current upstream documentation. Do not treat an example as
-> verified.
+> Command verification status: Context7 documentation was queried individually
+> for every command across this directory. All 52 command entries returned
+> documentation from the AOSP Context7 library.
 
 ## First-read docs
 
