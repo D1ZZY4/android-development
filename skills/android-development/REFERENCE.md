@@ -1,6 +1,11 @@
-# Android Development — Reference
+# Android Development -- Reference
 
-Detailed commands and patterns for each workflow in SKILL.md. Read the relevant section only — don't load this whole file into a response.
+Detailed commands and patterns for each workflow. Read the relevant section only -- do not load this whole file into a response.
+
+> Command verification status: Context7 MCP was unavailable during the last cleanup
+> pass. All commands in this file have not been verified against current upstream
+> documentation. Treat all as needing manual verification until re-checked against
+> https://source.android.com and the relevant kernel and AOSP documentation.
 
 ---
 

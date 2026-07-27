@@ -2,6 +2,11 @@
 
 Use these references as the skill's playbooks. Start with the source map docs when working on a device-tree build error.
 
+> Command verification status: Context7 MCP was unavailable during the last cleanup
+> pass. All commands across the files in this directory have not been verified against
+> current upstream documentation. Treat all as needing manual verification until
+> re-checked against https://source.android.com and the relevant AOSP documentation.
+
 ## First-read docs
 
 1. `policy-source-map.md` — resolve BoardConfig/include-derived SELinux roots before broad search.
