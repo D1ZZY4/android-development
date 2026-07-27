@@ -12,6 +12,22 @@ repair work.
 npx skills add D1ZZY4/android-development
 ```
 
+### Install options
+
+```bash
+# Install all skills from this repo
+npx skills add D1ZZY4/android-development --all
+
+# Install a specific skill by name
+npx skills add D1ZZY4/android-development --skill android-development
+
+# Install multiple specific skills at once
+npx skills add owner/repo --skill skill-a --skill skill-b
+
+# List available skills in a repo before installing
+npx skills add D1ZZY4/android-development --list
+```
+
 ## Domains covered
 
 | Domain | What it covers |
