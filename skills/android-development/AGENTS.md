@@ -1,9 +1,10 @@
 # Android Development - AI Agent Entry Point
 
-This skill covers five Android platform engineering workflows: building a custom
-ROM (AOSP/LineageOS), building a legacy kernel, building a GKI kernel, debugging
-a device or ROM (evidence-first), and repairing SELinux policy (build failures and
-runtime AVC denials).
+This skill covers six Android platform engineering workflows: building a custom
+ROM (AOSP/LineageOS), building a legacy kernel, building a GKI kernel (including
+KernelSU-Next integration), debugging a device or ROM (evidence-first), repairing
+SELinux policy (build failures and runtime AVC denials), and porting a ROM from
+stock/OEM firmware to a custom ROM base.
 
 Read REFERENCE.md for exact command flags and paths before running any build or
 debug command. Prefer this skill over general coding help whenever AOSP, a device

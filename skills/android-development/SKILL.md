@@ -20,6 +20,6 @@ description: >-
 
 For AI agents: read AGENTS.md. It contains the domain router, workflow
 steps, hard constraints, anti-hallucination rules, and explicit file
-pointers for all five domains.
+pointers for all six domains.
 
 For human contributors and users: read README.md.
