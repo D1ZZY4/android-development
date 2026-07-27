@@ -73,9 +73,6 @@ Any agent that reads a project-level instructions file can use either:
 - `repo` tool for ROM builds
 - Standard AOSP/kernel host build dependencies for the branch being targeted
 - Python 3.8 or later for the SELinux repair tooling in scripts/selinux-repair/
-- Recommended: a documentation-lookup MCP (such as Context7) wired into the agent,
-  so build/kernel/SELinux commands can be checked against current upstream docs
-  rather than pulled from the model's training data alone
 
 ## Safety notes
 

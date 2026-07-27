@@ -2,10 +2,6 @@
 
 Use these references as the skill's playbooks. Start with the source map docs when working on a device-tree build error.
 
-> Command verification status: Context7 documentation was queried individually
-> for every command across this directory. All 52 command entries returned
-> documentation from the AOSP Context7 library.
-
 ## First-read docs
 
 1. `policy-source-map.md` — resolve BoardConfig/include-derived SELinux roots before broad search.

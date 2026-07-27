@@ -2,10 +2,6 @@
 
 Detailed commands and patterns for each workflow. Read the relevant section only -- do not load this whole file into a response.
 
-> Command verification status: Context7 documentation was queried individually
-> for every command in this file. All 44 command entries returned documentation
-> from the AOSP Context7 library.
-
 ---
 
 ## ROM Build
