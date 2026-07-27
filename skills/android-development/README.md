@@ -17,6 +17,7 @@ Android platform engineering workflows:
 | GKI kernel build | Generic Kernel Image builds (build/build.sh, Bazel/Kleaf, KMI/ABI awareness) |
 | Debug | Evidence-first diagnosis of a misbehaving device or failed build -- no diagnosis without a log line, source reference, and live ADB output to back it up |
 | SELinux repair | Build-time policy failures and runtime AVC denials -- policy source-map resolution, property-context conflicts, neverallow triage, least-privilege patch shapes |
+| Port ROM | Adapting stock or OEM firmware (Transsion/XOS and others) to a custom ROM base -- image extraction, extra partition handling, vendor 64-bit conversion, OEM file removals, prop fixes |
 
 The core operating principle across all five domains: evidence before
 diagnosis, narrow fixes over broad ones, and never mutate a live device
@@ -35,14 +36,17 @@ android-development/
     gki-kernel/
     debug/
     selinux-repair/
+    port-rom/          port_checklist.md, props_fragment.md
   scripts/
     rom/
     kernel/
     gki-kernel/
     debug/
     selinux-repair/    includes scripts/selinux-repair/tests/
+    port-rom/          check_port_images.sh
   references/
     selinux-repair/    deep-dive SELinux/AOSP policy playbooks
+    port-rom/          partition strategy, XOS/Transsion boot fix guide
 ```
 
 `template/` and `scripts/` share the same five subfolder names by design --

@@ -26,6 +26,7 @@ build-environment setup, BoardConfig.mk/Android.bp fixes, and kernel diff review
 | GKI kernel build | build.config, tools/bazel, common/, GKI, KMI/ABI, vendor_boot, Kleaf, android-kernel | REFERENCE.md section GKI Kernel Build; template/gki-kernel/; scripts/gki-kernel/ | General constraints only |
 | Debug / fix a bug | crashes, bootloops, misbehaves, live device, tombstones, logcat, dmesg, kernel panic, ANR, HAL issues, service death | template/debug/; scripts/debug/ | Evidence-first -- never diagnose without a real log line to back the claim |
 | SELinux repair | avc: denied, neverallow, sepolicy, property_contexts, checkpolicy, checkfc, host_init_verifier, AVC denial, policy build failure | REFERENCE.md section SELinux Repair; template/selinux-repair/; scripts/selinux-repair/; references/selinux-repair/ | Evidence-first, classify before fixing, label-first discipline, ask before any runtime-mutating capture flags |
+| Port ROM | porting ROM, port from stock, donor ROM, extract partition, system.img, vendor.img, tr_product, tr_region, XOS port, Transsion port, vendor 64-bit conversion, tranwifi, vfy_boot, port checklist | REFERENCE.md section Port ROM; references/port-rom/; template/port-rom/; scripts/port-rom/ | No flashing or partition writes without explicit user confirmation; never mount images read-write unless required |
 
 If it is unclear which domain applies, ask the user. A build question and a debug
 question need different first commands and the wrong one wastes a full build cycle
@@ -287,6 +288,7 @@ skills/android-development/
     debug/               diagnosis_report.md, log_capture_manifest.md
     selinux-repair/      safe_policy_patterns.md, dangerous_patterns_to_reject.md,
                          patch_output_contract.md
+    port-rom/            port_checklist.md, props_fragment.md
   scripts/
     rom/                 build_rom.sh
     kernel/              build_kernel.sh
@@ -294,8 +296,10 @@ skills/android-development/
     debug/               capture_logs.sh, verify_device.sh (read-only ADB helper)
     selinux-repair/      Python and shell tools listed above
                          tests/ -- selftest.sh and sample fixture logs
+    port-rom/            check_port_images.sh
   references/
     selinux-repair/      deep-dive playbooks (see README.md in that folder for index)
+    port-rom/            porting playbooks (partition-strategy.md, transsion-xos-boot-fixes.md)
     debug/               (reserved, currently empty)
     gki-kernel/          (reserved, currently empty)
     kernel/              (reserved, currently empty)
@@ -337,3 +341,6 @@ Prefer evidence sources in this order:
 - User mentions a device that is already flashed and misbehaving (bootloop, crash,
   "doesn't boot", "app keeps crashing", "X isn't working"):
   Debug Workflow -- do not jump to rebuilding until evidence points there.
+- User mentions porting a ROM, extracting images from stock firmware, donor ROM,
+  tr_product/tr_region partitions, XOS/Transsion port, or vendor 64-bit conversion:
+  Port ROM workflow.

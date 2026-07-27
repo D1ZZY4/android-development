@@ -274,6 +274,72 @@ grep -n "ANR in" logcat_all.txt
 
 ---
 
+## Port ROM
+
+Workflow and file reference for porting an existing Android ROM or adapting stock
+firmware (e.g. Transsion/XOS) to a custom ROM base. Deep-dive playbooks live in
+`references/port-rom/` (start with `README.md`). Templates are in `template/port-rom/`.
+
+### Verify required images before starting
+
+```bash
+# Check standard images
+bash scripts/port-rom/check_port_images.sh <firmware_dir>
+
+# Also check Transsion-specific extra partitions (tr_product, tr_region)
+bash scripts/port-rom/check_port_images.sh <firmware_dir> --transsion
+```
+
+### Mount a partition image (read-only inspection)
+
+```bash
+# ext4
+mkdir -p /tmp/mnt_part
+sudo mount -o ro,loop <image>.img /tmp/mnt_part
+
+# erofs (Android 12+, requires erofsfuse or kernel erofs support)
+erofsfuse <image>.img /tmp/mnt_part
+
+# Unmount when done
+sudo umount /tmp/mnt_part   # ext4
+fusermount -u /tmp/mnt_part # erofs
+```
+
+### Common OEM removal steps (Transsion/XOS)
+
+Remove framework JARs that exist only in the OEM build:
+
+```bash
+# Identify OEM-only JARs declared in permissions but absent from the custom ROM
+diff <(grep -r "library name=" system_ext/etc/permissions/ | grep -o '"[^"]*\.jar"') \
+     <(ls system_ext/framework/*.jar | xargs -n1 basename | sed 's/^/"/;s/$/"/')
+```
+
+Comment out OEM init services that reference absent binaries:
+
+```bash
+grep -n "vfy_boot\|<oem_binary>" system/system/etc/init/hw/init.rc
+# Then edit the file -- comment out the service block, do not delete
+```
+
+Remove OEM-only property context entries that break `property_info_serializer`:
+
+```bash
+grep -n "ro.vendor.trancare\|<oem_prop>" vendor/etc/selinux/vendor_property_contexts
+# Remove the matching line(s) from the file
+```
+
+### Key files for a port
+
+| File | Purpose |
+|---|---|
+| `template/port-rom/port_checklist.md` | Porting checklist template (fill in per device) |
+| `template/port-rom/props_fragment.md` | Build.prop additions template with per-prop notes |
+| `references/port-rom/partition-strategy.md` | Image extraction strategy, extra partitions, vendor 64-bit conversion |
+| `references/port-rom/transsion-xos-boot-fixes.md` | XOS 16 specific boot blockers and prop fixes |
+
+---
+
 ## Quick decision aid
 
 - User mentions `repo sync`, `lunch`, `breakfast`, `mka`, "won't compile the ROM" → **ROM Build**
@@ -281,3 +347,4 @@ grep -n "ANR in" logcat_all.txt
 - User mentions `build.config`, `tools/bazel`, `common/`, GKI, KMI/ABI, `vendor_boot` → **GKI Kernel Build**
 - User mentions `avc: denied`, `neverallow`, `sepolicy`, `property_contexts`, `checkpolicy`/`checkfc` errors, or a SELinux-specific build/runtime failure → **SELinux Repair** (its own tooling/evidence hierarchy, not the general build-failure tables above)
 - User mentions a device that's already flashed/running and misbehaving (bootloop, crash, "doesn't boot", "app keeps crashing", "X isn't working") → **Debug Workflow**, don't jump to rebuilding anything until evidence points there
+- User mentions porting a ROM, extracting images from stock firmware, tr_product/tr_region, XOS/Transsion port, or vendor 64-bit conversion → **Port ROM**

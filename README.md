@@ -21,6 +21,7 @@ npx skills add D1ZZY4/android-development
 | GKI kernel build | Generic Kernel Image builds (build/build.sh, Bazel/Kleaf, KMI/ABI awareness) |
 | Debug | Evidence-first diagnosis of a misbehaving device or failed build -- no diagnosis without a log line, source reference, and live ADB output to back it up |
 | SELinux repair | Build-time policy failures and runtime AVC denials -- policy source-map resolution, property-context conflicts, neverallow triage, least-privilege patch shapes |
+| Port ROM | Adapting stock or OEM firmware to a custom ROM base -- image extraction, extra partition handling (tr_product/tr_region), vendor 64-bit conversion, OEM file removals, prop fixes |
 
 ## Requirements
 
