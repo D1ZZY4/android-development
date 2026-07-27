@@ -1,0 +1,6 @@
+FAILED: out/target/product/P13001L/vendor/etc/init/wlan_assistant.rc
+host_init_verifier: Unable to serialize property contexts: Duplicate prefix match detected for 'vendor.streamin.'
+FAILED: out/target/product/P13001L/vendor/etc/init/init.connfem.rc
+host_init_verifier: Unable to serialize property contexts: Duplicate prefix match detected for 'ro.vendor.audio.'
+FAILED: out/target/product/P13001L/vendor/etc/init/vendor.mediatek.hardware.mms@1.6-service.rc
+host_init_verifier: Unable to serialize property contexts: Duplicate prefix match detected for 'ro.vendor.mtk_cam_dualzoom_support'

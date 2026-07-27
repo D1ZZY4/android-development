@@ -1,0 +1,2 @@
+FAILED: out/target/product/foo/obj/ETC/vendor_property_contexts_intermediates/property_info
+Duplicate prefix match detected for 'ro.vendor.audio.'

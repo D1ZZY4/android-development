@@ -1,0 +1,27 @@
+# Minimal Bazel/Kleaf module skeleton for a vendor kernel module built
+# against a GKI kernel. Real trees (android13-5.15+ "Kleaf" era) generate
+# much of this via macros — check common/kernel/kleaf/ for the actual
+# rule definitions available in the specific AOSP kernel branch before
+# assuming these macro names are stable across versions.
+
+load("//build/kernel/kleaf:kernel.bzl", "kernel_module")
+
+kernel_module(
+    name = "<vendor>_<codename>_modules",
+    srcs = glob([
+        "**/*.c",
+        "**/*.h",
+        "**/Kbuild",
+        "**/Makefile",
+    ]),
+    outs = [
+        "<module_name>.ko",
+    ],
+    kernel_build = "//common:kernel_aarch64",
+    visibility = ["//visibility:public"],
+)
+
+# Build:
+#   tools/bazel build //vendor/<vendor>/<codename>-kernel:<vendor>_<codename>_modules
+# Dist (produces the .ko in out/dist alongside the generic Image):
+#   tools/bazel run //common:kernel_aarch64_dist -- --dist_dir=out/dist

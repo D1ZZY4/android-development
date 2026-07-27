@@ -1,0 +1,5 @@
+[ 45% 123/456] build out/target/product/foo/obj/ETC/property_contexts_intermediates/property_contexts
+FAILED: out/target/product/foo/obj/ETC/property_contexts_intermediates/property_contexts
+property_info_serializer -property_contexts out/target/product/foo/obj/ETC/property_contexts_intermediates/property_contexts -output out/target/product/foo/property_info
+Duplicate prefix match detected for 'ro.vendor.foo.'
+ninja: build stopped: subcommand failed.

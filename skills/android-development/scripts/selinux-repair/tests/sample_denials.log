@@ -1,0 +1,2 @@
+05-22 10:00:00.000  123  123 W auditd  : avc: denied { read open getattr } for pid=123 comm="vendor.foo" path="/sys/devices/platform/foo/state" dev="sysfs" ino=1 scontext=u:r:vendor_foo:s0 tcontext=u:object_r:sysfs:s0 tclass=file permissive=1
+05-22 10:00:01.000  124  124 W auditd  : avc: denied { set } for pid=124 comm="init" property=ro.product.name scontext=u:r:vendor_init:s0 tcontext=u:object_r:default_prop:s0 tclass=property_service permissive=1

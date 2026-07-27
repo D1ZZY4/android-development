@@ -1,0 +1,3 @@
+ro.vendor.audio.                    u:object_r:vendor_audio_prop:s0 prefix string
+vendor.streamin.                    u:object_r:vendor_streaming_prop:s0 prefix string
+ro.vendor.mtk_cam_dualzoom_support  u:object_r:vendor_camera_prop:s0 exact bool

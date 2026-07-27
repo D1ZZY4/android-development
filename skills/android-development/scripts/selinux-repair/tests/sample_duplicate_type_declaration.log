@@ -1,0 +1,6 @@
+FAILED: out/soong/.intermediates/system/sepolicy/vendor_sepolicy.cil.raw/android_common/P661N/vendor_sepolicy.cil.raw
+out/host/linux-x86/bin/checkpolicy -C -M -L -c 30 -o out/soong/.intermediates/system/sepolicy/vendor_sepolicy.cil.raw/android_common/P661N/vendor_sepolicy.cil.raw out/soong/.intermediates/system/sepolicy/vendor_sepolicy.conf/android_common/P661N/vendor_sepolicy.conf
+device/itel/P661N/sepolicy/vendor/property.te:2:ERROR 'Duplicate declaration of type' at token ';' on line 60648:
+type vendor_camera_prop, property_type, vendor_property_type, vendor_restricted_property_type;
+#line 2
+checkpolicy:  error(s) encountered while parsing configuration

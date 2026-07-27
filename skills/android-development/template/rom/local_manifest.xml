@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Place this at .repo/local_manifests/local_manifest.xml BEFORE running `repo sync`.
+  Fill in <VENDOR>, <CODENAME>, and the actual repo URLs/branches for the target device.
+  Each <project> pulls one extra tree not included in the main manifest
+  (device tree, vendor blobs, kernel source).
+-->
+<manifest>
+
+  <!-- Device tree -->
+  <project name="<github_user_or_org>/android_device_<vendor>_<codename>"
+           path="device/<vendor>/<codename>"
+           remote="github"
+           revision="<branch>" />
+
+  <!-- Vendor blobs / proprietary files -->
+  <project name="<github_user_or_org>/android_vendor_<vendor>_<codename>"
+           path="vendor/<vendor>/<codename>"
+           remote="github"
+           revision="<branch>" />
+
+  <!-- Kernel source -->
+  <project name="<github_user_or_org>/android_kernel_<vendor>_<codename>"
+           path="kernel/<vendor>/<codename>"
+           remote="github"
+           revision="<branch>" />
+
+  <!-- Common device tree (if the SoC/vendor has a shared common tree, e.g. mediatek/sm8xxx-common) -->
+  <!--
+  <project name="<github_user_or_org>/android_device_<vendor>_<common_codename>"
+           path="device/<vendor>/<common_codename>"
+           remote="github"
+           revision="<branch>" />
+  -->
+
+</manifest>
