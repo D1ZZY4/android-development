@@ -4,7 +4,7 @@
 .config/
 .agents/
 attached_assets/
-prompt.md
+prompt/
 PROGRESS.md
 
 # --- Replit-specific ---
