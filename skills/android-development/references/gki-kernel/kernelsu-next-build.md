@@ -11,11 +11,11 @@ REFERENCE.md section GKI Kernel Build.
 
 KernelSU-Next (github.com/KernelSU-Next/KernelSU-Next) is a community fork of
 KernelSU that tracks the upstream dev branch more closely and adds support for
-additional GKI branches. It integrates into the kernel source tree the same way
-as the original: by applying patches to `fs/`, `drivers/input/`, and related
-subsystems, plus a kernel module entry point.
+additional GKI branches. It integrates into the kernel source tree by cloning
+the KSU-Next source, creating a `kernelsu` symlink inside `drivers/`, and
+patching `drivers/Makefile` and `drivers/Kconfig` to include the module.
 
-The `setup.sh` approach applies these patches without requiring a manual git
+The `setup.sh` approach applies these changes without requiring a manual git
 merge, which is the recommended method for CI-style builds.
 
 ---
@@ -58,9 +58,10 @@ curl -LSs \
 ```
 
 The script:
-1. Clones or updates the `KernelSU-Next` source into the tree.
-2. Applies the required patches to `common/` (fs/, drivers/input/, etc.).
-3. Adds the KSU kernel module entry.
+1. Clones or updates the `KernelSU-Next` source into the workspace root.
+2. Creates a `kernelsu` symlink inside `drivers/` (resolves to `common/drivers/`
+   on build.sh-era trees) pointing to the KSU-Next kernel source.
+3. Patches `drivers/Makefile` and `drivers/Kconfig` to include the KSU module.
 
 After the script completes, commit the changes so the build system picks them up:
 
@@ -142,7 +143,7 @@ instructions.
 | Symptom | Likely cause | Check |
 |---|---|---|
 | Module not loading: "version magic mismatch" | Dirty tree when building -- KSU files not committed before build | Commit the KSU changes in `common/` before running build.sh |
-| `undefined reference to 'ksu_*'` at module link | KSU patches not applied or applied to wrong directory | Re-run setup.sh from the workspace root; verify `common/fs/ksu.h` exists |
+| `undefined reference to 'ksu_*'` at module link | KSU-Next not integrated or symlink broken | Re-run setup.sh from the workspace root; verify `common/drivers/kernelsu` symlink exists and points to the cloned KernelSU-Next source |
 | AVB verification failure on first boot | Verified boot enabled and the patched kernel is unsigned | Disable verified boot (`fastboot flashing unlock`) before testing, or sign with the device's test key |
 | KSU app shows "Unsupported" | Running on a non-GKI device or the kernel was built without the KSU module entry | Confirm the device boots a GKI kernel; check `uname -r` for `-android` suffix |
 | `avc: denied` for `ksu` domain | SELinux policy missing `ksu.te` or it was not included in the build | SELinux Repair domain: run `sepolicy_path_resolver.py` to find policy roots, add KSU policy |

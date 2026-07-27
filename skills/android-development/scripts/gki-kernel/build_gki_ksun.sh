@@ -60,7 +60,7 @@ echo "[2/4] Syncing sources..."
 repo sync -c --no-tags --no-clone-bundle --optimized-fetch -j"$(nproc)"
 
 # --- Step 2: KernelSU-Next ---
-if [ ! -d "common/KernelSU" ] && [ ! -f "common/fs/ksu.h" ]; then
+if [ ! -d "KernelSU-Next" ] && [ ! -L "common/drivers/kernelsu" ]; then
   echo "[3/4] Applying KernelSU-Next via setup.sh..."
   curl -LSs "$KSUN_SETUP_URL" | bash -
 else
