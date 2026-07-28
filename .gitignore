@@ -43,9 +43,7 @@ yarn-error.log*
 *.key
 !template/**/*.key
 
-# --- Build / run artifacts this skill's scripts can produce ---
-# (AOSP/kernel build output and repo checkouts should never be committed
-# here — this repo is the skill/tooling, not a device tree or build tree)
+# --- Build / run artifacts ---
 out/
 .repo/
 *.log
@@ -62,3 +60,4 @@ build/
 
 # --- OS junk ---
 Thumbs.db
+.claude/

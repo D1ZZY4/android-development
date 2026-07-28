@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.pyo
+*.log
+!scripts/**/tests/**/*.log
+debug_logs_*/
+selinux-captures/
+*.skill
