@@ -1,15 +1,11 @@
+
 # debug
 
-Agent skill and knowledge base for evidence-first diagnosis of Android devices,
-ROMs, and builds. Compatible with any AI coding agent that supports the Agent
-Skills convention.
+Agent skill and knowledge base for evidence-first diagnosis of Android devices, ROMs, and builds. Compatible with any AI coding agent that supports the Agent Skills convention.
 
 ## What this is
 
-Structured instructions, command references, templates, and scripts for
-debugging Android devices: log acquisition, source cross-reference, read-only
-live verification, and structured diagnosis reporting -- all grounded in
-evidence gathered in the current session.
+Structured instructions, command references, templates, and scripts for debugging Android devices: log acquisition, source cross-reference, read-only live verification, and structured diagnosis reporting -- all grounded in evidence gathered in the current session.
 
 ## Structure
 

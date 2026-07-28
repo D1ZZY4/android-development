@@ -1,7 +1,7 @@
+
 # Module -- Reference
 
-Use this domain for a Magisk, KernelSU, or KernelSU-Next systemless module, or
-for an AnyKernel3 flashable kernel ZIP.
+Use this domain for a Magisk, KernelSU, or KernelSU-Next systemless module, or for an AnyKernel3 flashable kernel ZIP.
 
 ## Module guides
 
@@ -33,18 +33,13 @@ for an AnyKernel3 flashable kernel ZIP.
 bash scripts/verify_module.sh <module_dir>
 ```
 
-The validator checks required metadata, placeholder values, id and versionCode
-format, shell syntax, system overlay contents, optional WebUI entry point, and
-flags policy/Zygisk content for review.
+The validator checks required metadata, placeholder values, id and versionCode format, shell syntax, system overlay contents, optional WebUI entry point, and flags policy/Zygisk content for review.
 
 ## AnyKernel3 GKI pattern
 
-For a GKI device using vendor_boot, start from
-`template/anykernel.sh.template` and follow
-`references/anykernel3-guide.md`.
+For a GKI device using vendor_boot, start from `template/anykernel.sh.template` and follow `references/anykernel3-guide.md`.
 
 ## Safety
 
-- Do not use root modules or AnyKernel3 to bypass a recovery plan, hide AVC
-  denials, or write generic SELinux permissions.
+- Do not use root modules or AnyKernel3 to bypass a recovery plan, hide AVC denials, or write generic SELinux permissions.
 - Obtain explicit user confirmation before any physical-device installation.

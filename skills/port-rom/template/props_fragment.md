@@ -1,9 +1,7 @@
+
 # Build Props Fragment -- ROM Port
 
-A structured template for the build.prop additions needed during a ROM port.
-Copy only the sections relevant to the target device. Every prop included must
-be confirmed to have the stated effect on this specific device -- do not add
-props blindly.
+A structured template for the build.prop additions needed during a ROM port. Copy only the sections relevant to the target device. Every prop included must be confirmed to have the stated effect on this specific device -- do not add props blindly.
 
 Fill in the target file for each section:
 - Device-tier props go in `device/<vendor>/<codename>/<codename>.mk` as
@@ -34,8 +32,7 @@ persist.service.adb.enable=1
 
 ## OEM feature toggles (Transsion / XOS platform)
 
-Include only the props for features that exist on the target hardware. Each prop
-is listed with the observed symptom it fixes.
+Include only the props for features that exist on the target hardware. Each prop is listed with the observed symptom it fixes.
 
 ```
 # TNE (Transsion Native Experience) fatal crash in system_server on custom ROMs

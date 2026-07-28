@@ -1,9 +1,7 @@
+
 # android-development-skills
 
-This repo has been renamed to android-development-skills.
-A collection of [skills.sh](https://skills.sh)-compatible skill packages for
-custom Android platform engineering. Installable individually or together into
-any AI coding agent that supports the Agent Skills convention.
+This repo has been renamed to android-development-skills. A collection of [skills.sh](https://skills.sh)-compatible skill packages for custom Android platform engineering. Installable individually or together into any AI coding agent that supports the Agent Skills convention.
 
 ## Skills available
 
@@ -40,8 +38,7 @@ npx skills add D1ZZY4/android-development-skills --list
 
 ```
 skills/
-  rom/             ROM build skill (AGENTS.md, SKILL.md, README.md, REFERENCE.md,
-                   template/rom/, scripts/rom/)
+  rom/             ROM build skill (AGENTS.md, SKILL.md, README.md, REFERENCE.md, template/rom/, scripts/rom/)
   kernel/          Legacy kernel build skill
   gki-kernel/      GKI kernel build skill (includes KernelSU-Next)
   debug/           Device/boot diagnosis skill
@@ -52,9 +49,7 @@ skills/
 
 ## Detailed documentation
 
-Each skill has its own AGENTS.md (for AI agents), SKILL.md (skills.sh entry
-point), README.md (human overview), REFERENCE.md (command reference),
-template/, scripts/, and references/.
+Each skill has its own AGENTS.md (for AI agents), SKILL.md (skills.sh entry point), README.md (human overview), REFERENCE.md (command reference), template/, scripts/, and references/.
 
 ## License
 

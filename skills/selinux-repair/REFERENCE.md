@@ -1,3 +1,4 @@
+
 # SELinux Repair -- Reference
 
 Tool index and evidence hierarchy. Full workflow lives in AGENTS.md.

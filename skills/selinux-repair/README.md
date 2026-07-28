@@ -1,15 +1,11 @@
+
 # selinux-repair
 
-Agent skill and knowledge base for repairing SELinux policy build failures
-and runtime AVC denials on Android devices. Compatible with any AI coding
-agent that supports the Agent Skills convention.
+Agent skill and knowledge base for repairing SELinux policy build failures and runtime AVC denials on Android devices. Compatible with any AI coding agent that supports the Agent Skills convention.
 
 ## What this is
 
-Structured instructions, command references, Python/shell tooling, templates,
-and deep-dive playbooks for SELinux policy repair: source-map resolution,
-build error triage, property context collision diagnosis, runtime denial
-capture and summarization, and least-privilege patch shapes.
+Structured instructions, command references, Python/shell tooling, templates, and deep-dive playbooks for SELinux policy repair: source-map resolution, build error triage, property context collision diagnosis, runtime denial capture and summarization, and least-privilege patch shapes.
 
 ## Structure
 

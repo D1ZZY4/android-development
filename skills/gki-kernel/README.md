@@ -1,14 +1,11 @@
+
 # gki-kernel
 
-Agent skill and knowledge base for building Generic Kernel Image (GKI) kernels
-with build.sh or Bazel/Kleaf, including KernelSU-Next integration. Compatible
-with any AI coding agent that supports the Agent Skills convention.
+Agent skill and knowledge base for building Generic Kernel Image (GKI) kernels with build.sh or Bazel/Kleaf, including KernelSU-Next integration. Compatible with any AI coding agent that supports the Agent Skills convention.
 
 ## What this is
 
-Structured instructions, command references, templates, and scripts for
-GKI kernel builds: build.sh flow, Bazel/Kleaf flow, KMI/ABI awareness,
-and KernelSU-Next integration.
+Structured instructions, command references, templates, and scripts for GKI kernel builds: build.sh flow, Bazel/Kleaf flow, KMI/ABI awareness, and KernelSU-Next integration.
 
 ## Structure
 

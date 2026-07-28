@@ -1,10 +1,7 @@
+
 # Safe SELinux policy patterns (templates)
 
-Reusable, least-privilege policy shapes. Fill in `foo`/device-specific names
-— never grant broader permissions than the daemon/property/node actually
-needs, and never copy these in without checking whether an existing type
-already covers the same resource (see policy source map first,
-`references/selinux-repair/policy-source-map.md`).
+Reusable, least-privilege policy shapes. Fill in `foo`/device-specific names — never grant broader permissions than the daemon/property/node actually needs, and never copy these in without checking whether an existing type already covers the same resource (see policy source map first, `references/selinux-repair/policy-source-map.md`).
 
 ## New vendor init daemon
 
@@ -18,8 +15,7 @@ init_daemon_domain(vendor_foo)
 /vendor/bin/vendor.foo    u:object_r:vendor_foo_exec:s0
 ```
 
-Then grant only the daemon-specific resources it actually needs — don't
-pre-emptively add sysfs/proc/capability access "just in case."
+Then grant only the daemon-specific resources it actually needs — don't pre-emptively add sysfs/proc/capability access "just in case."
 
 ## Vendor property
 
@@ -55,5 +51,4 @@ allow vendor_foo vendor_foo_device:chr_file rw_file_perms;
 /dev/foo    u:object_r:vendor_foo_device:s0
 ```
 
-Also check `ueventd*.rc` — SELinux cannot compensate for wrong DAC
-ownership/mode on the device node itself.
+Also check `ueventd*.rc` — SELinux cannot compensate for wrong DAC ownership/mode on the device node itself.

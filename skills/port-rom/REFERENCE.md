@@ -1,7 +1,7 @@
+
 # Port ROM -- Reference
 
-Workflow and file reference for porting an existing Android ROM or adapting
-stock firmware (e.g. Transsion/XOS) to a custom ROM base.
+Workflow and file reference for porting an existing Android ROM or adapting stock firmware (e.g. Transsion/XOS) to a custom ROM base.
 
 ## Verify required images before starting
 

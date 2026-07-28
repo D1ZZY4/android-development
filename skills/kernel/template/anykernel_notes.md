@@ -1,8 +1,7 @@
+
 # AnyKernel3 packaging notes
 
-AnyKernel3 (osm0sis/AnyKernel3) packages a compiled kernel into a flashable
-zip without needing to rebuild a full boot.img manually. Useful for legacy
-(non-GKI) kernel builds distributed to end users.
+AnyKernel3 (osm0sis/AnyKernel3) packages a compiled kernel into a flashable zip without needing to rebuild a full boot.img manually. Useful for legacy (non-GKI) kernel builds distributed to end users.
 
 ## Minimal `anykernel.sh` fields to fill in
 
@@ -31,14 +30,9 @@ write_boot
 1. `Image.gz-dtb` (or whatever `BOARD_KERNEL_IMAGE_NAME` says the ROM expects)
    exists at `out/arch/arm64/boot/`.
 2. Device codename(s) in `device.name1`/`device.name2` match what
-   `getprop ro.product.device` reports on the actual target — a mismatch
-   here causes AnyKernel3 to abort the flash with a device-check failure,
-   which is often mistaken for a build problem when it's actually just a
-   string mismatch.
+   `getprop ro.product.device` reports on the actual target — a mismatch here causes AnyKernel3 to abort the flash with a device-check failure, which is often mistaken for a build problem when it's actually just a string mismatch.
 3. If the device uses `vendor_boot` (GKI-style split) rather than a single
-   `boot.img`, plain AnyKernel3 boot patching may not be sufficient —
-   check whether the device needs `vendor_boot` handling before assuming
-   the standard template works unmodified.
+   `boot.img`, plain AnyKernel3 boot patching may not be sufficient — check whether the device needs `vendor_boot` handling before assuming the standard template works unmodified.
 
 ## Packaging
 

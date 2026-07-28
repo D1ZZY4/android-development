@@ -1,12 +1,9 @@
+
 # ROM Port Checklist
 
-Fill this in for each port attempt. Every item must be confirmed with a real
-file check, build output, or device log -- not a guess.
+Fill this in for each port attempt. Every item must be confirmed with a real file check, build output, or device log -- not a guess.
 
-Device codename: [fill in]
-Donor ROM / source firmware: [fill in]
-Target ROM base (e.g. LineageOS 21, crDroid 14): [fill in]
-Date started: [fill in]
+Device codename: [fill in] Donor ROM / source firmware: [fill in] Target ROM base (e.g. LineageOS 21, crDroid 14): [fill in] Date started: [fill in]
 
 ---
 
@@ -19,15 +16,13 @@ Date started: [fill in]
 - [ ] product.img mounted and inspected (if present)
 - [ ] vendor.img mounted and inspected
 - [ ] Extra OEM partitions identified and handling decision made
-      (merge into system/product OR add fstab entry):
-      [list partitions and chosen approach]
+      (merge into system/product OR add fstab entry): [list partitions and chosen approach]
 - [ ] OEM-only framework JARs in system_ext/framework/ identified:
       [list files to remove]
 - [ ] init.rc services referencing absent binaries identified:
       [list service names to comment out]
 - [ ] vendor/etc/selinux/vendor_property_contexts checked for
-      non-AOSP property entries that will break property_info_serializer:
-      [list entries to remove]
+      non-AOSP property entries that will break property_info_serializer: [list entries to remove]
 
 ## Phase 2 -- Device tree preparation
 

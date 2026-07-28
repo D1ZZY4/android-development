@@ -1,3 +1,4 @@
+
 # Research Notes Used for the 2026 Upgrade
 
 These notes summarize external AOSP guidance that this skill encodes. They are intentionally practical and should be treated as a pointer map, not a replacement for reading the local AOSP reference snapshots.

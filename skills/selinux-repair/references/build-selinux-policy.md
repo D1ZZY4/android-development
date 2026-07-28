@@ -1,13 +1,14 @@
+
 # Build SELinux policy
 
 Source: https://source.android.com/docs/security/features/selinux/build
 
 Converted from the downloaded AOSP HTML snapshot bundled with this skill.
 
-This page covers how SELinux policy is built. SELinux policy is built from the combination of core AOSP policy (platform) and device-specific policy (vendor). The SELinux policy build flow for Android 4.4 through Android 7.0 merged all sepolicy fragments then generated monolithic files in the root directory. This meant that SoC vendors and ODM manufacturers modified boot.img (for non-A/B devices) or system.img (for A/B devices) every time policy was modified.
-In Android 8.0 and higher, platform and vendor policy is built separately. SoCs and OEMs can update their parts of the policy, build their images (such as vendor.img and boot.img), then update those images independent of platform updates.
-However, as modularized SELinux policy files are stored on /vendor partitions, the init process must mount the system and vendor partitions earlier so it can read SELinux files from those partitions and merge them with core SELinux files in the system directory (before loading them into the kernel).
+This page covers how SELinux policy is built. SELinux policy is built from the combination of core AOSP policy (platform) and device-specific policy (vendor). The SELinux policy build flow for Android 4.4 through Android 7.0 merged all sepolicy fragments then generated monolithic files in the root directory. This meant that SoC vendors and ODM manufacturers modified boot.img (for non-A/B devices) or system.img (for A/B devices) every time policy was modified. In Android 8.0 and higher, platform and vendor policy is built separately. SoCs and OEMs can update their parts of the policy, build their images (such as vendor.img and boot.img), then update those images independent of platform updates. However, as modularized SELinux policy files are stored on /vendor partitions, the init process must mount the system and vendor partitions earlier so it can read SELinux files from those partitions and merge them with core SELinux files in the system directory (before loading them into the kernel).
+
 ## Source files
+
 The logic for building SELinux is in these files:
 - external/selinux: External SELinux project, used to build HOST command line utilities to compile SELinux policy and labels.
 - external/selinux/libselinux: Android uses only a subset of the external libselinux project along with some Android-specific customizations. For details, see external/selinux/README.android.
@@ -17,21 +18,24 @@ The logic for building SELinux is in these files:
 - external/selinux/checkpolicy: SELinux policy compiler (host executables: checkpolicy, checkmodule, and dispol). Depends on libsepol.
 - system/sepolicy: Core Android SELinux policy configurations, including contexts and policy files. Major sepolicy build logic is also here (system/sepolicy/Android.mk).
 For more details on the files in system/sepolicy, see Key files.
+
 ## Android 7.x and lower
+
 This section covers how SELinux policy is built in Android 7.x and lower.
+
 ### Build process for Android 7.x and lower
-SELinux policy is created by combining the core AOSP policy with device-specific customizations. The combined policy is then passed to the policy compiler and various checkers. Device-specific customization is done through the BOARD_SEPOLICY_DIRS variable defined in device-specific Boardconfig.mk file. This global build variable contains a list of directories that specify the order in which to search for additional policy files.
-For example, an SoC vendor and an ODM might each add a directory, one for the SoC-specific settings and another for device-specific settings, to generate the final SELinux configurations for a given device:
+
+SELinux policy is created by combining the core AOSP policy with device-specific customizations. The combined policy is then passed to the policy compiler and various checkers. Device-specific customization is done through the BOARD_SEPOLICY_DIRS variable defined in device-specific Boardconfig.mk file. This global build variable contains a list of directories that specify the order in which to search for additional policy files. For example, an SoC vendor and an ODM might each add a directory, one for the SoC-specific settings and another for device-specific settings, to generate the final SELinux configurations for a given device:
 - BOARD_SEPOLICY_DIRS += device/SoC/common/sepolicy
 - BOARD_SEPOLICY_DIRS += device/SoC/DEVICE/sepolicy
-The content of file_contexts files in system/sepolicy and BOARD_SEPOLICY_DIRS are concatenated to generate the file_contexts.bin on the device:
-Figure 1. SELinux build logic.
-The sepolicy file consists of multiple source files:
+The content of file_contexts files in system/sepolicy and BOARD_SEPOLICY_DIRS are concatenated to generate the file_contexts.bin on the device: Figure 1. SELinux build logic. The sepolicy file consists of multiple source files:
 - The plain text policy.conf is generated by concatenating security_classes, initial_sids, *.te files, genfs_contexts, and port_contexts in that order.
 - For each file (such as security_classes), its content is the concatenation of the files with the same name under system/sepolicy/ and BOARDS_SEPOLICY_DIRS.
 - The policy.conf is sent to SELinux compiler for syntax checking and compiled into binary format as sepolicy on the device.
 Figure 2. SELinux policy file.
+
 ### SELinux files
+
 After compiling, Android devices running 7.x and earlier typically contain the following SELinux-related files:
 - selinux_version
 - sepolicy: Binary output after combining policy files (such as security_classes, initial_sids, and *.te)
@@ -41,19 +45,22 @@ After compiling, Android devices running 7.x and earlier typically contain the f
 - service_contexts
 - system/etc/mac_permissions.xml
 For more details, see Implement SELinux.
+
 ### SELinux initialization
+
 When the system boots up, SELinux is in permissive mode (and not in enforcing mode). The init process performs the following tasks:
 - Loads sepolicy files from ramdisk into the kernel through /sys/fs/selinux/load.
 - Switches SELinux to enforcing mode.
 - Runs re-exec() to apply the SELinux domain rule to itself.
 To shorten the boot time, perform the re-exec() on the init process as soon as possible.
+
 ## Android 8.0 and higher
-In Android 8.0, SELinux policy is split into platform and vendor components to allow independent platform and vendor policy updates while maintaining compatibility.
-The platform sepolicy is further split into platform private and platform public parts to export specific types and attributes to vendor policy writers. The platform public types/attributes are guaranteed to be maintained as stable APIs for a given platform version. Compatibility with previous platform public types/attributes can be guaranteed for several versions using platform mapping files.
+
+In Android 8.0, SELinux policy is split into platform and vendor components to allow independent platform and vendor policy updates while maintaining compatibility. The platform sepolicy is further split into platform private and platform public parts to export specific types and attributes to vendor policy writers. The platform public types/attributes are guaranteed to be maintained as stable APIs for a given platform version. Compatibility with previous platform public types/attributes can be guaranteed for several versions using platform mapping files.
+
 ### Build process for Android 8.0
-SELinux policy in Android 8.0 is made by combining pieces from /system and /vendor. Logic for setting this up appropriately is in /platform/system/sepolicy/Android.bp.
-The policy exists in the following locations:
-The build system takes this policy and produces system, system_ext, product, vendor, and odm policy components on the corresponding partition. Steps include:
+
+SELinux policy in Android 8.0 is made by combining pieces from /system and /vendor. Logic for setting this up appropriately is in /platform/system/sepolicy/Android.bp. The policy exists in the following locations: The build system takes this policy and produces system, system_ext, product, vendor, and odm policy components on the corresponding partition. Steps include:
 - Convert policies to the SELinux Common Intermediate Language (CIL) format, specifically:
 - Public platform policy (system, system_ext, product)
 - Combined private and public policy
@@ -63,27 +70,37 @@ The build system takes this policy and produces system, system_ext, product, ven
 - Combine policy files (describe both on-device and precompiled solutions).
 - Combine mapping, platform, and vendor policy.
 - Compile output binary policy file.
+
 ### Platform public sepolicy
-The platform public sepolicy includes everything defined under system/sepolicy/public. The platform can assume the types and attributes defined under public policy are stable APIs for a given platform version. This forms the part of the sepolicy that is exported by the platform on which vendor (that is, device) policy developers can write additional device-specific policy.
-Types are versioned according to the version of the policy that vendor files are written against, defined by the PLATFORM_SEPOLICY_VERSION build variable. The versioned public policy is then included with the vendor policy and (in its original form) in the platform policy. Thus, the final policy includes the private platform policy, the current platform's public sepolicy, the device-specific policy, and the versioned public policy corresponding to the platform version against which the device policy was written.
+
+The platform public sepolicy includes everything defined under system/sepolicy/public. The platform can assume the types and attributes defined under public policy are stable APIs for a given platform version. This forms the part of the sepolicy that is exported by the platform on which vendor (that is, device) policy developers can write additional device-specific policy. Types are versioned according to the version of the policy that vendor files are written against, defined by the PLATFORM_SEPOLICY_VERSION build variable. The versioned public policy is then included with the vendor policy and (in its original form) in the platform policy. Thus, the final policy includes the private platform policy, the current platform's public sepolicy, the device-specific policy, and the versioned public policy corresponding to the platform version against which the device policy was written.
+
 ### Platform private sepolicy
+
 The platform private sepolicy includes everything defined under /system/sepolicy/private. This part of the policy forms platform-only types, permissions, and attributes required for platform functionality. These aren't exported to the vendor and device policy writers. Nonplatform policy writers must not write their policy extensions based on types, attributes, and rules defined in the platform private sepolicy. Moreover, these rules are allowed to be modified or might disappear as part of a framework-only update.
+
 ### Platform private mapping
+
 The platform private mapping includes policy statements that map the attributes exposed in platform public policy of the previous platform versions to the concrete types used in current platform public sepolicy. This ensures vendor policy that was written based on platform public attributes from the previous platform public sepolicy versions continues to work. The versioning is based on the PLATFORM_SEPOLICY_VERSION build variable set in AOSP for a given platform version. A separate mapping file exists for each previous platform version from which this platform is expected to accept vendor policy. For more details, see Policy compatibility.
+
 ## Android 11 and higher
+
 This section covers how SELinux policy is built in Android 11 and higher.
+
 ### system_ext and product sepolicy
-In Android 11, system_ext policy and product policy are added. Like the platform sepolicy, system_ext policy and product policy are split into public policy and private policy.
-Public policy is exported to vendor. Types and attributes become stable API, and vendor policy can refer to types and attributes in the public policy. Types are versioned according to PLATFORM_SEPOLICY_VERSION, and the versioned policy is included to the vendor policy. The original policy is included to each of system_ext and product partition.
-Private policy contains system_ext-only and product-only types, permissions, and attributes required for system_ext and product partition functionality. Private policy is invisible to vendor, implying that these rules are internal and allowed to be modified.
+
+In Android 11, system_ext policy and product policy are added. Like the platform sepolicy, system_ext policy and product policy are split into public policy and private policy. Public policy is exported to vendor. Types and attributes become stable API, and vendor policy can refer to types and attributes in the public policy. Types are versioned according to PLATFORM_SEPOLICY_VERSION, and the versioned policy is included to the vendor policy. The original policy is included to each of system_ext and product partition. Private policy contains system_ext-only and product-only types, permissions, and attributes required for system_ext and product partition functionality. Private policy is invisible to vendor, implying that these rules are internal and allowed to be modified.
+
 ### system_ext and product mapping
+
 system_ext and product are allowed to export their designated public types to vendor. However, each partner has the responsibility to maintain compatibility. For compatibility, partners can provide their own mapping files which map the versioned attributes of previous versions to concrete types used in current public sepolicy:
 - To install a mapping file for system_ext, place a CIL file containing the desired mapping information to {SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS}/compat/{ver}/{ver}.cil, and then add system_ext_{ver}.cil to PRODUCT_PACKAGES.
 - To install a mapping file for product, place a CIL file containing the desired mapping information to {PRODUCT_PRIVATE_SEPOLICY_DIRS}/compat/{ver}/{ver}.cil, and then add product_{ver}.cil to PRODUCT_PACKAGES.
 Refer to an example that adds a mapping file of a Redbull device's product partition.
+
 ## Precompiled SELinux policy
-Before init turns on SELinux, init gathers all CIL files from partitions (system, system_ext, product, vendor and odm) and compiles them into binary policy, the format which can be loaded to kernel. As the compilation takes time (usually 1-2 seconds), the CIL files are precompiled at build time and placed at either /vendor/etc/selinux/precompiled_sepolicy or /odm/etc/selinux/precompiled_sepolicy, along with the sha256 hashes of the input CIL files. At runtime, init checks if any of the policy file has been updated by comparing the hashes. If nothing has changed, init loads the precompiled policy. If not, init compiles on the fly and uses it instead of the precompiled one.
-More specifically, precompiled policy is used if all of the following conditions are met. Here, {partition} represents the partition where the precompiled policy exists: either vendor or odm.
+
+Before init turns on SELinux, init gathers all CIL files from partitions (system, system_ext, product, vendor and odm) and compiles them into binary policy, the format which can be loaded to kernel. As the compilation takes time (usually 1-2 seconds), the CIL files are precompiled at build time and placed at either /vendor/etc/selinux/precompiled_sepolicy or /odm/etc/selinux/precompiled_sepolicy, along with the sha256 hashes of the input CIL files. At runtime, init checks if any of the policy file has been updated by comparing the hashes. If nothing has changed, init loads the precompiled policy. If not, init compiles on the fly and uses it instead of the precompiled one. More specifically, precompiled policy is used if all of the following conditions are met. Here, {partition} represents the partition where the precompiled policy exists: either vendor or odm.
 - Both /system/etc/selinux/plat_sepolicy_and_mapping.sha256 and /{partition}/etc/selinux/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256 exist and are identical.
 - Both /system_ext/etc/selinux/system_ext_sepolicy_and_mapping.sha256 and /{partition}/etc/selinux/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256 don't exist. Or both exist and are identical.
 - Both /product/etc/selinux/product_sepolicy_and_mapping.sha256 and /{partition}/etc/selinux/precompiled_sepolicy.product_sepolicy_and_mapping.sha256 don't exist. Or both exist and are identical.

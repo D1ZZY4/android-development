@@ -1,22 +1,15 @@
+
 # Building GKI with KernelSU-Next
 
-How to set up a GKI kernel workspace, integrate KernelSU-Next (KSU-Next) using
-the official setup script, and build with full LTO. This covers the build.sh-era
-GKI flow (android12-5.10, android13-5.10). For Kleaf/Bazel trees see
-REFERENCE.md section GKI Kernel Build.
+How to set up a GKI kernel workspace, integrate KernelSU-Next (KSU-Next) using the official setup script, and build with full LTO. This covers the build.sh-era GKI flow (android12-5.10, android13-5.10). For Kleaf/Bazel trees see REFERENCE.md section GKI Kernel Build.
 
 ---
 
 ## What KernelSU-Next is
 
-KernelSU-Next (github.com/KernelSU-Next/KernelSU-Next) is a community fork of
-KernelSU that tracks the upstream dev branch more closely and adds support for
-additional GKI branches. It integrates into the kernel source tree by cloning
-the KSU-Next source, creating a `kernelsu` symlink inside `drivers/`, and
-patching `drivers/Makefile` and `drivers/Kconfig` to include the module.
+KernelSU-Next (github.com/KernelSU-Next/KernelSU-Next) is a community fork of KernelSU that tracks the upstream dev branch more closely and adds support for additional GKI branches. It integrates into the kernel source tree by cloning the KSU-Next source, creating a `kernelsu` symlink inside `drivers/`, and patching `drivers/Makefile` and `drivers/Kconfig` to include the module.
 
-The `setup.sh` approach applies these changes without requiring a manual git
-merge, which is the recommended method for CI-style builds.
+The `setup.sh` approach applies these changes without requiring a manual git merge, which is the recommended method for CI-style builds.
 
 ---
 
@@ -40,16 +33,13 @@ repo init \
 repo sync -c --no-tags --no-clone-bundle --optimized-fetch -j"$(nproc)"
 ```
 
-`--depth=1` and `--optimized-fetch` keep the checkout shallow and fast. Do not
-use these on a tree where you need full git history (e.g. for cherry-picks from
-older commits).
+`--depth=1` and `--optimized-fetch` keep the checkout shallow and fast. Do not use these on a tree where you need full git history (e.g. for cherry-picks from older commits).
 
 ---
 
 ## KernelSU-Next integration
 
-Run the official setup script from inside the workspace root (the directory
-containing `build/`, `common/`, etc. -- not inside `common/` itself):
+Run the official setup script from inside the workspace root (the directory containing `build/`, `common/`, etc. -- not inside `common/` itself):
 
 ```bash
 curl -LSs \
@@ -73,9 +63,7 @@ git commit -m "kernel: add KernelSU-Next"
 cd ..
 ```
 
-Committing is important: some GKI build scripts compute a `LOCALVERSION` or
-kernel version string from `git describe`. An un-committed dirty tree can produce
-a version mismatch that breaks module loading later.
+Committing is important: some GKI build scripts compute a `LOCALVERSION` or kernel version string from `git describe`. An un-committed dirty tree can produce a version mismatch that breaks module loading later.
 
 ---
 
@@ -103,9 +91,7 @@ bash scripts/gki-kernel/build_gki_ksun.sh \
 | `thin` | ThinLTO -- faster, parallelised LTO approximation | Development iterations where build time matters more than peak optimisation |
 | (unset) | No LTO | Fastest build; do not ship |
 
-`LTO=full` is required for shipping a GKI-compliant kernel to end users. Use
-`LTO=thin` locally while iterating on the KSU integration, then switch to `full`
-for the release build.
+`LTO=full` is required for shipping a GKI-compliant kernel to end users. Use `LTO=thin` locally while iterating on the KSU integration, then switch to `full` for the release build.
 
 ### Output
 
@@ -131,10 +117,7 @@ Output lands in `out/<branch>/dist/`:
 | `common-android14-5.15` | Android 14 | Partial | Yes | Yes |
 | `common-android14-6.1` | Android 14 | No | Yes | Check upstream |
 
-For Bazel/Kleaf trees, KSU-Next integration requires applying patches manually
-and registering the KSU module in the relevant `BUILD.bazel`. The setup.sh script
-targets build.sh-era trees; check the KSU-Next repository for Kleaf-specific
-instructions.
+For Bazel/Kleaf trees, KSU-Next integration requires applying patches manually and registering the KSU module in the relevant `BUILD.bazel`. The setup.sh script targets build.sh-era trees; check the KSU-Next repository for Kleaf-specific instructions.
 
 ---
 

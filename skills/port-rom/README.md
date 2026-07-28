@@ -1,14 +1,11 @@
+
 # port-rom
 
-Agent skill and knowledge base for adapting stock or OEM firmware (Transsion/
-XOS and others) to a custom ROM base. Compatible with any AI coding agent that
-supports the Agent Skills convention.
+Agent skill and knowledge base for adapting stock or OEM firmware (Transsion/ XOS and others) to a custom ROM base. Compatible with any AI coding agent that supports the Agent Skills convention.
 
 ## What this is
 
-Structured instructions, command references, templates, and playbooks for ROM
-porting: image extraction, partition strategy, vendor 64-bit conversion, OEM
-file removals, and boot fixes.
+Structured instructions, command references, templates, and playbooks for ROM porting: image extraction, partition strategy, vendor 64-bit conversion, OEM file removals, and boot fixes.
 
 ## Structure
 

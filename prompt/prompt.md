@@ -1,19 +1,15 @@
+
 # android-development Skill Maintainer Guide
 
-This repository ships `skills/android-development/`, a
-[skills.sh](https://skills.sh)-compatible package for Android platform
-engineering. It is also usable by AI coding agents that read `AGENTS.md`.
+This repository ships `skills/android-development/`, a [skills.sh](https://skills.sh)-compatible package for Android platform engineering. It is also usable by AI coding agents that read `AGENTS.md`.
 
 ## Working conventions
 
 - Write repository and skill content in English without emojis.
 - Communicate with the user in Indonesian unless they choose another language.
-- Inspect the current repository before editing. This document is an orientation
-  aid, not a substitute for the working tree.
-- Use Context7 through `npx ctx7@latest` to verify each new or changed external
-  Android, kernel, GKI, SELinux, Magisk, KernelSU, or AnyKernel3 command.
-- Keep internal agent progress, tool logs, and verification tallies out of the
-  installable skill package.
+- Inspect the current repository before editing. This document is an orientation aid, not a substitute for the working tree.
+- Use Context7 through `npx ctx7@latest` to verify each new or changed external Android, kernel, GKI, SELinux, Magisk, KernelSU, or AnyKernel3 command.
+- Keep internal agent progress, tool logs, and verification tallies out of the installable skill package.
 
 ## Scope
 
@@ -77,29 +73,23 @@ skills/android-development/
     └── selinux-repair/
 ```
 
-Each domain has one matching folder in `template/`, `scripts/`, and
-`references/`. Reserved reference folders are intentional and must remain.
+Each domain has one matching folder in `template/`, `scripts/`, and `references/`. Reserved reference folders are intentional and must remain.
 
 ## Source material outside the package
 
-`prompt/EnforcerGKI/` and `prompt/Fix NFC Transsion/` are workspace reference
-material, not distributable skill content. They demonstrate two module-domain
-use cases:
+`prompt/EnforcerGKI/` and `prompt/Fix NFC Transsion/` are workspace reference material, not distributable skill content. They demonstrate two module-domain use cases:
 
 - An AnyKernel3 ZIP that targets GKI `vendor_boot` and patches
   `androidboot.selinux=enforcing`.
-- A `system_ext` NFC-stack replacement containing app, library, and privileged
-  app content.
+- A `system_ext` NFC-stack replacement containing app, library, and privileged app content.
 
-Extract general, safe patterns from these examples. Do not copy their archives,
-binary payloads, or workspace-only material into `skills/android-development/`.
+Extract general, safe patterns from these examples. Do not copy their archives, binary payloads, or workspace-only material into `skills/android-development/`.
 
 ## Standing rules
 
 ### 1. Keep the public entry points synchronized
 
-When a domain, packaged file, script, or user-facing command changes, update the
-relevant information in all four primary entry points:
+When a domain, packaged file, script, or user-facing command changes, update the relevant information in all four primary entry points:
 
 | File | Keep current |
 |---|---|
@@ -108,35 +98,23 @@ relevant information in all four primary entry points:
 | `skills/android-development/README.md` | Domain table, structure tree, safety notes, and test instructions |
 | `README.md` | Repository overview and domain table |
 
-Also update `skills/android-development/SKILL.md` when activation triggers,
-domain count, or its pointers change. It is intentionally a compact skills.sh
-entry point; do not duplicate workflows there.
+Also update `skills/android-development/SKILL.md` when activation triggers, domain count, or its pointers change. It is intentionally a compact skills.sh entry point; do not duplicate workflows there.
 
 ### 2. Preserve domain boundaries
 
-Do not flatten, rename, or merge domain folders. Keep AI routing and operating
-rules in `AGENTS.md`, exact commands and lookups in `REFERENCE.md`, human
-overview in the READMEs, and detailed topic material in `references/`.
+Do not flatten, rename, or merge domain folders. Keep AI routing and operating rules in `AGENTS.md`, exact commands and lookups in `REFERENCE.md`, human overview in the READMEs, and detailed topic material in `references/`.
 
 ### 3. Protect physical devices and policy integrity
 
-- Never instruct or run a live-device mutation without the user's explicit
-  confirmation. This includes flashing, erasing, rebooting to a special mode,
-  writing a partition, enabling/disabling/removing a module, or applying an
-  AnyKernel3 ZIP.
-- Read-only inspection and workspace builds are allowed. When a device is
-  relevant, discover it with read-only commands before assuming its state.
-- Keep debug and SELinux conclusions evidence-first. Cite fresh logs, source,
-  and read-only device evidence; use the existing insufficient-data fallback
-  when evidence is missing.
-- Never recommend permissive domains, `SELINUX_IGNORE_NEVERALLOWS := true`,
-  generic-label allow rules, `dontaudit` to hide failures, or raw
+- Never instruct or run a live-device mutation without the user's explicit confirmation. This includes flashing, erasing, rebooting to a special mode, writing a partition, enabling/disabling/removing a module, or applying an AnyKernel3 ZIP.
+- Read-only inspection and workspace builds are allowed. When a device is relevant, discover it with read-only commands before assuming its state.
+- Keep debug and SELinux conclusions evidence-first. Cite fresh logs, source, and read-only device evidence; use the existing insufficient-data fallback when evidence is missing.
+- Never recommend permissive domains, `SELINUX_IGNORE_NEVERALLOWS := true`, generic-label allow rules, `dontaudit` to hide failures, or raw
   `audit2allow` output as a final fix.
 
 ### 4. Validate scripts before committing
 
-Any change that touches `skills/android-development/scripts/` must pass all
-three checks:
+Any change that touches `skills/android-development/scripts/` must pass all three checks:
 
 ```bash
 find skills/android-development/scripts -name "*.sh" -exec bash -n {} \;
@@ -144,15 +122,11 @@ find skills/android-development/scripts -name "*.py" -exec python3 -m py_compile
 bash skills/android-development/scripts/selinux-repair/tests/selftest.sh
 ```
 
-Test new shell templates with `bash -n` too. Do not alter fixtures or test logic
-to manufacture a pass.
+Test new shell templates with `bash -n` too. Do not alter fixtures or test logic to manufacture a pass.
 
 ### 5. Keep the standalone `.gitignore` focused
 
-`skills/android-development/.gitignore` is necessary because users can install
-the skill outside this workspace. It should ignore only skill-relevant generated
-artifacts: Python bytecode, Android build output, local repo metadata, captured
-diagnostics, package output, and non-fixture logs.
+`skills/android-development/.gitignore` is necessary because users can install the skill outside this workspace. It should ignore only skill-relevant generated artifacts: Python bytecode, Android build output, local repo metadata, captured diagnostics, package output, and non-fixture logs.
 
 The exception below is mandatory so SELinux test fixtures stay tracked:
 
@@ -163,16 +137,13 @@ The exception below is mandatory so SELinux test fixtures stay tracked:
 
 ### 6. Commit discipline
 
-Make one logical concern per Conventional Commit. Before every commit, read
-`.agents/rules/commit-discipline.md`, inspect the exact staged diff, and ensure
-the commit author is:
+Make one logical concern per Conventional Commit. Before every commit, read `.agents/rules/commit-discipline.md`, inspect the exact staged diff, and ensure the commit author is:
 
 ```text
 D1ZZY4 <176969112+D1ZZY4@users.noreply.github.com>
 ```
 
-Do not rewrite commits already published to `origin/main` without explicit user
-approval.
+Do not rewrite commits already published to `origin/main` without explicit user approval.
 
 ## Completion checklist
 

@@ -1,3 +1,4 @@
+
 # Kernel Build (legacy) -- Reference
 
 Detailed commands for non-GKI kernel builds.
@@ -12,9 +13,7 @@ export CC=clang                                # most modern device kernels use 
 export CLANG_TRIPLE=aarch64-linux-gnu-
 ```
 
-Toolchain source matters -- check the kernel tree's own build script
-(`build.sh`, `Makefile`, or a vendor `build_kernel.sh`) for the exact
-toolchain version/path expected before assuming AOSP prebuilts.
+Toolchain source matters -- check the kernel tree's own build script (`build.sh`, `Makefile`, or a vendor `build_kernel.sh`) for the exact toolchain version/path expected before assuming AOSP prebuilts.
 
 ## Config and build
 
@@ -23,9 +22,7 @@ make O=out ARCH=arm64 <defconfig_name>     # e.g. lineageos_<codename>_defconfig
 make O=out ARCH=arm64 -j$(nproc --all)
 ```
 
-Output: `out/arch/arm64/boot/Image.gz-dtb` (or `Image`, `Image.lz4`,
-`Image-dtb` depending on device) plus `out/arch/arm64/boot/dts/**/*.dtb` if
-DTBs aren't already appended.
+Output: `out/arch/arm64/boot/Image.gz-dtb` (or `Image`, `Image.lz4`, `Image-dtb` depending on device) plus `out/arch/arm64/boot/dts/**/*.dtb` if DTBs aren't already appended.
 
 ## Packaging into a boot image
 
@@ -41,8 +38,7 @@ mkbootimg \
 avbtool add_hash_footer --image boot.img --partition_size <size> --partition_name boot
 ```
 
-Or use **AnyKernel3** for a flashable zip that doesn't require rebuilding a
-full boot.img manually -- see `template/anykernel_notes.md`.
+Or use **AnyKernel3** for a flashable zip that doesn't require rebuilding a full boot.img manually -- see `template/anykernel_notes.md`.
 
 ## Common kernel build failure patterns
 

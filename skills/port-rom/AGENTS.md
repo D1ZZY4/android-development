@@ -1,15 +1,11 @@
+
 # Port ROM -- AI Agent Entry Point
 
-Adapting stock or OEM firmware (Transsion/XOS and others) to a custom ROM
-base. Image extraction, partition strategy, vendor 64-bit conversion, OEM
-file removals, and boot fixes.
+Adapting stock or OEM firmware (Transsion/XOS and others) to a custom ROM base. Image extraction, partition strategy, vendor 64-bit conversion, OEM file removals, and boot fixes.
 
-Activate on: porting ROM, port from stock, donor ROM, extract partition,
-system.img, vendor.img, tr_product, tr_region, XOS port, Transsion port,
-vendor 64-bit conversion, tranwifi, vfy_boot, port checklist.
+Activate on: porting ROM, port from stock, donor ROM, extract partition, system.img, vendor.img, tr_product, tr_region, XOS port, Transsion port, vendor 64-bit conversion, tranwifi, vfy_boot, port checklist.
 
-Read REFERENCE.md for commands. Use references/ for deep-dive
-playbooks.
+Read REFERENCE.md for commands. Use references/ for deep-dive playbooks.
 
 ## Hard Constraints
 

@@ -1,8 +1,7 @@
+
 # defconfig fragment reference
 
-`arch/arm64/configs/<name>_defconfig` is a flat list of `CONFIG_X=y/n/m`
-lines. Don't hand-write one from scratch — diff against a known-working
-defconfig for the same or a very similar device/SoC when changing something.
+`arch/arm64/configs/<name>_defconfig` is a flat list of `CONFIG_X=y/n/m` lines. Don't hand-write one from scratch — diff against a known-working defconfig for the same or a very similar device/SoC when changing something.
 
 ## Common options worth checking when debugging boot/feature issues
 
@@ -31,9 +30,7 @@ scripts/kconfig/merge_config.sh -m out/.config arch/arm64/configs/<fragment>.con
 make O=out olddefconfig
 ```
 
-`olddefconfig` resolves any newly-introduced dependent options with their
-defaults rather than prompting interactively — necessary in a non-interactive
-agent/CI context.
+`olddefconfig` resolves any newly-introduced dependent options with their defaults rather than prompting interactively — necessary in a non-interactive agent/CI context.
 
 ## Diffing two defconfigs to find what changed (common debug step)
 

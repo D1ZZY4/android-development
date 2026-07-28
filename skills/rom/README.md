@@ -1,14 +1,11 @@
+
 # rom-build
 
-Agent skill and knowledge base for building custom AOSP/LineageOS ROMs from a
-device tree and manifest. Compatible with any AI coding agent that supports the
-Agent Skills convention.
+Agent skill and knowledge base for building custom AOSP/LineageOS ROMs from a device tree and manifest. Compatible with any AI coding agent that supports the Agent Skills convention.
 
 ## What this is
 
-Structured instructions, command references, templates, and scripts for
-ROM builds: repo sync, lunch/breakfast, mka, reading build failures, and
-device tree setup.
+Structured instructions, command references, templates, and scripts for ROM builds: repo sync, lunch/breakfast, mka, reading build failures, and device tree setup.
 
 ## Structure
 

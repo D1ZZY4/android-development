@@ -1,3 +1,4 @@
+
 # Android SELinux Build Error Playbook
 
 Use this when the Android build fails before boot testing.
@@ -124,7 +125,6 @@ Every repair should answer:
 - adding `.te` allow rules for property serialization failures
 - `dontaudit` during bring-up
 - final `permissive` domains for user builds
-
 
 ## Policy source map prerequisite
 

@@ -1,15 +1,12 @@
+
 # GKI Kernel Build -- Reference
 
 Detailed commands for GKI kernel builds.
 
-GKI (Generic Kernel Image) splits the kernel into a generic core (`Image`)
-built by Google's `common` tree, and vendor modules built separately and
-loaded at runtime. This means:
+GKI (Generic Kernel Image) splits the kernel into a generic core (`Image`) built by Google's `common` tree, and vendor modules built separately and loaded at runtime. This means:
 
-- You usually do **not** hand-edit `arch/arm64/configs/*_defconfig` and run
-  bare `make` -- the build is driven by `build.config.*` files and either
-  `build/build.sh` (GKI kernels up to ~5.10/5.15 era) or Bazel
-  (`tools/bazel`, newer trees, "Kleaf" build system).
+- You usually do **not** hand-edit `arch/arm64/configs/*_defconfig` and run bare `make` -- the build is driven by `build.config.*` files and either
+  `build/build.sh` (GKI kernels up to ~5.10/5.15 era) or Bazel (`tools/bazel`, newer trees, "Kleaf" build system).
 
 ## build.sh-based GKI build
 
@@ -17,8 +14,7 @@ loaded at runtime. This means:
 BUILD_CONFIG=common/build.config.gki.aarch64 build/build.sh
 ```
 
-Output lands in `out/<branch>/dist/` -- look for `Image`, `Image.lz4`,
-`System.map`, `vmlinux`, and vendor `.ko` modules separately.
+Output lands in `out/<branch>/dist/` -- look for `Image`, `Image.lz4`, `System.map`, `vmlinux`, and vendor `.ko` modules separately.
 
 ## Bazel/Kleaf-based GKI build (newer AOSP kernel trees)
 
@@ -27,8 +23,7 @@ tools/bazel run //common:kernel_aarch64_dist
 tools/bazel run //common:kernel_aarch64_dist -- --dist_dir=out/dist
 ```
 
-Target names vary per tree -- check `common/BUILD.bazel` for the actual target
-rather than assuming `kernel_aarch64` is universal.
+Target names vary per tree -- check `common/BUILD.bazel` for the actual target rather than assuming `kernel_aarch64` is universal.
 
 ## GKI-specific failure modes
 
@@ -67,13 +62,10 @@ bash scripts/build_gki_ksun.sh \
   full
 ```
 
-LTO values: `full` (production, slower link), `thin` (faster iterations),
-omit for no LTO.
-Deep-dive: `references/kernelsu-next-build.md`.
+LTO values: `full` (production, slower link), `thin` (faster iterations), omit for no LTO. Deep-dive: `references/kernelsu-next-build.md`.
 
 ## Quick reference
 
 - **build.sh trees**: android12-5.10, android13-5.10, android13-5.15
 - **Bazel/Kleaf trees**: android13-5.15+, android14-5.15, android14-6.1
-- **KSU-Next supported**: all build.sh branches; Kleaf branches need manual
-  patch application
+- **KSU-Next supported**: all build.sh branches; Kleaf branches need manual patch application

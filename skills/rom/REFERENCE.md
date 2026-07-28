@@ -1,3 +1,4 @@
+
 # ROM Build -- Reference
 
 Detailed commands and patterns for ROM builds. Read the relevant section only.
@@ -20,10 +21,8 @@ repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 ```
 
 - `-c` = current branch only (faster, smaller).
-- `-j$(nproc --all)` = parallel jobs, but on constrained bandwidth/RAM drop to
-  a fixed number (e.g. `-j4`) to avoid OOM or throttling.
-- If sync fails mid-way with "path already exists" or similar, check for stale
-  locks (`.repo/.repo_fetchtimes.json`, `*.lock` files) first.
+- `-j$(nproc --all)` = parallel jobs, but on constrained bandwidth/RAM drop to a fixed number (e.g. `-j4`) to avoid OOM or throttling.
+- If sync fails mid-way with "path already exists" or similar, check for stale locks (`.repo/.repo_fetchtimes.json`, `*.lock` files) first.
 
 ## Building
 
@@ -51,9 +50,7 @@ tail -f /tmp/rom_build.log
 
 ## Reading build failures
 
-Find the **first** error, not the last -- a single early failure (missing file,
-unresolved dependency, bad Makefile syntax) commonly cascades into dozens of
-downstream `FAILED:` lines that are just noise from the first one.
+Find the **first** error, not the last -- a single early failure (missing file, unresolved dependency, bad Makefile syntax) commonly cascades into dozens of downstream `FAILED:` lines that are just noise from the first one.
 
 ```bash
 grep -n -m1 -E "error:|FAILED:|\*\*\* " /tmp/rom_build.log
@@ -71,10 +68,8 @@ grep -n -m1 -E "error:|FAILED:|\*\*\* " /tmp/rom_build.log
 
 A minimal device tree has, at minimum:
 - `AndroidProducts.mk` -- registers the product makefile
-- `<codename>.mk` / `device_<vendor>_<codename>.mk` -- product definition,
-  packages, overlays
-- `BoardConfig.mk` -- partition layout, kernel config pointer, architecture
-  flags
+- `<codename>.mk` / `device_<vendor>_<codename>.mk` -- product definition, packages, overlays
+- `BoardConfig.mk` -- partition layout, kernel config pointer, architecture flags
 - `device.mk` -- inherited product config
 - `overlay/` -- resource overlays
   (`frameworks/base/core/res/res/values/*.xml` style paths)

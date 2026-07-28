@@ -1,7 +1,7 @@
+
 # Debug -- Reference
 
-Evidence-gathering commands. Use scripts/capture_logs.sh to run all of
-these at once and save to files, or run individually:
+Evidence-gathering commands. Use scripts/capture_logs.sh to run all of these at once and save to files, or run individually:
 
 ```bash
 # Full logcat, all buffers, dump-and-exit (not streaming)
@@ -32,9 +32,7 @@ adb shell cat /sys/...                      # sysfs nodes
 adb shell getenforce                        # SELinux mode
 ```
 
-**Never** run unless the user explicitly asks and confirms:
-fastboot flash*, adb reboot bootloader/recovery, adb shell setprop, rm, dd,
-or anything under /data or partitions that isn't a read.
+**Never** run unless the user explicitly asks and confirms: fastboot flash*, adb reboot bootloader/recovery, adb shell setprop, rm, dd, or anything under /data or partitions that isn't a read.
 
 ## Grep patterns for common failure classes
 

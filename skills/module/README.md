@@ -1,14 +1,11 @@
+
 # module
 
-Agent skill and knowledge base for building Magisk, KernelSU/KSU-Next
-system-modification modules and AnyKernel3 flashable kernel ZIPs. Compatible
-with any AI coding agent that supports the Agent Skills convention.
+Agent skill and knowledge base for building Magisk, KernelSU/KSU-Next system-modification modules and AnyKernel3 flashable kernel ZIPs. Compatible with any AI coding agent that supports the Agent Skills convention.
 
 ## What this is
 
-Structured instructions, command references, templates, and guides for
-system-modification packages: module.prop, lifecycle hooks, system overlays,
-SELinux rules, Zygisk, WebUI, and AnyKernel3 kernel ZIPs.
+Structured instructions, command references, templates, and guides for system-modification packages: module.prop, lifecycle hooks, system overlays, SELinux rules, Zygisk, WebUI, and AnyKernel3 kernel ZIPs.
 
 ## Structure
 

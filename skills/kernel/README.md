@@ -1,14 +1,11 @@
+
 # kernel-build
 
-Agent skill and knowledge base for building legacy/monolithic device kernels
-(non-GKI). Compatible with any AI coding agent that supports the Agent Skills
-convention.
+Agent skill and knowledge base for building legacy/monolithic device kernels (non-GKI). Compatible with any AI coding agent that supports the Agent Skills convention.
 
 ## What this is
 
-Structured instructions, command references, templates, and scripts for legacy
-kernel builds: defconfig, make, boot image packaging, and AnyKernel3 packaging
-for non-GKI devices.
+Structured instructions, command references, templates, and scripts for legacy kernel builds: defconfig, make, boot image packaging, and AnyKernel3 packaging for non-GKI devices.
 
 ## Structure
 

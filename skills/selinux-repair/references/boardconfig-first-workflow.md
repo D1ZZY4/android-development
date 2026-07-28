@@ -1,3 +1,4 @@
+
 # BoardConfig-first SELinux Workflow
 
 Device-tree SELinux repair should begin from the build inputs, not from a broad grep. Android makefiles tell you which policy directories are active for the product. A wrong search root leads to wrong fixes: duplicate declarations, stale local property entries, private platform symbol copies, and broad rules added to the nearest file instead of the contributing file.

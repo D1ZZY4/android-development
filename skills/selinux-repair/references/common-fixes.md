@@ -1,3 +1,4 @@
+
 # Common Android SELinux Fix Patterns
 
 These are safe patterns, not copy-paste guarantees. Always adapt to the target branch and existing policy style.
@@ -191,7 +192,6 @@ type vendor_camera_prop, property_type, vendor_property_type;
 # device policy redeclares it
 type vendor_camera_prop, property_type, vendor_property_type, vendor_restricted_property_type;
 ```
-
 
 ## Policy source map prerequisite
 

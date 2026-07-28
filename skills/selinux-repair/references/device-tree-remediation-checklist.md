@@ -1,3 +1,4 @@
+
 # Device-Tree Remediation Checklist
 
 Use this checklist before patching an Android device tree.
@@ -36,7 +37,6 @@ Use this checklist before patching an Android device tree.
 - If the build says duplicate prefix, stop and remove the collision before touching runtime policy.
 - If the build says unknown type, check symbol visibility before inventing workarounds.
 - If the build says `neverallow`, revisit design and placement, not just the rule text.
-
 
 ## Policy source map prerequisite
 

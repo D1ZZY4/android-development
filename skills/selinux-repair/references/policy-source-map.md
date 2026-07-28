@@ -1,3 +1,4 @@
+
 # Policy Source Map First
 
 Before editing Android SELinux policy, resolve the active source map from the device tree. Most wrong SELinux fixes happen because a maintainer or agent searches the whole tree, patches the nearest `.te` or `property_contexts` file, and misses an inherited SoC/vendor policy directory that the build actually uses.

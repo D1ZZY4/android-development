@@ -1,7 +1,7 @@
+
 # Skills
 
-All installable skill packages in this repository live here.
-Each subdirectory is an independent skill installable via `npx skills add`.
+All installable skill packages in this repository live here. Each subdirectory is an independent skill installable via `npx skills add`.
 
 ## Available skills
 
@@ -46,7 +46,4 @@ npx skills add D1ZZY4/android-development-skills --list
 
 ### Cross-skill relationships
 
-These skills are designed as independent packages. When a task crosses domains
-(e.g. a SELinux denial found during debugging), the agent should route to the
-appropriate skill. Each skill's AGENTS.md includes cross-references to related
-skills in its Quick Decision Aid.
+These skills are designed as independent packages. When a task crosses domains (e.g. a SELinux denial found during debugging), the agent should route to the appropriate skill. Each skill's AGENTS.md includes cross-references to related skills in its Quick Decision Aid.
