@@ -35,13 +35,13 @@ tree, or ROM build failure is involved.
 ## ROM Build Workflow
 
 Full command detail and common failure patterns: REFERENCE.md.
-Templates: template/rom/ (local_manifest.xml, roomservice.xml, BoardConfig.mk skeleton)
-Script: scripts/rom/build_rom.sh
+Templates: template/ (local_manifest.xml, roomservice.xml, BoardConfig.mk skeleton)
+Script: scripts/build_rom.sh
 
 1. Confirm workspace: is .repo/ present (already synced) or does this need
    repo init first?
 2. Set up manifest (main + local_manifests for device, vendor, and kernel trees).
-   See template/rom/local_manifest.xml.
+   See template/local_manifest.xml.
 3. source build/envsetup.sh, then lunch \<target\> (or breakfast \<codename\> for
    LineageOS).
 4. Build with mka bacon (LineageOS) or mka \<target\>. Background the build and

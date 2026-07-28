@@ -17,8 +17,8 @@ rom/
   AGENTS.md            AI agent entry point
   SKILL.md             skills.sh entry point
   REFERENCE.md         command reference
-  template/rom/        local_manifest.xml, roomservice.xml, BoardConfig.mk skeleton
-  scripts/rom/         build_rom.sh
+  template/        local_manifest.xml, roomservice.xml, BoardConfig.mk skeleton
+  scripts/         build_rom.sh
 ```
 
 ## Requirements

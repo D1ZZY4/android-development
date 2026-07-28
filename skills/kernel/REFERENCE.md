@@ -42,7 +42,7 @@ avbtool add_hash_footer --image boot.img --partition_size <size> --partition_nam
 ```
 
 Or use **AnyKernel3** for a flashable zip that doesn't require rebuilding a
-full boot.img manually -- see `template/kernel/anykernel_notes.md`.
+full boot.img manually -- see `template/anykernel_notes.md`.
 
 ## Common kernel build failure patterns
 

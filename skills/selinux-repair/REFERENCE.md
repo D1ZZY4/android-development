@@ -2,7 +2,7 @@
 
 Tool index and evidence hierarchy. Full workflow lives in AGENTS.md.
 
-## Tools (scripts/selinux-repair/)
+## Tools (scripts/)
 
 | Script | Purpose |
 |---|---|

@@ -1,6 +1,6 @@
 # Debug -- Reference
 
-Evidence-gathering commands. Use scripts/debug/capture_logs.sh to run all of
+Evidence-gathering commands. Use scripts/capture_logs.sh to run all of
 these at once and save to files, or run individually:
 
 ```bash

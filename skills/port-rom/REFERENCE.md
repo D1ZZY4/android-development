@@ -7,10 +7,10 @@ stock firmware (e.g. Transsion/XOS) to a custom ROM base.
 
 ```bash
 # Check standard images
-bash scripts/port-rom/check_port_images.sh <firmware_dir>
+bash scripts/check_port_images.sh <firmware_dir>
 
 # Also check Transsion-specific extra partitions (tr_product, tr_region)
-bash scripts/port-rom/check_port_images.sh <firmware_dir> --transsion
+bash scripts/check_port_images.sh <firmware_dir> --transsion
 ```
 
 ## Mount a partition image (read-only inspection)
@@ -46,7 +46,7 @@ grep -n "ro.vendor.trancare\|<oem_prop>" vendor/etc/selinux/vendor_property_cont
 
 | File | Purpose |
 |---|---|
-| `template/port-rom/port_checklist.md` | Porting checklist template |
-| `template/port-rom/props_fragment.md` | Build.prop additions template |
-| `references/port-rom/partition-strategy.md` | Image extraction strategy |
-| `references/port-rom/transsion-xos-boot-fixes.md` | XOS 16 specific boot blockers |
+| `template/port_checklist.md` | Porting checklist template |
+| `template/props_fragment.md` | Build.prop additions template |
+| `references/partition-strategy.md` | Image extraction strategy |
+| `references/transsion-xos-boot-fixes.md` | XOS 16 specific boot blockers |

@@ -28,8 +28,8 @@ For GKI (split common/vendor module) kernels, use the gki-kernel skill instead.
 ## Kernel Build Workflow (legacy / non-GKI)
 
 Full command detail and common failure patterns: REFERENCE.md.
-Templates: template/kernel/ (defconfig_fragment.md, anykernel_notes.md)
-Script: scripts/kernel/build_kernel.sh
+Templates: template/ (defconfig_fragment.md, anykernel_notes.md)
+Script: scripts/build_kernel.sh
 
 1. Identify kernel source layout: legacy (arch/arm64/configs/\<defconfig\>, single
    Makefile) vs GKI (split common/ kernel + separate vendor modules,
@@ -39,7 +39,7 @@ Script: scripts/kernel/build_kernel.sh
    to a GKI tree; they will not produce a working boot image on their own.
 4. Package: Image.gz-dtb (or Image / Image.lz4) + ramdisk into boot.img via
    mkbootimg/avbtool, or use AnyKernel3 for a flashable zip. See
-   template/kernel/anykernel_notes.md.
+   template/anykernel_notes.md.
 
 ## File and Folder Map
 

@@ -18,8 +18,8 @@ debug/
   AGENTS.md            AI agent entry point (anti-hallucination rules, workflow)
   SKILL.md             skills.sh entry point
   REFERENCE.md         command reference
-  template/debug/      diagnosis_report.md, log_capture_manifest.md
-  scripts/debug/       capture_logs.sh, verify_device.sh (read-only ADB helper)
+  template/      diagnosis_report.md, log_capture_manifest.md
+  scripts/       capture_logs.sh, verify_device.sh (read-only ADB helper)
 ```
 
 ## Requirements

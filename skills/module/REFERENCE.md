@@ -7,10 +7,10 @@ for an AnyKernel3 flashable kernel ZIP.
 
 | Resource | Use it for |
 |---|---|
-| `references/module/magisk-ksu-module-guide.md` | module.prop, system/ overlays, boot hooks, Zygisk, sepolicy.rule, KernelSU WebUI |
-| `references/module/anykernel3-guide.md` | anykernel.sh, GKI vendor_boot, slots, ramdisk edits, cmdline patches |
-| `template/module/` | Copyable module metadata, lifecycle hooks, SELinux rule guardrails, GKI AnyKernel3 template |
-| `scripts/module/verify_module.sh` | Structural validation for a completed module directory |
+| `references/magisk-ksu-module-guide.md` | module.prop, system/ overlays, boot hooks, Zygisk, sepolicy.rule, KernelSU WebUI |
+| `references/anykernel3-guide.md` | anykernel.sh, GKI vendor_boot, slots, ramdisk edits, cmdline patches |
+| `template/` | Copyable module metadata, lifecycle hooks, SELinux rule guardrails, GKI AnyKernel3 template |
+| `scripts/verify_module.sh` | Structural validation for a completed module directory |
 
 ## Root-manager module decision table
 
@@ -30,7 +30,7 @@ for an AnyKernel3 flashable kernel ZIP.
 ## Module validation
 
 ```bash
-bash scripts/module/verify_module.sh <module_dir>
+bash scripts/verify_module.sh <module_dir>
 ```
 
 The validator checks required metadata, placeholder values, id and versionCode
@@ -40,8 +40,8 @@ flags policy/Zygisk content for review.
 ## AnyKernel3 GKI pattern
 
 For a GKI device using vendor_boot, start from
-`template/module/anykernel.sh.template` and follow
-`references/module/anykernel3-guide.md`.
+`template/anykernel.sh.template` and follow
+`references/anykernel3-guide.md`.
 
 ## Safety
 

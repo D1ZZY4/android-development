@@ -18,12 +18,12 @@ selinux-repair/
   AGENTS.md            AI agent entry point (workflow, evidence hierarchy)
   SKILL.md             skills.sh entry point
   REFERENCE.md         tool index and evidence hierarchy
-  template/selinux-repair/  safe_policy_patterns.md, dangerous_patterns_to_reject.md,
+  template/  safe_policy_patterns.md, dangerous_patterns_to_reject.md,
                             patch_output_contract.md
-  scripts/selinux-repair/   Python and shell tools (see REFERENCE.md)
+  scripts/   Python and shell tools (see REFERENCE.md)
     tests/                  selftest.sh and sample fixture logs
       fixtures/             BoardConfig.mk, property_contexts, .te files
-  references/selinux-repair/ deep-dive playbooks (start with README.md)
+  references/ deep-dive playbooks (start with README.md)
 ```
 
 ## Requirements
@@ -34,7 +34,7 @@ selinux-repair/
 ## Testing
 
 ```bash
-bash scripts/selinux-repair/tests/selftest.sh
+bash scripts/tests/selftest.sh
 find scripts -name "*.py" -exec python3 -m py_compile {} \;
 find scripts -name "*.sh" -exec bash -n {} \;
 ```

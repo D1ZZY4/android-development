@@ -10,7 +10,7 @@ policy build failure, runtime denial, type/attribute conflicts,
 sepolicy_tests failure.
 
 Read REFERENCE.md for the tool index and evidence hierarchy. Use
-references/selinux-repair/ for deep-dive playbooks.
+references/ for deep-dive playbooks.
 
 ## Hard Constraints
 
@@ -31,10 +31,10 @@ references/selinux-repair/ for deep-dive playbooks.
 ## SELinux Repair Workflow
 
 Full command index: REFERENCE.md.
-Templates: template/selinux-repair/ (safe_policy_patterns.md,
+Templates: template/ (safe_policy_patterns.md,
            dangerous_patterns_to_reject.md, patch_output_contract.md)
-Scripts: scripts/selinux-repair/ (see REFERENCE.md for the full list)
-References: references/selinux-repair/ (start with README.md)
+Scripts: scripts/ (see REFERENCE.md for the full list)
+References: references/ (start with README.md)
 
 Operating rule: collect the first reliable failure, classify it, fix ownership
 and labeling before permissions, add the smallest policy rule last, and verify
@@ -47,7 +47,7 @@ passing alone is not success.
 1. Resolve the policy source map first -- before any broad repo search, find
    the exact makefile-declared policy roots:
 
-   scripts/selinux-repair/sepolicy_path_resolver.py \
+   scripts/sepolicy_path_resolver.py \
      --repo . \
      --board-config device/\<vendor\>/\<device\>/BoardConfig.mk \
      --format markdown
@@ -55,26 +55,26 @@ passing alone is not success.
 2. Classify from the failure mode:
 
    Build failure:
-     scripts/selinux-repair/build_error_triage.py build.log --format markdown
-     scripts/selinux-repair/selinux_build_doctor.py build.log \
+     scripts/build_error_triage.py build.log --format markdown
+     scripts/selinux_build_doctor.py build.log \
        --repo . --board-config \<path\> --format markdown
 
    Property-context duplicate or serialize errors:
-     scripts/selinux-repair/property_context_doctor.py \
+     scripts/property_context_doctor.py \
        --log build.log --repo . --board-config \<path\> --format markdown
 
    Boots but logs runtime denials:
-     scripts/selinux-repair/capture_selinux_denials.sh \
+     scripts/capture_selinux_denials.sh \
        --root --auditctl --events 1500 --throttle 150
-     scripts/selinux-repair/summarize_denials.py \<captured-log\> --format markdown
+     scripts/summarize_denials.py \<captured-log\> --format markdown
      Note: --root and --auditctl are runtime-mutating. Require user confirmation.
 
    Only the tree is available (no build log):
-     scripts/selinux-repair/audit_device_tree.py \<path\> --format markdown
-     scripts/selinux-repair/context_conflict_finder.py \<path\> --format markdown
+     scripts/audit_device_tree.py \<path\> --format markdown
+     scripts/context_conflict_finder.py \<path\> --format markdown
 
    Artifacts already built:
-     scripts/selinux-repair/verify_policy_artifacts.sh out/target/product/\<device\>
+     scripts/verify_policy_artifacts.sh out/target/product/\<device\>
 
 3. Fix only the first real blocker. Parallel Android builds cascade; a single
    root property or type conflict often produces dozens of downstream FAILED:.
@@ -90,19 +90,19 @@ passing alone is not success.
    requested, whether the target label is still generic (needs relabeling
    before an allow rule), which partition should own it, and whether vendor
    policy is referencing only public platform symbols.
-   Safe shapes: template/selinux-repair/safe_policy_patterns.md
-   Dangerous shapes: template/selinux-repair/dangerous_patterns_to_reject.md
+   Safe shapes: template/safe_policy_patterns.md
+   Dangerous shapes: template/dangerous_patterns_to_reject.md
 
 6. Verify before moving on:
    m sepolicy_tests
    m vendor_sepolicy.cil plat_sepolicy.cil || true
    Re-run the path resolver and
-   scripts/selinux-repair/verify_policy_artifacts.sh out/target/product/\<device\>.
+   scripts/verify_policy_artifacts.sh out/target/product/\<device\>.
 
 ### Output contract
 
 Any proposed SELinux fix must include all 8 fields in
-template/selinux-repair/patch_output_contract.md:
+template/patch_output_contract.md:
   1. Failure class
   2. First evidence line
   3. Root cause hypothesis
@@ -141,12 +141,9 @@ skills/selinux-repair/
   README.md              human-readable overview
   REFERENCE.md           command/tool index
   SKILL.md               skills.sh entry point
-  template/
-    selinux-repair/      safe_policy_patterns.md, dangerous_patterns_to_reject.md,
+  template/              safe_policy_patterns.md, dangerous_patterns_to_reject.md,
                          patch_output_contract.md
-  scripts/
-    selinux-repair/      Python and shell tools (see REFERENCE.md)
-      tests/             selftest.sh and sample fixture logs
-        fixtures/        BoardConfig.mk, property_contexts, .te files for testing
-  references/
-    selinux-repair/      deep-dive playbooks (start with README.md)
+  scripts/               Python and shell tools (see REFERENCE.md)
+    tests/               selftest.sh and sample fixture logs
+      fixtures/          BoardConfig.mk, property_contexts, .te files for testing
+  references/            deep-dive playbooks (start with README.md)

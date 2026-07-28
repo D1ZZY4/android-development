@@ -26,8 +26,8 @@ For legacy (non-GKI/monolithic) kernels, use the kernel skill instead.
 ## GKI Kernel Build Workflow
 
 Full command detail and failure modes: REFERENCE.md.
-Templates: template/gki-kernel/ (build.config.template, BUILD.bazel.template)
-Scripts: scripts/gki-kernel/build_gki_kernel.sh, build_gki_ksun.sh
+Templates: template/ (build.config.template, BUILD.bazel.template)
+Scripts: scripts/build_gki_kernel.sh, build_gki_ksun.sh
 
 GKI kernels split the kernel into a generic core (Image) built from Google's
 common tree and vendor modules built separately and loaded at runtime. Mixing
@@ -46,7 +46,7 @@ confusion.
 ### KernelSU-Next integration (build.sh-era trees)
 
 KernelSU-Next integrates into a GKI tree via the official setup.sh script.
-See REFERENCE.md for the full commands and references/gki-kernel/kernelsu-next-build.md
+See REFERENCE.md for the full commands and references/kernelsu-next-build.md
 for branch compatibility and common post-integration failures.
 
 ## File and Folder Map
@@ -71,7 +71,7 @@ skills/gki-kernel/
   vendor_boot: GKI Kernel Build workflow.
 - User mentions KernelSU-Next, KSU-Next, KSUN, integrating KSU into a GKI
   tree, or build.sh with a setup.sh patch script: GKI Kernel Build workflow
-  -- see references/gki-kernel/kernelsu-next-build.md.
+  -- see references/kernelsu-next-build.md.
 - User mentions defconfig, Image.gz-dtb, make ARCH=arm64 (single monolithic
   kernel): see kernel skill.
 - User mentions anykernel.sh, module.prop, or a flashable kernel ZIP:

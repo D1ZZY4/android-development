@@ -17,10 +17,10 @@ module/
   AGENTS.md            AI agent entry point
   SKILL.md             skills.sh entry point
   REFERENCE.md         command reference
-  template/module/     module.prop, lifecycle hooks, sepolicy.rule,
+  template/     module.prop, lifecycle hooks, sepolicy.rule,
                        AnyKernel3 templates, webroot-index.html
-  scripts/module/      verify_module.sh
-  references/module/   magisk-ksu-module-guide.md, anykernel3-guide.md
+  scripts/      verify_module.sh
+  references/   magisk-ksu-module-guide.md, anykernel3-guide.md
 ```
 
 ## Requirements
@@ -31,7 +31,7 @@ module/
 ## Testing
 
 ```bash
-bash scripts/module/verify_module.sh <module_dir>
+bash scripts/verify_module.sh <module_dir>
 find scripts -name "*.sh" -exec bash -n {} \;
 ```
 

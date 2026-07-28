@@ -17,9 +17,9 @@ gki-kernel/
   AGENTS.md            AI agent entry point
   SKILL.md             skills.sh entry point
   REFERENCE.md         command reference
-  template/gki-kernel/ build.config.template, BUILD.bazel.template
-  scripts/gki-kernel/  build_gki_kernel.sh, build_gki_ksun.sh
-  references/gki-kernel/ kernelsu-next-build.md
+  template/ build.config.template, BUILD.bazel.template
+  scripts/  build_gki_kernel.sh, build_gki_ksun.sh
+  references/ kernelsu-next-build.md
 ```
 
 ## Requirements

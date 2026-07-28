@@ -17,9 +17,9 @@ port-rom/
   AGENTS.md            AI agent entry point
   SKILL.md             skills.sh entry point
   REFERENCE.md         command reference
-  template/port-rom/   port_checklist.md, props_fragment.md
-  scripts/port-rom/    check_port_images.sh
-  references/port-rom/ partition-strategy.md, transsion-xos-boot-fixes.md
+  template/   port_checklist.md, props_fragment.md
+  scripts/    check_port_images.sh
+  references/ partition-strategy.md, transsion-xos-boot-fixes.md
 ```
 
 ## Requirements

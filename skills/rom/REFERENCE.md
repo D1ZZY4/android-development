@@ -14,7 +14,7 @@ repo init -u https://github.com/LineageOS/android.git -b lineage-21.0 --git-lfs
 
 # Local manifests for device/vendor/kernel trees not in the main manifest
 mkdir -p .repo/local_manifests
-# put local_manifest.xml here -- see template/rom/local_manifest.xml
+# put local_manifest.xml here -- see template/local_manifest.xml
 
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 ```
@@ -79,4 +79,4 @@ A minimal device tree has, at minimum:
 - `overlay/` -- resource overlays
   (`frameworks/base/core/res/res/values/*.xml` style paths)
 
-See `template/rom/` for skeleton fragments.
+See `template/` for skeleton fragments.

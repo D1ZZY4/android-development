@@ -61,7 +61,7 @@ LTO=full BUILD_CONFIG=common/build.config.gki.aarch64 ./build/build.sh
 Or use the helper script:
 
 ```bash
-bash scripts/gki-kernel/build_gki_ksun.sh \
+bash scripts/build_gki_ksun.sh \
   common-android12-5.10 \
   common/build.config.gki.aarch64 \
   full
@@ -69,7 +69,7 @@ bash scripts/gki-kernel/build_gki_ksun.sh \
 
 LTO values: `full` (production, slower link), `thin` (faster iterations),
 omit for no LTO.
-Deep-dive: `references/gki-kernel/kernelsu-next-build.md`.
+Deep-dive: `references/kernelsu-next-build.md`.
 
 ## Quick reference
 

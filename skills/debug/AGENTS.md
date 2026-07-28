@@ -9,8 +9,8 @@ logcat, dmesg, kernel panic, ANR, HAL issues, service death, "doesn't boot",
 "app keeps crashing", "X isn't working", adb commands.
 
 Read REFERENCE.md for exact debug commands.
-Templates: template/debug/ (diagnosis_report.md, log_capture_manifest.md)
-Scripts: scripts/debug/capture_logs.sh, verify_device.sh
+Templates: template/ (diagnosis_report.md, log_capture_manifest.md)
+Scripts: scripts/capture_logs.sh, verify_device.sh
 
 ## Hard Constraints
 
@@ -48,7 +48,7 @@ Scripts: scripts/debug/capture_logs.sh, verify_device.sh
 
 ### Steps (in order)
 
-1. Log acquisition -- scripts/debug/capture_logs.sh (or run commands manually per
+1. Log acquisition -- scripts/capture_logs.sh (or run commands manually per
    REFERENCE.md): adb logcat -d -b all, adb shell dmesg, tombstones in
    /data/tombstones/. Find the exact error: FATAL EXCEPTION, kernel panic,
    avc: denied, service crash, ANR.
@@ -60,7 +60,7 @@ Scripts: scripts/debug/capture_logs.sh, verify_device.sh
 3. Live verification (read-only only) -- confirm the hypothesis on-device using
    adb shell ls -lZ, adb shell getprop | grep, adb shell dumpsys \<service\>,
    adb shell ps -A, adb shell lshal, adb shell cat /sys/...
-   Use scripts/debug/verify_device.sh for these.
+   Use scripts/verify_device.sh for these.
    Never run a mutating command in this step.
 
 4. Diagnosis -- only once steps 1 through 3 produced real evidence. Output format:
@@ -69,7 +69,7 @@ Scripts: scripts/debug/capture_logs.sh, verify_device.sh
    3. Evidence from Device: [exact adb output from step 3]
    4. Evidence from Source: [exact file path + line/snippet from step 2]
    5. Proposed Fix: [specific change -- file, line, diff]
-   See template/debug/diagnosis_report.md for the full template.
+   See template/diagnosis_report.md for the full template.
 
 ## File and Folder Map
 

@@ -24,10 +24,10 @@ Read REFERENCE.md for package layouts and manager-specific behavior.
 ## Module Workflow
 
 Full package layouts and manager-specific behavior: REFERENCE.md.
-Templates: template/module/ (module metadata, lifecycle hooks, SELinux rules,
+Templates: template/ (module metadata, lifecycle hooks, SELinux rules,
            and AnyKernel3 configuration)
-Validator: scripts/module/verify_module.sh
-Deep dives: references/module/
+Validator: scripts/verify_module.sh
+Deep dives: references/
 
 1. Identify the delivery format before creating files:
    - Magisk / KernelSU / KSU-Next module for systemless overlay, service,
@@ -52,7 +52,7 @@ Deep dives: references/module/
    denial, label the object correctly, then add the smallest justified rule.
 
 6. Validate package structure and scripts in the workspace before release.
-   Use scripts/module/verify_module.sh.
+   Use scripts/verify_module.sh.
 
 7. Ask for explicit confirmation before any instruction that installs,
    enables, disables, removes, or applies the finished package on a physical

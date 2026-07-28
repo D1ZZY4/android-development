@@ -8,7 +8,7 @@ Activate on: porting ROM, port from stock, donor ROM, extract partition,
 system.img, vendor.img, tr_product, tr_region, XOS port, Transsion port,
 vendor 64-bit conversion, tranwifi, vfy_boot, port checklist.
 
-Read REFERENCE.md for commands. Use references/port-rom/ for deep-dive
+Read REFERENCE.md for commands. Use references/ for deep-dive
 playbooks.
 
 ## Hard Constraints
@@ -21,7 +21,7 @@ playbooks.
 
 ## Port ROM Workflow
 
-1. Verify required images: scripts/port-rom/check_port_images.sh \<dir\>
+1. Verify required images: scripts/check_port_images.sh \<dir\>
 2. Mount and inspect each image (read-only).
 3. Identify OEM-only framework JARs, init services, and property contexts
    that will break on custom ROMs. Remove or comment out.

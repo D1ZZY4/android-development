@@ -17,8 +17,8 @@ kernel/
   AGENTS.md            AI agent entry point
   SKILL.md             skills.sh entry point
   REFERENCE.md         command reference
-  template/kernel/     defconfig_fragment.md, anykernel_notes.md
-  scripts/kernel/      build_kernel.sh
+  template/     defconfig_fragment.md, anykernel_notes.md
+  scripts/      build_kernel.sh
 ```
 
 ## Requirements
