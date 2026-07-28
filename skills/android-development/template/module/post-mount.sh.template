@@ -1,0 +1,15 @@
+#!/system/bin/sh
+# post-mount.sh -- KernelSU / KernelSU-Next hook after module overlays mount.
+#
+# This hook is not provided by Magisk. It is useful only when the module must
+# inspect or adjust its mounted overlay before service.sh starts.
+
+MODDIR="${0%/*}"
+
+# KernelSU exposes KSU=true to module scripts. Keep the hook short because it
+# runs as part of the module startup sequence.
+if [ "${KSU:-}" != "true" ]; then
+    exit 0
+fi
+
+# --- KernelSU-specific post-mount logic here ---

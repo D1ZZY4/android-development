@@ -1,0 +1,11 @@
+# sepolicy.rule -- optional module SELinux policy additions.
+#
+# Add only narrowly scoped, reviewed rules justified by an observed AVC denial.
+# Use the SELinux Repair workflow to identify the acting domain, a concrete
+# target label, class, and permission before adding anything here.
+#
+# Never use permissive domains, broad generic labels, dontaudit to hide a
+# denial, or raw audit2allow output as a final rule.
+#
+# Example shape only; replace every placeholder after evidence-based review:
+# allow <module_domain> <specific_target_type>:file { read open getattr };

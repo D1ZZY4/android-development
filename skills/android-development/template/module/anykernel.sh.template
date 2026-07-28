@@ -1,0 +1,55 @@
+# AnyKernel3 Ramdisk Mod Script
+# osm0sis @ xda-developers
+# Template for GKI devices (vendor_boot, A/B slot).
+# For legacy single-partition devices set block=boot and is_slot_device=0.
+
+## AnyKernel setup
+# begin properties
+properties() { '
+kernel.string=<KernelName> by <YourName>
+do.devicecheck=0
+do.modules=0
+do.systemless=0
+do.cleanup=1
+do.cleanuponabort=0
+device.name1=<codename>
+device.name2=
+device.name3=
+supported.versions=
+supported.patchlevels=
+'; } # end properties
+
+# Shell variables -- set outside the properties block.
+# GKI devices: vendor_boot partition, A/B slot, auto compression.
+block=vendor_boot;
+is_slot_device=auto;
+ramdisk_compression=auto;
+patch_vbmeta_flag=auto;
+
+## AnyKernel methods (DO NOT CHANGE)
+. tools/ak3-core.sh;
+
+## AnyKernel install
+# This cmdline-only pattern works with the GKI vendor_boot example below.
+# For a ramdisk-file edit, use dump_boot here and write_boot at the end instead.
+split_boot;
+
+# --- ramdisk / cmdline changes ---
+# Uncomment and adapt what you need. Remove unused blocks entirely.
+
+# Force SELinux enforcing (overrides cmdline from bootloader)
+# patch_cmdline androidboot.selinux androidboot.selinux=enforcing
+
+# Override a property in a file extracted from the ramdisk.
+# Requires dump_boot / write_boot rather than split_boot / flash_boot.
+# patch_prop default.prop ro.debuggable 0
+
+# Inject a custom .rc snippet from patch/custom.rc into ramdisk init.rc.
+# Requires dump_boot / write_boot rather than split_boot / flash_boot.
+# insert_file init.rc "# custom-tweak" after "on post-fs-data" custom.rc
+
+# --- end changes ---
+#
+# flash_boot writes the configured target only when the operator installs this
+# ZIP. Do not give installation instructions without explicit confirmation.
+flash_boot;

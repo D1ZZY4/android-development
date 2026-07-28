@@ -1,0 +1,15 @@
+#!/system/bin/sh
+# post-fs-data.sh -- early module hook for Magisk, KernelSU, and KernelSU-Next.
+#
+# This stage blocks the boot sequence. Magisk limits post-fs-data scripts to
+# 40 seconds total; keep this hook short and deterministic.
+#
+# Use this only when the change must happen before Zygote starts. Put regular
+# background or framework-dependent work in service.sh instead.
+
+MODDIR="${0%/*}"
+
+# --- early, fast module logic here ---
+#
+# Prefer system.prop for simple property overrides. Do not wait for services,
+# poll indefinitely, or start a long-running process in this hook.

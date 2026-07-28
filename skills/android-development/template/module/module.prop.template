@@ -1,0 +1,25 @@
+# module.prop -- required by Magisk, KernelSU, and KernelSU-Next
+# Fill in every field before packaging. Angle-bracket values are placeholders.
+
+# Unique identifier: lowercase letters, digits, dots, hyphens, underscores only.
+# No spaces. This becomes the module directory name under /data/adb/modules/.
+id=<module_id>
+
+# Human-readable display name shown in the root manager app.
+name=<Module Display Name>
+
+# Version string displayed to users.
+version=v1.0
+
+# Integer version code used for update comparisons. Increment on every release.
+versionCode=1
+
+# Author name shown in the root manager app.
+author=<YourName>
+
+# One-line description shown in the root manager app.
+description=<What this module does>
+
+# Optional: URL to an update.json for in-app OTA updates.
+# Remove this line entirely if you do not host updates.
+# updateJson=https://example.com/<module_id>/update.json

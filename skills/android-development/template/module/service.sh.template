@@ -1,0 +1,40 @@
+#!/system/bin/sh
+# service.sh -- runs in late_start service (non-blocking)
+# MODDIR is set automatically to the module directory path at runtime.
+# Safe for long-running work; does not block the boot sequence.
+
+MODDIR="${0%/*}"
+
+# Good practice: wait for full boot before applying changes that need
+# a running system (PackageManager, SurfaceFlinger, etc.).
+while [ "$(getprop sys.boot_completed)" != "1" ]; do
+    sleep 1
+done
+
+# --- your service logic here ---
+
+# Example: set a system property
+# resetprop ro.example.myprop 1
+
+# Example: load a kernel module from the module directory
+# insmod "$MODDIR/system/lib/modules/mydriver.ko"
+
+# Example: start a background daemon bundled with the module
+# "$MODDIR/system/bin/mydaemon" &
+
+
+# ---- post-fs-data.sh notes ----
+# If you need to run logic BEFORE Zygote starts (e.g. early property
+# overrides, remounting a partition, placing files before init reads them),
+# create post-fs-data.sh alongside this file.
+#
+# post-fs-data.sh is BLOCKING with a 40-second total script limit.
+# Keep it fast. Prefer system.prop for simple property overrides:
+#
+#   #!/system/bin/sh
+#   MODDIR="${0%/*}"
+#   # Put `ro.example.earlyprop=1` in system.prop instead.
+#
+# KernelSU/KSU-Next also provide:
+#   post-mount.sh   -- runs after system is mounted, before Zygote
+#   boot-completed.sh -- runs after BOOT_COMPLETED broadcast

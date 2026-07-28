@@ -1,0 +1,14 @@
+#!/system/bin/sh
+# boot-completed.sh -- KernelSU / KernelSU-Next hook after Android boot completes.
+#
+# This hook is not provided by Magisk. Use it for work that needs a fully
+# started Android framework. For Magisk-compatible background work, use
+# service.sh and wait for sys.boot_completed there.
+
+MODDIR="${0%/*}"
+
+if [ "${KSU:-}" != "true" ]; then
+    exit 0
+fi
+
+# --- KernelSU-specific post-boot work here ---
