@@ -9,18 +9,15 @@ Read REFERENCE.md for commands. Use references/ for deep-dive playbooks.
 
 ## Hard Constraints
 
-1. No flashing or partition writes without explicit user confirmation. Never
-   mount images read-write unless required and confirmed.
+1. No flashing or partition writes without explicit user confirmation. Never mount images read-write unless required and confirmed.
 
-2. Evidence over guessing. Verify files exist, check properties against
-   actual firmware, confirm OEM blobs with real file listings.
+2. Evidence over guessing. Verify files exist, check properties against actual firmware, confirm OEM blobs with real file listings.
 
 ## Port ROM Workflow
 
 1. Verify required images: scripts/check_port_images.sh \<dir\>
 2. Mount and inspect each image (read-only).
-3. Identify OEM-only framework JARs, init services, and property contexts
-   that will break on custom ROMs. Remove or comment out.
+3. Identify OEM-only framework JARs, init services, and property contexts that will break on custom ROMs. Remove or comment out.
 4. Handle extra OEM partitions (merge into system or add fstab entries).
 5. Apply vendor 64-bit conversion if required.
 6. Prepare device tree (BoardConfig.mk, fstab, props).
@@ -30,13 +27,11 @@ Read REFERENCE.md for commands. Use references/ for deep-dive playbooks.
 
 ```
 skills/port-rom/
-  AGENTS.md              this file -- AI agent router and workflow
-  README.md              human-readable overview
-  REFERENCE.md           command reference
-  SKILL.md               skills.sh entry point
-  template/
-    port-rom/            port_checklist.md, props_fragment.md
-  scripts/
-    port-rom/            check_port_images.sh
-  references/
-    port-rom/            partition-strategy.md, transsion-xos-boot-fixes.md
+  AGENTS.md   AI agent router and workflow
+  README.md   human-readable overview
+  REFERENCE.md command reference
+  SKILL.md    skills.sh entry point
+  template/   port_checklist.md, props_fragment.md
+  scripts/    check_port_images.sh
+  references/ partition-strategy.md, transsion-xos-boot-fixes.md
+```

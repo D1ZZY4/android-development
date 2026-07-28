@@ -1,7 +1,7 @@
 
 # Project Overview
 
-This repository maintains several installable skills.sh skills.sh packages for Android platform engineering workflows. The contains user-facing agent instructions, command references, templates, and validation tools for ROM, kernel, GKI, debugging, SELinux repair, ROM porting, and system-modification module work.
+This repository maintains several installable skills.sh packages for Android platform engineering workflows. The repo contains user-facing agent instructions, command references, templates, and validation tools for ROM, kernel, GKI, debugging, SELinux repair, ROM porting, and system-modification module work.
 
 ## User Preferences
 

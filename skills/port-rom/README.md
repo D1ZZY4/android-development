@@ -1,7 +1,7 @@
 
 # port-rom
 
-Agent skill and knowledge base for adapting stock or OEM firmware (Transsion/ XOS and others) to a custom ROM base. Compatible with any AI coding agent that supports the Agent Skills convention.
+Agent skill and knowledge base for adapting stock or OEM firmware (Transsion/XOS and others) to a custom ROM base. Compatible with any AI coding agent that supports the Agent Skills convention.
 
 ## What this is
 
