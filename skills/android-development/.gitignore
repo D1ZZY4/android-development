@@ -1,49 +1,9 @@
-# --- Agent / environment state ---
-.local/
-.cache/
-.config/
-.agents/
-attached_assets/
-prompt/
-PROGRESS.md
-
-# --- Replit-specific ---
-.replit
-replit.nix
-.upm/
-.pythonlibs/
-.breakpoints
-
-# --- Editor / IDE ---
-.vscode/
-.idea/
-*.swp
-*.swo
-.DS_Store
-
-# --- Python ---
+# Python bytecode created by the SELinux tooling.
 __pycache__/
 *.pyc
 *.pyo
-*.egg-info/
-.venv/
-venv/
-.pytest_cache/
-.mypy_cache/
 
-# --- Node ---
-node_modules/
-npm-debug.log*
-yarn-error.log*
-
-# --- Secrets / environment ---
-.env
-.env.*
-*.pem
-*.key
-!template/**/*.key
-
-# --- Build / run artifacts ---
+# Android build artifacts and locally captured diagnostics.
 out/
 .repo/
 *.log
@@ -51,12 +11,6 @@ out/
 selinux-captures/
 selinux-artifact-review/
 debug_logs_*/
-/tmp/
 
-# --- Packaging output ---
+# skills.sh package output.
 *.skill
-dist/
-build/
-
-# --- OS junk ---
-Thumbs.db
