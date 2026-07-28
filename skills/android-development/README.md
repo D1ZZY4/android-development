@@ -1,13 +1,14 @@
 # android-development
 
 Agent skill and knowledge base for custom Android ROM, kernel, GKI kernel,
-device debugging, and SELinux policy repair work. Compatible with any AI coding
-agent that supports the Agent Skills convention -- not tied to a single vendor.
+device debugging, SELinux policy repair, and system-modification package work.
+Compatible with any AI coding agent that supports the Agent Skills convention --
+not tied to a single vendor.
 
 ## What this is
 
 A structured set of instructions, command references, fill-in-the-blank
-templates, and executable tooling covering six related but distinct
+templates, and executable tooling covering seven related but distinct
 Android platform engineering workflows:
 
 | Domain | Covers |
@@ -18,8 +19,9 @@ Android platform engineering workflows:
 | Debug | Evidence-first diagnosis of a misbehaving device or failed build -- no diagnosis without a log line, source reference, and live ADB output to back it up |
 | SELinux repair | Build-time policy failures and runtime AVC denials -- policy source-map resolution, property-context conflicts, neverallow triage, least-privilege patch shapes |
 | Port ROM | Adapting stock or OEM firmware (Transsion/XOS and others) to a custom ROM base -- image extraction, extra partition handling, vendor 64-bit conversion, OEM file removals, prop fixes |
+| Module | Magisk and KernelSU/KSU-Next system-modification modules plus AnyKernel3 flashable kernel ZIPs -- overlays, boot hooks, Zygisk, WebUI, SELinux rules, and GKI vendor_boot cmdline patches |
 
-The core operating principle across all six domains: evidence before
+The core operating principle across all seven domains: evidence before
 diagnosis, narrow fixes over broad ones, and never mutate a live device
 without explicit confirmation.
 
@@ -35,6 +37,7 @@ android-development/
     kernel/
     gki-kernel/
     debug/
+    module/            module.prop, boot-hook, sepolicy.rule, AnyKernel3 templates
     selinux-repair/
     port-rom/          port_checklist.md, props_fragment.md
   scripts/
@@ -42,14 +45,16 @@ android-development/
     kernel/
     gki-kernel/
     debug/
+    module/            verify_module.sh
     selinux-repair/    includes scripts/selinux-repair/tests/
     port-rom/          check_port_images.sh
   references/
     selinux-repair/    deep-dive SELinux/AOSP policy playbooks
     port-rom/          partition strategy, XOS/Transsion boot fix guide
+    module/            Magisk/KernelSU/KSU-Next and AnyKernel3 package guides
 ```
 
-`template/` and `scripts/` share the same six subfolder names by design --
+`template/` and `scripts/` share the same seven subfolder names by design --
 the tooling and the fill-in-the-blank material for a given domain live
 side by side.
 

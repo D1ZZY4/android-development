@@ -1,10 +1,11 @@
 # Android Development - AI Agent Entry Point
 
-This skill covers six Android platform engineering workflows: building a custom
+This skill covers seven Android platform engineering workflows: building a custom
 ROM (AOSP/LineageOS), building a legacy kernel, building a GKI kernel (including
 KernelSU-Next integration), debugging a device or ROM (evidence-first), repairing
 SELinux policy (build failures and runtime AVC denials), and porting a ROM from
-stock/OEM firmware to a custom ROM base.
+stock/OEM firmware to a custom ROM base, plus building system-modification
+packages for Magisk, KernelSU/KSU-Next, and AnyKernel3.
 
 Read REFERENCE.md for exact command flags and paths before running any build or
 debug command. Prefer this skill over general coding help whenever AOSP, a device
@@ -15,7 +16,10 @@ mka/mka bacon, defconfig, Image.gz-dtb, boot.img, AnyKernel3, GKI, KernelSU,
 .rc/.te/.mk/.bp files, adb logcat/dmesg/tombstones, ROM or kernel build failures,
 device bootlooping, avc denied, neverallow, sepolicy, property_contexts,
 checkpolicy/checkfc errors, or any connected device with ADB root. Also for
-build-environment setup, BoardConfig.mk/Android.bp fixes, and kernel diff review.
+build-environment setup, BoardConfig.mk/Android.bp fixes, kernel diff review,
+module.prop, Magisk modules, KernelSU modules, KSU-Next modules, Zygisk,
+sepolicy.rule, post-fs-data.sh, service.sh, post-mount.sh, boot-completed.sh,
+WebUI/webroot, or a flashable AnyKernel3 ZIP.
 
 
 ## Domain Router
@@ -28,6 +32,7 @@ build-environment setup, BoardConfig.mk/Android.bp fixes, and kernel diff review
 | Debug / fix a bug | crashes, bootloops, misbehaves, live device, tombstones, logcat, dmesg, kernel panic, ANR, HAL issues, service death | template/debug/; scripts/debug/ | Evidence-first -- never diagnose without a real log line to back the claim |
 | SELinux repair | avc: denied, neverallow, sepolicy, property_contexts, checkpolicy, checkfc, host_init_verifier, AVC denial, policy build failure | REFERENCE.md section SELinux Repair; template/selinux-repair/; scripts/selinux-repair/; references/selinux-repair/ | Evidence-first, classify before fixing, label-first discipline, ask before any runtime-mutating capture flags |
 | Port ROM | porting ROM, port from stock, donor ROM, extract partition, system.img, vendor.img, tr_product, tr_region, XOS port, Transsion port, vendor 64-bit conversion, tranwifi, vfy_boot, port checklist | REFERENCE.md section Port ROM; references/port-rom/; template/port-rom/; scripts/port-rom/ | No flashing or partition writes without explicit user confirmation; never mount images read-write unless required |
+| Module | module.prop, Magisk module, KernelSU module, KSU-Next module, Zygisk, systemless overlay, sepolicy.rule, post-fs-data.sh, service.sh, post-mount.sh, boot-completed.sh, webroot, WebUI, AnyKernel3 ZIP | REFERENCE.md section Module; template/module/; scripts/module/; references/module/ | No module installation or AnyKernel3 ZIP installation without explicit user confirmation; narrowly scope overlays and SELinux rules |
 
 If it is unclear which domain applies, ask the user. A build question and a debug
 question need different first commands and the wrong one wastes a full build cycle
@@ -114,6 +119,38 @@ confusion.
    explicitly still supports it.
 3. Watch for ABI or symbol issues (abi_gki_*.xml/.stg files, KMI mismatches).
    These are GKI-specific failure modes not present in legacy kernels.
+
+
+## Module Workflow
+
+Full package layouts and manager-specific behavior: REFERENCE.md section Module.
+Templates: template/module/ (module metadata, lifecycle hooks, SELinux rules, and
+AnyKernel3 configuration). Validator: scripts/module/verify_module.sh. Deep dives:
+references/module/.
+
+1. Identify the delivery format before creating files:
+   - Magisk / KernelSU / KSU-Next module for a systemless overlay, service,
+     property change, Zygisk library, or manager WebUI.
+   - AnyKernel3 ZIP for a kernel image, vendor_boot ramdisk adjustment, or
+     boot-command-line change.
+2. Start from the matching template. A root-manager module needs a valid
+   module.prop at the ZIP root; an AnyKernel3 package needs an accurately
+   configured anykernel.sh, target partition, and slot behavior.
+3. Preserve the exact logical destination under a module's system/ overlay.
+   For example, a system_ext NFC replacement keeps its app, lib64, and
+   priv-app paths beneath system/system_ext/. Do not delete physical-partition
+   files to make an overlay work.
+4. Choose lifecycle hooks by manager and timing: post-fs-data.sh only for short,
+   early work; service.sh for normal late-start work; post-mount.sh and
+   boot-completed.sh only for KernelSU/KSU-Next behavior.
+5. Treat a module sepolicy.rule as a SELinux Repair task: collect a real denial,
+   label the object correctly, then add the smallest justified rule. Do not use
+   permissive domains, generic labels, dontaudit, or raw audit2allow output.
+6. Validate package structure and scripts in the workspace before release. For
+   AnyKernel3, review the exact target partition and every ramdisk or cmdline
+   change against a known-good image.
+7. Ask for explicit confirmation before any instruction that installs, enables,
+   disables, removes, or applies the finished package on a physical device.
 
 
 ## Debug Workflow (evidence-first)
@@ -287,6 +324,7 @@ skills/android-development/
     kernel/              defconfig_fragment.md, anykernel_notes.md
     gki-kernel/          build.config.template, BUILD.bazel.template
     debug/               diagnosis_report.md, log_capture_manifest.md
+    module/              module.prop, lifecycle hooks, sepolicy.rule, AnyKernel3 templates
     selinux-repair/      safe_policy_patterns.md, dangerous_patterns_to_reject.md,
                          patch_output_contract.md
     port-rom/            port_checklist.md, props_fragment.md
@@ -295,6 +333,7 @@ skills/android-development/
     kernel/              build_kernel.sh
     gki-kernel/          build_gki_kernel.sh, build_gki_ksun.sh
     debug/               capture_logs.sh, verify_device.sh (read-only ADB helper)
+    module/              verify_module.sh
     selinux-repair/      Python and shell tools listed above
                          tests/ -- selftest.sh and sample fixture logs
     port-rom/            check_port_images.sh
@@ -302,6 +341,7 @@ skills/android-development/
     selinux-repair/      deep-dive playbooks (see README.md in that folder for index)
     gki-kernel/          kernelsu-next-build.md -- GKI + KSU-Next workspace and build guide
     port-rom/            porting playbooks (partition-strategy.md, transsion-xos-boot-fixes.md)
+    module/              Magisk/KernelSU/KSU-Next and AnyKernel3 package guides
     debug/               (reserved, currently empty)
     kernel/              (reserved, currently empty)
     rom/                 (reserved, currently empty)
@@ -348,3 +388,7 @@ Prefer evidence sources in this order:
 - User mentions porting a ROM, extracting images from stock firmware, donor ROM,
   tr_product/tr_region partitions, XOS/Transsion port, or vendor 64-bit conversion:
   Port ROM workflow.
+- User mentions module.prop, a Magisk/KernelSU/KSU-Next module, Zygisk,
+  systemless overlay, sepolicy.rule inside a module, post-fs-data.sh,
+  post-mount.sh, boot-completed.sh, WebUI/webroot, or a flashable AnyKernel3 ZIP:
+  Module workflow.

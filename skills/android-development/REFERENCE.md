@@ -168,8 +168,9 @@ See `template/gki-kernel/` for a `build.config` template and a minimal Bazel mod
 
 ### KernelSU-Next integration (build.sh-era trees)
 
-KernelSU-Next integrates into a GKI tree via an official setup script that patches
-`common/fs/`, `drivers/input/`, and related subsystems automatically.
+KernelSU-Next integrates into a GKI tree via an official setup script that adds
+the KernelSU source under `drivers/kernelsu` and updates `drivers/Makefile` plus
+`drivers/Kconfig` to build it.
 
 ```bash
 # 1. Set up the workspace (example branch: android12-5.10)
@@ -207,6 +208,60 @@ bash scripts/gki-kernel/build_gki_ksun.sh \
 LTO values: `full` (production, slower link), `thin` (faster iterations), omit for no LTO.
 Deep-dive: `references/gki-kernel/kernelsu-next-build.md` (branch compatibility table,
 common post-integration failures, Kleaf notes).
+
+---
+
+## Module
+
+Use this domain for a Magisk, KernelSU, or KernelSU-Next systemless module, or
+for an AnyKernel3 flashable kernel ZIP. Read the focused reference before
+changing a package:
+
+| Resource | Use it for |
+|---|---|
+| `references/module/magisk-ksu-module-guide.md` | `module.prop`, `system/` overlays, boot hooks, Zygisk, `sepolicy.rule`, and KernelSU WebUI |
+| `references/module/anykernel3-guide.md` | `anykernel.sh`, GKI `vendor_boot`, slots, ramdisk edits, cmdline patches, and ZIP review |
+| `template/module/` | Copyable module metadata, lifecycle hooks, SELinux rule guardrails, and GKI-oriented AnyKernel3 template |
+| `scripts/module/verify_module.sh` | Structural validation for a completed root-manager module directory |
+
+### Root-manager module decision table
+
+| Need | Package location / hook | Notes |
+|---|---|---|
+| Required metadata | `module.prop` | Stable `id`, user-facing version, increasing integer `versionCode` |
+| File replacement / overlay | `system/<partition path>/...` | Preserve the exact destination partition path, such as `system/system_ext/...` |
+| Simple system property override | `system.prop` | Prefer over a long early-boot script |
+| Fast pre-Zygote work | `post-fs-data.sh` | Blocking; keep it short |
+| Usual background boot work | `service.sh` | Late-start, non-blocking |
+| Work after overlays mount | `post-mount.sh` | KernelSU / KSU-Next only |
+| Work after Android boot | `boot-completed.sh` | KernelSU / KSU-Next only |
+| Native process injection | `zygisk/<abi>.so` | Magisk; ship only supported ABI libraries |
+| Manager web interface | `webroot/index.html` | KernelSU / KSU-Next WebUI |
+| Extra policy access | `sepolicy.rule` | Only a narrow rule justified by a real AVC denial |
+
+### AnyKernel3 GKI pattern
+
+For a GKI device whose verified configuration uses `vendor_boot`, start from
+`template/module/anykernel.sh.template` and follow
+`references/module/anykernel3-guide.md`. The EnforcerGKI use case is a narrow
+example: patch `androidboot.selinux` in a `vendor_boot` command line after
+`split_boot`, then rebuild through `flash_boot` when the operator installs the
+ZIP. It is not a replacement for correct SELinux policy.
+
+### Module validation
+
+```bash
+bash scripts/module/verify_module.sh <module_dir>
+```
+
+The validator checks required metadata, placeholder values, `id` and
+`versionCode` format, shell syntax, system overlay contents, optional WebUI
+entry point, and flags policy/Zygisk content for review. It does not prove a
+package works on a device.
+
+Before any physical-device installation instruction, obtain the user's explicit
+confirmation. Do not use root modules or AnyKernel3 to bypass a recovery plan,
+hide AVC denials, or write generic SELinux permissions.
 
 ---
 
@@ -387,6 +442,9 @@ grep -n "ro.vendor.trancare\|<oem_prop>" vendor/etc/selinux/vendor_property_cont
 - User mentions `repo sync`, `lunch`, `breakfast`, `mka`, "won't compile the ROM" → **ROM Build**
 - User mentions `defconfig`, `Image.gz-dtb`, `make ARCH=arm64`, "kernel won't compile" (and tree looks like a single monolithic kernel repo) → **Kernel Build (legacy)**
 - User mentions `build.config`, `tools/bazel`, `common/`, GKI, KMI/ABI, `vendor_boot` → **GKI Kernel Build**
+- User mentions `module.prop`, Magisk, KernelSU/KSU-Next modules, Zygisk,
+  systemless overlays, module `sepolicy.rule`, boot hook scripts, WebUI/webroot,
+  or an AnyKernel3 ZIP → **Module**
 - User mentions `avc: denied`, `neverallow`, `sepolicy`, `property_contexts`, `checkpolicy`/`checkfc` errors, or a SELinux-specific build/runtime failure → **SELinux Repair** (its own tooling/evidence hierarchy, not the general build-failure tables above)
 - User mentions a device that's already flashed/running and misbehaving (bootloop, crash, "doesn't boot", "app keeps crashing", "X isn't working") → **Debug Workflow**, don't jump to rebuilding anything until evidence points there
 - User mentions porting a ROM, extracting images from stock firmware, tr_product/tr_region, XOS/Transsion port, or vendor 64-bit conversion → **Port ROM**

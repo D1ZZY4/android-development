@@ -1,10 +1,10 @@
 # android-development skill
 
-A [skills.sh](https://skills.sh)-compatible skill package covering six Android
+A [skills.sh](https://skills.sh)-compatible skill package covering seven Android
 platform engineering workflows. Install it into any AI coding agent that supports
 the Agent Skills convention and it will gain structured, evidence-first guidance
 for custom Android ROM, kernel, GKI kernel, device debugging, and SELinux policy
-repair work.
+repair and system-modification package work.
 
 ## Install
 
@@ -38,6 +38,7 @@ npx skills add D1ZZY4/android-development --list
 | Debug | Evidence-first diagnosis of a misbehaving device or failed build -- no diagnosis without a log line, source reference, and live ADB output to back it up |
 | SELinux repair | Build-time policy failures and runtime AVC denials -- policy source-map resolution, property-context conflicts, neverallow triage, least-privilege patch shapes |
 | Port ROM | Adapting stock or OEM firmware to a custom ROM base -- image extraction, extra partition handling (tr_product/tr_region), vendor 64-bit conversion, OEM file removals, prop fixes |
+| Module | Magisk and KernelSU/KSU-Next modules plus AnyKernel3 flashable kernel ZIPs -- system overlays, lifecycle hooks, Zygisk, WebUI, SELinux rules, and GKI vendor_boot cmdline patches |
 
 ## Requirements
 
