@@ -1,7 +1,7 @@
 # Project Overview
 
-This repository maintains `skills/android-development`, an installable
-skills.sh package for Android platform engineering workflows. The package
+This repository maintains several installable
+skills.sh skills.sh packages for Android platform engineering workflows. The
 contains user-facing agent instructions, command references, templates, and
 validation tools for ROM, kernel, GKI, debugging, SELinux repair, ROM porting,
 and system-modification module work.
