@@ -72,7 +72,7 @@ persist.service.debuggable=1
 persist.service.adb.enable=1
 ```
 
-Do not ship these props in a release build.
+Do not ship these props in a release build. These disable verified boot and replace system properties, which breaks CTS, SafetyNet, and Play Integrity attestation on Android 10+. Revert all of them for production images.
 
 ---
 
