@@ -54,6 +54,7 @@ Pstore contains the kernel's panic/backtrace from the previous boot. Read `pstor
 
 ```bash
 # Fix restricted networking (common on GSIs — no internet)
+# Requires root / adb root on Android 14+: WRITE_SECURE_SETTINGS is enforced.
 adb shell settings put global restricted_networking_mode 0
 ```
 
