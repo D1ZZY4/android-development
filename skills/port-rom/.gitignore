@@ -1,8 +1,0 @@
-__pycache__/
-*.pyc
-*.pyo
-out/
-.repo/
-*.log
-debug_logs_*/
-*.skill
