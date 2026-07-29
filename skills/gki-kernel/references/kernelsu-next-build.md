@@ -42,9 +42,25 @@ repo sync -c --no-tags --no-clone-bundle --optimized-fetch -j"$(nproc)"
 Run the official setup script from inside the workspace root (the directory containing `build/`, `common/`, etc. -- not inside `common/` itself):
 
 ```bash
+# Basic integration (latest tagged version)
 curl -LSs \
   "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/refs/heads/dev/kernel/setup.sh" \
   | bash -
+
+# Specific tag/commit
+curl -LSs \
+  "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/refs/heads/dev/kernel/setup.sh" \
+  | bash -s -- v1.0.7
+
+# Cleanup to revert all changes
+curl -LSs \
+  "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/refs/heads/dev/kernel/setup.sh" \
+  | bash -s -- --cleanup
+
+# Show usage
+curl -LSs \
+  "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/refs/heads/dev/kernel/setup.sh" \
+  | bash -s -- --help
 ```
 
 The script:
@@ -116,6 +132,7 @@ Output lands in `out/<branch>/dist/`:
 | `common-android13-5.15` | Android 13 | Yes | Yes | Yes |
 | `common-android14-5.15` | Android 14 | Partial | Yes | Yes |
 | `common-android14-6.1` | Android 14 | No | Yes | Check upstream |
+| `common-android15-6.6` | Android 15 | No | Yes | Check upstream |
 
 For Bazel/Kleaf trees, KSU-Next integration requires applying patches manually and registering the KSU module in the relevant `BUILD.bazel`. The setup.sh script targets build.sh-era trees; check the KSU-Next repository for Kleaf-specific instructions.
 

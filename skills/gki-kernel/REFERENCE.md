@@ -66,6 +66,6 @@ LTO values: `full` (production, slower link), `thin` (faster iterations), omit f
 
 ## Quick reference
 
-- **build.sh trees**: android12-5.10, android13-5.10, android13-5.15
-- **Bazel/Kleaf trees**: android13-5.15+, android14-5.15, android14-6.1
+- **build.sh trees**: android12-5.10, android13-5.10, android13-5.15, android14-6.1
+- **Bazel/Kleaf trees**: android13-5.15+, android14-5.15, android14-6.1, android15-6.6
 - **KSU-Next supported**: all build.sh branches; Kleaf branches need manual patch application

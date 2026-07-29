@@ -81,7 +81,7 @@ cd ..
 # --- Step 3: build ---
 if [ ! -x "build/build.sh" ]; then
   echo "ERROR: build/build.sh not found -- is this actually a build.sh-era GKI tree?" >&2
-  echo "       For Bazel/Kleaf trees, use scripts/gki-kernel/build_gki_kernel.sh bazel <target>" >&2
+  echo "       For Bazel/Kleaf trees, use scripts/build_gki_kernel.sh bazel <target>" >&2
   exit 1
 fi
 
