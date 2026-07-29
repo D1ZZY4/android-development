@@ -65,7 +65,7 @@ curl -LSs \
 
 The script:
 1. Clones or updates the `KernelSU-Next` source into the workspace root.
-2. Creates a `kernelsu` symlink inside `drivers/` (resolves to `common/drivers/`
+2. Creates a `kernelsu` symlink inside the `drivers/` directory (resolves to `common/drivers/`
    on build.sh-era trees) pointing to the KSU-Next kernel source.
 3. Patches `drivers/Makefile` and `drivers/Kconfig` to include the KSU module.
 
@@ -94,7 +94,7 @@ BUILD_CONFIG=common/build.config.gki.aarch64 \
 Or use the helper script:
 
 ```bash
-bash scripts/gki-kernel/build_gki_ksun.sh \
+bash scripts/build_gki_ksun.sh \
   common-android12-5.10 \
   common/build.config.gki.aarch64
 ```
