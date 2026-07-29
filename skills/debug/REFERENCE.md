@@ -34,6 +34,22 @@ adb shell getenforce                        # SELinux mode
 
 **Never** run unless the user explicitly asks and confirms: fastboot flash*, adb reboot bootloader/recovery, adb shell setprop, rm, dd, or anything under /data or partitions that isn't a read.
 
+## Boot-time log capture (device stuck at logo / rebooting)
+
+When a device hangs at the boot animation or reboots before reaching the UI:
+
+```bash
+# Stuck at logo but ADB accessible — stream from boot
+adb logcat > logcat_boot.txt
+
+# Device boots but reboots shortly after — check pstore (kernel panic)
+adb pull /sys/fs/pstore/
+# Some older kernels use last_kmsg instead
+adb pull /proc/last_kmsg
+```
+
+Pstore contains the kernel's panic/backtrace from the previous boot. Read `pstore/console-ramoops` first — it often has the exact panic message. If `/sys/fs/pstore` doesn't exist, the kernel may lack `CONFIG_PSTORE`.
+
 ## Quick on-device fixes (read-only checks before mutating)
 
 ```bash
