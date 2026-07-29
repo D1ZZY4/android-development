@@ -34,6 +34,15 @@ adb shell getenforce                        # SELinux mode
 
 **Never** run unless the user explicitly asks and confirms: fastboot flash*, adb reboot bootloader/recovery, adb shell setprop, rm, dd, or anything under /data or partitions that isn't a read.
 
+## Quick on-device fixes (read-only checks before mutating)
+
+```bash
+# Fix restricted networking (common on GSIs — no internet)
+adb shell settings put global restricted_networking_mode 0
+```
+
+Making network settings persistent requires root or a Magisk/KSU module (`settings delete global` on boot via `service.sh`).
+
 ## Grep patterns for common failure classes
 
 ```bash

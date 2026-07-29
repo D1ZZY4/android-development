@@ -9,6 +9,8 @@ Reference playbooks for porting an existing Android ROM build to a new device, o
    vendor partitions, and the vendor 64-bit conversion approach.
 2. `transsion-xos-boot-fixes.md` -- known boot blockers and prop fixes for XOS 16
    (Transsion) ROM ports: required file removals, init.rc edits, and prop table.
+3. `nfc-oos-post-port.md` -- NFC HAL labels, library placement, and debugging
+   for OOS/ColorOS ports (Oplus NFC HAL context fixes).
 
 ## How port-rom relates to the other domains
 
