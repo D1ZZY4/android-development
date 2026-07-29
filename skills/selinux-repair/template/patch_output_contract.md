@@ -11,13 +11,13 @@ When proposing a SELinux fix, the response must include all 8 fields below. Don'
 
 **3. Root cause hypothesis** [Concise and falsifiable — must be checkable against the evidence above]
 
-**4. Files to edit** [Exact candidate paths, resolved via the policy source map — see references/selinux-repair/policy-source-map.md]
+**4. Files to edit** [Exact candidate paths, resolved via the policy source map — see references/policy-source-map.md]
 
-**5. Patch shape** [Labels / types / macros / allow rules / init / property changes — reference template/selinux-repair/safe_policy_patterns.md for the shape]
+**5. Patch shape** [Labels / types / macros / allow rules / init / property changes — reference template/safe_policy_patterns.md for the shape]
 
-**6. Why this is safe** [Label-first reasoning, least-privilege, partition-correct — confirm it doesn't match anything in template/selinux-repair/dangerous_patterns_to_reject.md]
+**6. Why this is safe** [Label-first reasoning, least-privilege, partition-correct — confirm it doesn't match anything in template/dangerous_patterns_to_reject.md]
 
-**7. Validation commands** [Exact rebuild and runtime checks — e.g. `m sepolicy_tests`, `scripts/selinux-repair/verify_policy_artifacts.sh out/target/product/<device>`]
+**7. Validation commands** [Exact rebuild and runtime checks — e.g. `m sepolicy_tests`, `scripts/verify_policy_artifacts.sh out/target/product/<device>`]
 
 **8. What not to do** [Explicitly name the broad-allow/permissive/dontaudit shortcut that was considered and rejected, and why]
 

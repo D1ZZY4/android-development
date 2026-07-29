@@ -141,7 +141,7 @@ host_init_verifier: Unable to serialize property contexts: Duplicate exact match
 
 Safe pattern:
 
-1. Run `scripts/selinux-repair/property_context_doctor.py --log build.log --repo . --board-config device/<vendor>/<device>/BoardConfig.mk --format markdown`.
+1. Run `scripts/property_context_doctor.py --log build.log --repo . --board-config device/<vendor>/<device>/BoardConfig.mk --format markdown`.
 2. Keep only one property_contexts owner for the exact/prefix slot.
 3. Prefer exact singleton entries when the tree does not own the whole prefix family.
 4. Do not add `.te` allows; property trie serialization happens before permissions are useful.
@@ -198,7 +198,7 @@ type vendor_camera_prop, property_type, vendor_property_type, vendor_restricted_
 Before applying a build-error fix, resolve the active policy roots from BoardConfig and included makefiles:
 
 ```bash
-scripts/selinux-repair/sepolicy_path_resolver.py --repo . --board-config device/<vendor>/<device>/BoardConfig.mk --format markdown
+scripts/sepolicy_path_resolver.py --repo . --board-config device/<vendor>/<device>/BoardConfig.mk --format markdown
 ```
 
 Search the resolved roots before broad repository search. Missing inherited `SEPolicy.mk` or `BoardConfigVendor.mk` files are build-input problems and should be fixed before creating duplicate local policy declarations.

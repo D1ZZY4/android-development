@@ -27,10 +27,10 @@ Agents should never silently apply:
 ## Suggested repository commands
 
 ```bash
-scripts/selinux-repair/build_error_triage.py build.log --format markdown
-scripts/selinux-repair/selinux_build_doctor.py build.log --repo . --board-config device/<vendor>/<device>/BoardConfig.mk --format markdown
-scripts/selinux-repair/context_conflict_finder.py . --format markdown
-scripts/selinux-repair/audit_device_tree.py . --format markdown
+scripts/build_error_triage.py build.log --format markdown
+scripts/selinux_build_doctor.py build.log --repo . --board-config device/<vendor>/<device>/BoardConfig.mk --format markdown
+scripts/context_conflict_finder.py . --format markdown
+scripts/audit_device_tree.py . --format markdown
 ```
 
 ## Policy source map prerequisite
@@ -38,7 +38,7 @@ scripts/selinux-repair/audit_device_tree.py . --format markdown
 Before applying a build-error fix, resolve the active policy roots from BoardConfig and included makefiles:
 
 ```bash
-scripts/selinux-repair/sepolicy_path_resolver.py --repo . --board-config device/<vendor>/<device>/BoardConfig.mk --format markdown
+scripts/sepolicy_path_resolver.py --repo . --board-config device/<vendor>/<device>/BoardConfig.mk --format markdown
 ```
 
 Search the resolved roots before broad repository search. Missing inherited `SEPolicy.mk` or `BoardConfigVendor.mk` files are build-input problems and should be fixed before creating duplicate local policy declarations.

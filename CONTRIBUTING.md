@@ -23,7 +23,7 @@ find skills -name "*.sh" -exec bash -n {} \;
 find skills -name "*.py" -exec python3 -m py_compile {} \;
 
 # SELinux selftest
-bash skills/selinux-repair/scripts/selinux-repair/tests/selftest.sh
+bash skills/selinux-repair/scripts/tests/selftest.sh
 ```
 
 All must exit without errors.

@@ -43,7 +43,7 @@ Use this checklist before patching an Android device tree.
 Before applying a build-error fix, resolve the active policy roots from BoardConfig and included makefiles:
 
 ```bash
-scripts/selinux-repair/sepolicy_path_resolver.py --repo . --board-config device/<vendor>/<device>/BoardConfig.mk --format markdown
+scripts/sepolicy_path_resolver.py --repo . --board-config device/<vendor>/<device>/BoardConfig.mk --format markdown
 ```
 
 Search the resolved roots before broad repository search. Missing inherited `SEPolicy.mk` or `BoardConfigVendor.mk` files are build-input problems and should be fixed before creating duplicate local policy declarations.

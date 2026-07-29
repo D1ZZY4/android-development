@@ -17,7 +17,7 @@ When this appears under many `FAILED: out/.../vendor/etc/init/*.rc` lines, the r
 ## Correct command
 
 ```bash
-scripts/selinux-repair/property_context_doctor.py \
+scripts/property_context_doctor.py \
   --log build.log \
   --repo . \
   --board-config device/<vendor>/<device>/BoardConfig.mk \

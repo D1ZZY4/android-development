@@ -6,7 +6,7 @@ Before editing Android SELinux policy, resolve the active source map from the de
 ## First command
 
 ```bash
-scripts/selinux-repair/sepolicy_path_resolver.py \
+scripts/sepolicy_path_resolver.py \
   --repo . \
   --board-config device/<vendor>/<device>/BoardConfig.mk \
   --format markdown
@@ -15,7 +15,7 @@ scripts/selinux-repair/sepolicy_path_resolver.py \
 For source-map-aware build planning:
 
 ```bash
-scripts/selinux-repair/selinux_build_doctor.py \
+scripts/selinux_build_doctor.py \
   build.log \
   --repo . \
   --board-config device/<vendor>/<device>/BoardConfig.mk \
@@ -25,7 +25,7 @@ scripts/selinux-repair/selinux_build_doctor.py \
 For source-map-aware property collisions:
 
 ```bash
-scripts/selinux-repair/property_context_doctor.py \
+scripts/property_context_doctor.py \
   --log build.log \
   --repo . \
   --board-config device/<vendor>/<device>/BoardConfig.mk \

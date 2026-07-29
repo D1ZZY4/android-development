@@ -18,7 +18,7 @@ Suggested commands:
 m selinux_policy
 m vendor_sepolicy.cil
 m sepolicy_tests
-scripts/selinux-repair/build_error_triage.py build.log
+scripts/build_error_triage.py build.log
 ```
 
 Exact target names vary by Android version/ROM tree.
@@ -28,7 +28,7 @@ Exact target names vary by Android version/ROM tree.
 Run:
 
 ```bash
-scripts/selinux-repair/audit_device_tree.py device/<vendor>/<device> --format markdown
+scripts/audit_device_tree.py device/<vendor>/<device> --format markdown
 ```
 
 Block merge if new findings include:
@@ -45,7 +45,7 @@ Block merge if new findings include:
 Run:
 
 ```bash
-scripts/selinux-repair/verify_policy_artifacts.sh out/target/product/<device>
+scripts/verify_policy_artifacts.sh out/target/product/<device>
 ```
 
 Review:
@@ -64,8 +64,8 @@ On a development build:
 adb wait-for-device
 adb shell getenforce
 adb shell ps -AZ
-scripts/selinux-repair/capture_selinux_denials.sh --root --auditctl --events 1500 --throttle 150
-scripts/selinux-repair/summarize_denials.py selinux-captures/<timestamp>/selinux-denials.log --format markdown
+scripts/capture_selinux_denials.sh --root --auditctl --events 1500 --throttle 150
+scripts/summarize_denials.py selinux-captures/<timestamp>/selinux-denials.log --format markdown
 ```
 
 Pass criteria:
