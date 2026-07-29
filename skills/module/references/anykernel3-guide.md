@@ -62,11 +62,11 @@ Use `template/anykernel.sh.template` as a GKI-oriented starting point. Confirm t
 
 ## GKI `vendor_boot` cmdline patch pattern
 
-The included EnforcerGKI reference shows a small, concrete GKI package:
+The `template/anykernel.sh.template` shows a small, concrete GKI package:
 
 ```sh
 block=vendor_boot;
-is_slot_device=1;
+is_slot_device=auto;
 ramdisk_compression=auto;
 
 . tools/ak3-core.sh;
