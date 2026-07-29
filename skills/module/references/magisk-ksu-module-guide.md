@@ -56,10 +56,10 @@ updateJson=https://example.invalid/update.json
 
 Remove `updateJson` when the module has no update endpoint. Keep `id` stable: the manager uses it as the installed module directory name, and changing it makes an update appear to be a separate module.
 
-Start from `template/module/module.prop.template`, then validate the completed directory with:
+Start from `template/module.prop.template`, then validate the completed directory with:
 
 ```bash
-bash scripts/module/verify_module.sh <module_dir>
+bash scripts/verify_module.sh <module_dir>
 ```
 
 ## System overlays
@@ -97,14 +97,14 @@ All shell hooks should begin with `MODDIR="${0%/*}"` rather than a hard-coded in
 | `uninstall.sh` | Magisk, KernelSU, KSU-Next | Runs when the manager removes the module. Keep cleanup narrowly scoped to the module's own data. |
 | `action.sh` | Magisk, KernelSU, KSU-Next | Runs only when the user deliberately invokes the manager Action button. |
 
-Use `template/module/post-fs-data.sh.template`, `template/module/service.sh.template`, `template/module/post-mount.sh.template`, and `template/module/boot-completed.sh.template` as starting points.
+Use `template/post-fs-data.sh.template`, `template/service.sh.template`, `template/post-mount.sh.template`, and `template/boot-completed.sh.template` as starting points.
 
 KernelSU sets `KSU=true` in module scripts. The KernelSU late-load sequence loads system properties and overlays before `post-mount.sh`, then starts `service.sh` and `boot-completed.sh` as non-blocking hooks.
 
 ## Properties, SELinux, and Zygisk
 
 - **`system.prop`**: manager-loaded system properties. Prefer it for simple module property overrides rather than long early-boot shell logic.
-- **`sepolicy.rule`**: one narrowly scoped policy statement per line. Start with an actual denial, label the target correctly, and add the smallest rule necessary. See `template/module/sepolicy.rule.template` and the SELinux Repair domain.
+- **`sepolicy.rule`**: one narrowly scoped policy statement per line. Start with an actual denial, label the target correctly, and add the smallest rule necessary. See `template/sepolicy.rule.template` and the SELinux Repair domain.
 - **`zygisk/`**: Magisk loads native Zygisk libraries named for their ABI, such as `arm64-v8a.so` and `armeabi-v7a.so`. Ship only the ABIs the module supports. An `unloaded` marker makes the libraries incompatible by design.
 
 ## KernelSU and KSU-Next extras
@@ -112,7 +112,7 @@ KernelSU sets `KSU=true` in module scripts. The KernelSU late-load sequence load
 KernelSU and KSU-Next recognize the portable module format plus:
 
 - `post-mount.sh` and `boot-completed.sh` lifecycle hooks.
-- A WebUI in `webroot/index.html`. Keep it local, clear about privileged actions, and do not expose unreviewed shell execution through the interface. Start from `template/module/webroot-index.html.template`.
+- A WebUI in `webroot/index.html`. Keep it local, clear about privileged actions, and do not expose unreviewed shell execution through the interface. Start from `template/webroot-index.html.template`.
 - KSU-Next metamodules, which are a separate advanced feature. A metamodule declares `metamodule=1` and may add `metamount.sh`, `metainstall.sh`, and
   `metauninstall.sh`. Use that format only when regular module mounting cannot express the required behavior.
 

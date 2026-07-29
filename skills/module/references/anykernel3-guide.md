@@ -58,7 +58,7 @@ patch_vbmeta_flag=auto;
 - `ramdisk_compression=auto` preserves the detected ramdisk compression.
 - `patch_vbmeta_flag=auto` retains the upstream automatic AVB flag behavior.
 
-Use `template/module/anykernel.sh.template` as a GKI-oriented starting point. Confirm the actual partition, device names, and boot image layout from the target's known-good configuration before distributing a ZIP.
+Use `template/anykernel.sh.template` as a GKI-oriented starting point. Confirm the actual partition, device names, and boot image layout from the target's known-good configuration before distributing a ZIP.
 
 ## GKI `vendor_boot` cmdline patch pattern
 
