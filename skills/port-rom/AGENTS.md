@@ -33,5 +33,5 @@ skills/port-rom/
   SKILL.md    skills.sh entry point
   template/   port_checklist.md, props_fragment.md
   scripts/    check_port_images.sh
-  references/ partition-strategy.md, transsion-xos-boot-fixes.md
+  references/ partition-strategy.md, transsion-xos-boot-fixes.md, nfc-oos-post-port.md
 ```

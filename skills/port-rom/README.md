@@ -16,7 +16,7 @@ port-rom/
   REFERENCE.md         command reference
   template/   port_checklist.md, props_fragment.md
   scripts/    check_port_images.sh
-  references/ partition-strategy.md, transsion-xos-boot-fixes.md
+  references/ partition-strategy.md, transsion-xos-boot-fixes.md, nfc-oos-post-port.md
 ```
 
 ## Requirements
@@ -33,4 +33,4 @@ find scripts -name "*.sh" -exec bash -n {} \;
 
 ## License
 
-GPL v3. See repository root LICENSE.md.
+GPL v3. See repository root LICENSE.

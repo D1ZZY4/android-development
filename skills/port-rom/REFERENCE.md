@@ -50,3 +50,4 @@ grep -n "ro.vendor.trancare\|<oem_prop>" vendor/etc/selinux/vendor_property_cont
 | `template/props_fragment.md` | Build.prop additions template |
 | `references/partition-strategy.md` | Image extraction strategy |
 | `references/transsion-xos-boot-fixes.md` | XOS 16 specific boot blockers |
+| `references/nfc-oos-post-port.md` | OOS/ColorOS NFC HAL fixes after porting |

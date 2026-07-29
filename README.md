@@ -53,4 +53,4 @@ Each skill has its own AGENTS.md (for AI agents), SKILL.md (skills.sh entry poin
 
 ## License
 
-GPL v3. See LICENSE.md.
+GPL v3. See LICENSE.

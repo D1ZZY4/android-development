@@ -31,4 +31,4 @@ find scripts -name "*.sh" -exec bash -n {} \;
 
 ## License
 
-GPL v3. See repository root LICENSE.md.
+GPL v3. See repository root LICENSE.
