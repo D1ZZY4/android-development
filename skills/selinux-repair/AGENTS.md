@@ -29,19 +29,33 @@ Operating rule: collect the first reliable failure, classify it, fix ownership a
 1. Resolve the policy source map first -- before any broad repo search, find
    the exact makefile-declared policy roots:
 
-   scripts/sepolicy_path_resolver.py \ --repo . \ --board-config device/\<vendor\>/\<device\>/BoardConfig.mk \ --format markdown
+   scripts/sepolicy_path_resolver.py \
+     --repo . \
+     --board-config device/<vendor>/<device>/BoardConfig.mk \
+     --format markdown
 
 2. Classify from the failure mode:
 
-   Build failure: scripts/build_error_triage.py build.log --format markdown scripts/selinux_build_doctor.py build.log \ --repo . --board-config \<path\> --format markdown
+   Build failure:
+     scripts/build_error_triage.py build.log --format markdown
+     scripts/selinux_build_doctor.py build.log --repo . --board-config <path> --format markdown
 
-   Property-context duplicate or serialize errors: scripts/property_context_doctor.py \ --log build.log --repo . --board-config \<path\> --format markdown
+   Property-context duplicate or serialize errors:
+     scripts/property_context_doctor.py \
+       --log build.log --repo . --board-config <path> --format markdown
 
-   Boots but logs runtime denials: scripts/capture_selinux_denials.sh \ --root --auditctl --events 1500 --throttle 150 scripts/summarize_denials.py \<captured-log\> --format markdown Note: --root and --auditctl are runtime-mutating. Require user confirmation.
+   Boots but logs runtime denials:
+     scripts/capture_selinux_denials.sh \
+       --root --auditctl --events 1500 --throttle 150
+     scripts/summarize_denials.py <captured-log> --format markdown
+     Note: --root and --auditctl are runtime-mutating. Require user confirmation.
 
-   Only the tree is available (no build log): scripts/audit_device_tree.py \<path\> --format markdown scripts/context_conflict_finder.py \<path\> --format markdown
+   Only the tree is available (no build log):
+     scripts/audit_device_tree.py <path> --format markdown
+     scripts/context_conflict_finder.py <path> --format markdown
 
-   Artifacts already built: scripts/verify_policy_artifacts.sh out/target/product/\<device\>
+   Artifacts already built:
+     scripts/verify_policy_artifacts.sh out/target/product/<device>
 
 3. Fix only the first real blocker. Parallel Android builds cascade; a single
    root property or type conflict often produces dozens of downstream FAILED:.
@@ -53,7 +67,9 @@ Operating rule: collect the first reliable failure, classify it, fix ownership a
    acting, which exact object is targeted, which class and permission is requested, whether the target label is still generic (needs relabeling before an allow rule), which partition should own it, and whether vendor policy is referencing only public platform symbols. Safe shapes: template/safe_policy_patterns.md Dangerous shapes: template/dangerous_patterns_to_reject.md
 
 6. Verify before moving on:
-   m sepolicy_tests m vendor_sepolicy.cil plat_sepolicy.cil || true Re-run the path resolver and scripts/verify_policy_artifacts.sh out/target/product/\<device\>.
+   m sepolicy_tests m vendor_sepolicy.cil plat_sepolicy.cil || true
+
+  Re-run the path resolver and scripts/verify_policy_artifacts.sh out/target/product/<device>.
 
 ### Output contract
 
