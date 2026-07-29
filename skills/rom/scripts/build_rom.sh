@@ -33,7 +33,12 @@ else
 fi
 
 echo "Starting build in background, logging to: $LOG_FILE"
-nohup mka bacon > "$LOG_FILE" 2>&1 &
+# Prefer brunch (LineageOS modern), fall back to mka bacon
+if type brunch >/dev/null 2>&1; then
+  nohup brunch "$CODENAME" > "$LOG_FILE" 2>&1 &
+else
+  nohup mka bacon > "$LOG_FILE" 2>&1 &
+fi
 BUILD_PID=$!
 echo "Build PID: $BUILD_PID"
 echo "Tail the log with: tail -f $LOG_FILE"

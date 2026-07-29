@@ -11,7 +11,7 @@ git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 
 # Init a manifest (LineageOS example, adjust branch per target Android version)
-repo init -u https://github.com/LineageOS/android.git -b lineage-21.0 --git-lfs
+repo init -u https://github.com/LineageOS/android.git -b lineage-22.1 --git-lfs
 
 # Local manifests for device/vendor/kernel trees not in the main manifest
 mkdir -p .repo/local_manifests
@@ -37,6 +37,8 @@ lunch lineage_<device_codename>-userdebug
 
 # Full build
 mka bacon          # LineageOS: builds + packages OTA zip
+# or brunch for device-codename targeting (LineageOS)
+brunch <device_codename>
 # or
 mka <target>        # AOSP: e.g. `mka droid`
 ```
@@ -45,6 +47,8 @@ Background it and tail:
 
 ```bash
 nohup mka bacon > /tmp/rom_build.log 2>&1 &
+# or
+nohup brunch <device_codename> > /tmp/rom_build.log 2>&1 &
 tail -f /tmp/rom_build.log
 ```
 
