@@ -15,7 +15,7 @@ LOG_FILE="/tmp/rom_build_${CODENAME}_$(date +%Y%m%d_%H%M%S).log"
 
 if [ ! -d ".repo" ]; then
   echo "ERROR: no .repo/ found — this doesn't look like a synced manifest workspace." >&2
-  echo "Run 'repo init' + set up local_manifests first (see template/rom/)." >&2
+  echo "Run 'repo init' + set up local_manifests first (see template/)." >&2
   exit 1
 fi
 
