@@ -94,8 +94,8 @@ fi
 } > "$STATE"
 
 if [[ "$TRY_AUDITCTL" -eq 1 ]]; then
-  adb shell auditctl -r 0 >>"$RUN_DIR/adb-commands.log" 2>&1 || true
-  adb shell su 0 auditctl -r 0 >>"$RUN_DIR/adb-commands.log" 2>&1 || true
+  adb shell setprop ctl.stop auditd >>"$RUN_DIR/adb-commands.log" 2>&1 || true
+  adb shell su 0 setprop ctl.stop auditd >>"$RUN_DIR/adb-commands.log" 2>&1 || true
 fi
 
 if [[ "$CLEAR_LOGCAT" -eq 1 ]]; then

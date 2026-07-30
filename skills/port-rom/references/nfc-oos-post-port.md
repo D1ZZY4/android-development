@@ -33,11 +33,19 @@ The `manifest_nfc_sn100t_tee.xml` does not need a special label — `vendor_file
 
 ## Debugging
 
-If NFC still fails after applying the labels and files, capture logs:
+If NFC still fails after applying the labels and files, capture logs.
+Most developer/engineering builds are rooted; use `su -c` when available:
 
 ```bash
 adb shell su -c "dmesg | grep -i nfc" > nfc_dmesg.txt
-adb shell su -c "logcat | grep -i nfc" > nfc_logcat.txt
+adb shell su -c "logcat -d -b all | grep -i nfc" > nfc_logcat.txt
+```
+
+On non-root builds, drop `su -c` and run the same commands directly:
+
+```bash
+adb shell dmesg | grep -i nfc > nfc_dmesg.txt
+adb shell logcat -d -b all | grep -i nfc > nfc_logcat.txt
 ```
 
 Common post-port NFC issues visible in these logs:
