@@ -33,7 +33,7 @@ Repeat the steps below with different parameters.
 
 2. Source cross-reference -- locate the failing component in the device tree or kernel source: .rc (init), .te (SELinux), .mk/.bp (build), overlay XMLs, or kernel driver source. Use grep -rn for the exact name; do not guess the file.
 
-3. Live verification (read-only only) -- confirm the hypothesis on-device using adb shell ls -lZ, adb shell getprop | grep, adb shell dumpsys \<service\>, adb shell ps -A, adb shell lshal, adb shell cat /sys/... Use scripts/verify_device.sh for these. Never run a mutating command in this step.
+3. Live verification (read-only only) -- confirm the hypothesis on-device using adb shell ls -lZ, adb shell getprop | grep, adb shell dumpsys <service>, adb shell ps -A, adb shell lshal, adb shell cat /sys/... Use scripts/verify_device.sh for these. Never run a mutating command in this step.
 
 4. Diagnosis -- only once steps 1 through 3 produced real evidence. Output format: 1. Symptom: [exact log line] 2. Root Cause: [explanation grounded in evidence] 3. Evidence from Device: [exact adb output from step 3] 4. Evidence from Source: [exact file path + line/snippet from step 2] 5. Proposed Fix: [specific change -- file, line, diff] See template/diagnosis_report.md for the full template.
 

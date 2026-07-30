@@ -1,7 +1,7 @@
 
 # android-development-skills
 
-This repo has been renamed to android-development-skills. A collection of [skills.sh](https://skills.sh)-compatible skill packages for custom Android platform engineering. Installable individually or together into any AI coding agent that supports the Agent Skills convention.
+A collection of [skills.sh](https://skills.sh)-compatible skill packages for custom Android platform engineering. Installable individually or together into any AI coding agent that supports the Agent Skills convention.
 
 ## Skills available
 
