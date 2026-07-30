@@ -30,7 +30,7 @@ Target names vary per tree -- check `common/BUILD.bazel` for the actual target r
 | Symptom | Meaning |
 |---|---|
 | `ABI DIFF` / KMI mismatch errors | A change touched a symbol tracked by `abi_gki_*.xml`/`.stg` files -- either update the ABI definition (if intentional) or the change broke module compatibility |
-| Vendor module fails to load ("invalid module format") | Vendor `.ko` built against different KMI version than boot kernel -- version/branch mismatch between `common` and vendor kernel trees |
+| Vendor module fails to load ("version magic mismatch") | Vendor `.ko` built against a different KMI version than the boot kernel -- version/branch mismatch between `common` and vendor kernel trees |
 | `vendor_boot` vs `boot` partition confusion | GKI 2.0 devices split ramdisk into `vendor_boot` (vendor init/DTB/ramdisk) and `boot` (generic kernel) -- flashing/packaging logic differs |
 | KernelSU / Magisk-patched GKI boot fails signature check | AVB verification on `boot`/`vendor_boot` -- check verified boot state before assuming the patch itself is broken |
 
@@ -62,10 +62,10 @@ bash scripts/build_gki_ksun.sh \
   full
 ```
 
-LTO values: `full` (production, slower link), `thin` (faster iterations), omit for no LTO. Deep-dive: `references/kernelsu-next-build.md`.
+LTO values: `full` (production, slower link), `thin` (faster iterations), `none` for no LTO. Deep-dive: `references/kernelsu-next-build.md`.
 
 ## Quick reference
 
-- **build.sh trees**: android12-5.10, android13-5.10, android13-5.15, android14-6.1
+- **build.sh trees**: android12-5.10, android13-5.10, android13-5.15
 - **Bazel/Kleaf trees**: android13-5.15+, android14-5.15, android14-6.1, android15-6.6
 - **KSU-Next supported**: all build.sh branches; Kleaf branches need manual patch application

@@ -11,6 +11,7 @@ export SUBARCH=arm64
 export CROSS_COMPILE=aarch64-linux-android-   # or aarch64-linux-gnu- depending on toolchain
 export CC=clang                                # most modern device kernels use clang now
 export CLANG_TRIPLE=aarch64-linux-gnu-
+# Some trees also require export LD=ld.lld or make LLVM=1
 ```
 
 Toolchain source matters -- check the kernel tree's own build script (`build.sh`, `Makefile`, or a vendor `build_kernel.sh`) for the exact toolchain version/path expected before assuming AOSP prebuilts.

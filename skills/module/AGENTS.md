@@ -43,7 +43,7 @@ skills/module/
   README.md   human-readable overview
   REFERENCE.md command reference
   SKILL.md    skills.sh entry point
-  template/   module.prop, lifecycle hooks, sepolicy.rule, AnyKernel3 templates, webroot-index.html
+  template/   module.prop.template, lifecycle hook templates, sepolicy.rule.template, anykernel.sh.template, webroot-index.html.template
   scripts/    verify_module.sh
   references/ magisk-ksu-module-guide.md, anykernel3-guide.md
 ```

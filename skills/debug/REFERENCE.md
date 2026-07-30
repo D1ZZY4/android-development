@@ -50,7 +50,27 @@ adb pull /proc/last_kmsg
 
 Pstore contains the kernel's panic/backtrace from the previous boot. Read `pstore/console-ramoops` first — it often has the exact panic message. If `/sys/fs/pstore` doesn't exist, the kernel may lack `CONFIG_PSTORE`.
 
-## Quick on-device fixes (read-only checks before mutating)
+## Quick on-device fixes
+
+### Read-only checks
+
+These commands only read state and never modify the device:
+
+```bash
+adb shell getprop | grep <prop_name>
+adb shell dumpsys <service>
+adb shell ps -A
+adb shell lshal
+adb shell cat /sys/...
+adb shell getenforce
+```
+
+### Mutating fix (requires root / user consent)
+
+The command below changes global settings. Do not run it without explicit
+user confirmation. On Android 14+ it requires `WRITE_SECURE_SETTINGS`,
+which `adb root` provides on userdebug/eng builds but not on production
+user builds.
 
 ```bash
 # Fix restricted networking (common on GSIs — no internet)

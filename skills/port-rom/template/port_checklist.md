@@ -10,7 +10,7 @@ Device codename: [fill in] Donor ROM / source firmware: [fill in] Target ROM bas
 ## Phase 1 -- Image extraction and audit
 
 - [ ] All required partition images verified present and non-empty
-      (`check_port_images.sh <dir>`)
+      (`bash scripts/check_port_images.sh <firmware_dir>`)
 - [ ] system.img mounted and inspected
 - [ ] system_ext.img mounted and inspected (if present)
 - [ ] product.img mounted and inspected (if present)

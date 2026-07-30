@@ -106,13 +106,13 @@ Prefer evidence sources in this order:
 
 ```
 skills/selinux-repair/
-  AGENTS.md   AI agent router and workflow
-  README.md   human-readable overview
-  REFERENCE.md command/tool index
-  SKILL.md    skills.sh entry point
-  template/   safe_policy_patterns.md, dangerous_patterns_to_reject.md, patch_output_contract.md
-  scripts/    Python and shell tools (see REFERENCE.md)
-    tests/    selftest.sh and sample fixture logs
-      fixtures/ BoardConfig.mk, property_contexts, .te files for testing
-  references/ deep-dive playbooks (start with README.md)
+  AGENTS.md                AI agent router and workflow
+  README.md                human-readable overview
+  REFERENCE.md             command/tool index
+  SKILL.md                 skills.sh entry point
+  template/                safe_policy_patterns.md, dangerous_patterns_to_reject.md, patch_output_contract.md
+  scripts/                 Python and shell tools (see REFERENCE.md)
+    tests/                 selftest.sh and sample fixture logs
+      fixtures/            BoardConfig.mk, property_contexts, .te files for testing
+  references/              deep-dive playbooks (start with README.md)
 ```

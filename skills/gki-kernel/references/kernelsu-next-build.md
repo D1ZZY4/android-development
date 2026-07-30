@@ -7,7 +7,7 @@ How to set up a GKI kernel workspace, integrate KernelSU-Next (KSU-Next) using t
 
 ## What KernelSU-Next is
 
-KernelSU-Next (github.com/KernelSU-Next/KernelSU-Next) is a community fork of KernelSU that tracks the upstream dev branch more closely and adds support for additional GKI branches. It integrates into the kernel source tree by cloning the KSU-Next source, creating a `kernelsu` symlink inside `drivers/`, and patching `drivers/Makefile` and `drivers/Kconfig` to include the module.
+KernelSU-Next (https://github.com/KernelSU-Next/KernelSU-Next) is a community fork of KernelSU that tracks the upstream dev branch more closely and adds support for additional GKI branches. It integrates into the kernel source tree by cloning the KSU-Next source, creating a `kernelsu` symlink inside `drivers/`, and patching `drivers/Makefile` and `drivers/Kconfig` to include the module.
 
 The `setup.sh` approach applies these changes without requiring a manual git merge, which is the recommended method for CI-style builds.
 
@@ -145,5 +145,5 @@ For Bazel/Kleaf trees, KSU-Next integration requires applying patches manually a
 | Module not loading: "version magic mismatch" | Dirty tree when building -- KSU files not committed before build | Commit the KSU changes in `common/` before running build.sh |
 | `undefined reference to 'ksu_*'` at module link | KSU-Next not integrated or symlink broken | Re-run setup.sh from the workspace root; verify `common/drivers/kernelsu` symlink exists and points to the cloned KernelSU-Next source |
 | AVB verification failure on first boot | Verified boot enabled and the patched kernel is unsigned | Disable verified boot (`fastboot flashing unlock`) before testing, or sign with the device's test key |
-| KSU app shows "Unsupported" | Running on a non-GKI device or the kernel was built without the KSU module entry | Confirm the device boots a GKI kernel; check `uname -r` for `-android` suffix |
+| KSU app shows "Unsupported" | Running on a non-GKI device or the kernel was built without the KSU module entry | Confirm the device boots a GKI kernel; check `uname -r` for the `-android` GKI suffix |
 | `avc: denied` for `ksu` domain | SELinux policy missing `ksu.te` or it was not included in the build | SELinux Repair domain: run `sepolicy_path_resolver.py` to find policy roots, add KSU policy |

@@ -24,7 +24,8 @@ Read REFERENCE.md for exact debug commands. Templates: template/ (diagnosis_repo
 1. Zero guesswork. Every claim in the diagnosis must be backed by a direct quote from a log, device tree or kernel source file, or an adb output actually retrieved in this session.
 2. No generic advice. Never say "check your manifest" or "make sure permissions are correct." Give the exact file path, exact line or snippet, and exact command output.
 3. Self-audit before diagnosing. Before writing a diagnosis, ask: "Did I actually see this, or am I assuming it based on common issues?" If assumed, do not include it -- go get more data.
-4. If any part of the final diagnosis cannot be backed by hard evidence gathered in this session, do not output a soft or partial diagnosis. Output: INSUFFICIENT DATA. EXECUTING DEEPER EXPLORATION. and repeat the steps below with different parameters.
+4. If any part of the final diagnosis cannot be backed by hard evidence gathered in this session, do not output a soft or partial diagnosis. Output: INSUFFICIENT DATA. EXECUTING DEEPER EXPLORATION.
+Repeat the steps below with different parameters.
 
 ### Steps (in order)
 
