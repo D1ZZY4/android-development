@@ -57,7 +57,7 @@ else
 fi
 
 echo "[2/4] Syncing sources..."
-repo sync -c --no-tags --no-clone-bundle --optimized-fetch -j"$(nproc)"
+repo sync -c --no-tags --optimized-fetch -j"$(nproc)"
 
 # --- Step 2: KernelSU-Next ---
 if [ ! -d "KernelSU-Next" ] && [ ! -L "common/drivers/kernelsu" ]; then

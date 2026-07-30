@@ -17,7 +17,7 @@ repo init -u https://github.com/LineageOS/android.git -b lineage-22.1 --git-lfs
 mkdir -p .repo/local_manifests
 # put local_manifest.xml here -- see template/local_manifest.xml
 
-repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+repo sync -c -j$(nproc --all) --force-sync --no-tags
 ```
 
 - `-c` = current branch only (faster, smaller).

@@ -41,7 +41,7 @@ Target names vary per tree -- check `common/BUILD.bazel` for the actual target r
 mkdir -p android-kernel && cd android-kernel
 repo init -u https://android.googlesource.com/kernel/manifest \
   -b common-android12-5.10 --depth=1
-repo sync -c --no-tags --no-clone-bundle --optimized-fetch -j"$(nproc)"
+repo sync -c --no-tags --optimized-fetch -j"$(nproc)"
 
 # 2. Apply KernelSU-Next patches
 curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/refs/heads/dev/kernel/setup.sh" | bash -

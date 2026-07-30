@@ -20,7 +20,7 @@ if [ ! -d ".repo" ]; then
 fi
 
 echo "Syncing sources (this can take a while)..."
-repo sync -c -j"$(nproc --all)" --force-sync --no-clone-bundle --no-tags
+repo sync -c -j"$(nproc --all)" --force-sync
 
 echo "Setting up build environment..."
 source build/envsetup.sh

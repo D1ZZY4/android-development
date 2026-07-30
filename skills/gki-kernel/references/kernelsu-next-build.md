@@ -30,7 +30,7 @@ repo init \
   -b common-android12-5.10 \
   --depth=1
 
-repo sync -c --no-tags --no-clone-bundle --optimized-fetch -j"$(nproc)"
+repo sync -c --no-tags --optimized-fetch -j"$(nproc)"
 ```
 
 `--depth=1` and `--optimized-fetch` keep the checkout shallow and fast. Do not use these on a tree where you need full git history (e.g. for cherry-picks from older commits).
