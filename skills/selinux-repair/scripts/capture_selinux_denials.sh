@@ -12,7 +12,7 @@ Options:
   --out-dir DIR     Output root directory (default: selinux-captures)
   --no-monkey       Do not run monkey; just capture logs for --duration seconds
   --root            Try adb root before capture
-  --auditctl        Try adb shell auditctl -r 0 to disable audit rate limiting
+  --auditctl        Try adb shell setprop ctl.stop auditd to disable audit rate limiting
   --no-clear        Do not clear logcat before capture
   --bugreport       Capture adb bugreport zip after the run
   -h, --help        Show this help
