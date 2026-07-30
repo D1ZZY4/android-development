@@ -17,13 +17,13 @@ Use this domain for a Magisk, KernelSU, or KernelSU-Next systemless module, or f
 | Need | Package location / hook | Notes |
 |---|---|---|
 | Required metadata | module.prop | Stable id, user-facing version, increasing versionCode |
-| File replacement / overlay | system/\<partition path\>/... | Preserve exact destination partition path |
+| File replacement / overlay | system/<partition path>/... | Preserve exact destination partition path |
 | Simple system property override | system.prop | Prefer over a long early-boot script |
 | Fast pre-Zygote work | post-fs-data.sh | Blocking; keep it short |
 | Usual background boot work | service.sh | Late-start, non-blocking |
 | Work after overlays mount | post-mount.sh | KernelSU / KSU-Next only |
 | Work after Android boot | boot-completed.sh | KernelSU / KSU-Next only |
-| Native process injection | zygisk/\<abi\>.so | Magisk; ship only supported ABI libraries |
+| Native process injection | zygisk/<abi>.so | Magisk; ship only supported ABI libraries |
 | Manager web interface | webroot/index.html | KernelSU / KSU-Next WebUI |
 | Extra policy access | sepolicy.rule | Only narrow rule justified by real AVC denial |
 

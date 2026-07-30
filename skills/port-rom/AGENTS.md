@@ -15,7 +15,7 @@ Read REFERENCE.md for commands. Use references/ for deep-dive playbooks.
 
 ## Port ROM Workflow
 
-1. Verify required images: scripts/check_port_images.sh \<dir\>
+1. Verify required images: scripts/check_port_images.sh <dir>
 2. Mount and inspect each image (read-only).
 3. Identify OEM-only framework JARs, init services, and property contexts that will break on custom ROMs. Remove or comment out.
 4. Handle extra OEM partitions (merge into system or add fstab entries).

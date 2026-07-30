@@ -23,8 +23,8 @@ Full command detail and common failure patterns: REFERENCE.md. Templates: templa
 
 1. Confirm workspace: is .repo/ present (already synced) or does this need repo init first?
 2. Set up manifest (main + local_manifests for device, vendor, and kernel trees). See template/local_manifest.xml.
-3. source build/envsetup.sh, then lunch \<target\> (or breakfast \<codename\> for LineageOS).
-4. Build with mka bacon / brunch (LineageOS) or mka \<target\> (AOSP). Background the build and monitor for the first error rather than waiting for full completion.
+3. source build/envsetup.sh, then lunch <target> (or breakfast <codename> for LineageOS).
+4. Build with mka bacon / brunch (LineageOS) or mka <target> (AOSP). Background the build and monitor for the first error rather than waiting for full completion.
 5. On build failure: grep the log for the first error:/FAILED: line, not the last -- later errors are usually cascades from the first real failure.
 
 ## File and Folder Map
