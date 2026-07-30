@@ -27,6 +27,20 @@ npx skills add D1ZZY4/android-development-skills --all
 npx skills add D1ZZY4/android-development-skills --list
 ```
 
+## Cloning this repository
+
+This repository uses **Git LFS** to store binary assets (APK files, `.so` blobs, etc.). Clone with:
+
+```bash
+# Preferred -- with LFS (recommended)
+git clone https://github.com/D1ZZY4/android-development-skills.git --recurse-submodules
+
+# Or if you already have git-lfs installed:
+git lfs clone https://github.com/D1ZZY4/android-development-skills.git
+```
+
+Without Git LFS, binary asset files will appear as pointer files (`.gitattributes` references). The skill documentation is fully usable without the binary assets; only the port-rom FaceID APK and similar bundled artifacts are affected. Install Git LFS at any time and run `git lfs pull` to fetch them.
+
 ## Requirements
 
 - `adb` and (for flashing-adjacent work) `fastboot` on PATH
