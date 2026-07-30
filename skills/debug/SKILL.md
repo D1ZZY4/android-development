@@ -6,6 +6,7 @@ description: >-
   issues, service death, adb, misbehaving device, or any "doesn't boot."
   Read AGENTS.md for the anti-hallucination rules, evidence hierarchy, and
   strict diagnosis workflow.
+path: skills/debug/
 ---
 
 For AI agents: read AGENTS.md.

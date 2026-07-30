@@ -5,6 +5,7 @@ description: >-
   Trigger on: build.config, tools/bazel, common/, GKI, KMI/ABI, vendor_boot,
   android-kernel, KernelSU-Next, KSU-Next, KSUN, build.sh GKI.
   Read AGENTS.md for the domain router, workflows, and hard constraints.
+path: skills/gki-kernel/
 ---
 
 For AI agents: read AGENTS.md.

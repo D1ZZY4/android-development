@@ -6,6 +6,7 @@ description: >-
   Zygisk, systemless overlay, sepolicy.rule, post-fs-data.sh, service.sh,
   post-mount.sh, boot-completed.sh, webroot/WebUI, AnyKernel3 ZIP.
   Read AGENTS.md for the module workflow, lifecycle hooks, and safety rules.
+path: skills/module/
 ---
 
 For AI agents: read AGENTS.md.

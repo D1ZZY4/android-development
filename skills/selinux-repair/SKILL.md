@@ -7,6 +7,7 @@ description: >-
   policy build failure, runtime denial, type/attribute conflicts.
   Read AGENTS.md for the source-map-first workflow, evidence hierarchy,
   and patch output contract.
+path: skills/selinux-repair/
 ---
 
 For AI agents: read AGENTS.md.
