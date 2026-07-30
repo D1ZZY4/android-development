@@ -16,6 +16,7 @@ debug/
   REFERENCE.md         command reference
   template/      diagnosis_report.md, log_capture_manifest.md
   scripts/       capture_logs.sh, verify_device.sh (read-only ADB helper)
+  references/    reserved for future guides
 ```
 
 ## Requirements

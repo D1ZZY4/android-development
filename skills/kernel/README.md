@@ -16,6 +16,7 @@ kernel/
   REFERENCE.md         command reference
   template/     defconfig_fragment.md, anykernel_notes.md
   scripts/      build_kernel.sh
+  references/   reserved for future guides
 ```
 
 ## Requirements

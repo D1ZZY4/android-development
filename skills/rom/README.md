@@ -16,6 +16,7 @@ rom/
   REFERENCE.md         command reference
   template/        local_manifest.xml, roomservice.xml, BoardConfig.mk skeleton
   scripts/         build_rom.sh
+  references/      reserved for future guides
 ```
 
 ## Requirements
