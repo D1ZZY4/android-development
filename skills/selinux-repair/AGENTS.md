@@ -67,7 +67,7 @@ Operating rule: collect the first reliable failure, classify it, fix ownership a
    acting, which exact object is targeted, which class and permission is requested, whether the target label is still generic (needs relabeling before an allow rule), which partition should own it, and whether vendor policy is referencing only public platform symbols. Safe shapes: template/safe_policy_patterns.md Dangerous shapes: template/dangerous_patterns_to_reject.md
 
 6. Verify before moving on:
-   m sepolicy_tests m vendor_sepolicy.cil plat_sepolicy.cil || true
+   m sepolicy_tests vendor_sepolicy.cil plat_sepolicy.cil || true
 
   Re-run the path resolver and scripts/verify_policy_artifacts.sh out/target/product/<device>.
 

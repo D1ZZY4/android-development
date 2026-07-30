@@ -51,3 +51,7 @@ grep -n "ro.vendor.trancare\|<oem_prop>" vendor/etc/selinux/vendor_property_cont
 | `references/partition-strategy.md` | Image extraction strategy |
 | `references/transsion-xos-boot-fixes.md` | XOS 16 specific boot blockers |
 | `references/nfc-oos-post-port.md` | OOS/ColorOS NFC HAL fixes after porting |
+| `references/dolby-atmos-fix.md` | Dolby Atmos bring-up on HyperOS / XOS ports |
+| `references/misound-dolby-replacement.md` | Replace MiSound with Dolby on HyperOS 2 |
+| `references/signing-guide.md` | APK/ZIP signing for repackaging |
+| `references/gsi-port-guide.md` | GSI port via MIO Kitchen |

@@ -1,7 +1,7 @@
 
 # Safe SELinux policy patterns (templates)
 
-Reusable, least-privilege policy shapes. Fill in `foo`/device-specific names — never grant broader permissions than the daemon/property/node actually needs, and never copy these in without checking whether an existing type already covers the same resource (see policy source map first, `references/selinux-repair/policy-source-map.md`).
+Reusable, least-privilege policy shapes. Fill in `foo`/device-specific names — never grant broader permissions than the daemon/property/node actually needs, and never copy these in without checking whether an existing type already covers the same resource (see policy source map first, `references/policy-source-map.md`).
 
 ## New vendor init daemon
 

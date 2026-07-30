@@ -39,6 +39,6 @@ skills/port-rom/
                  gsi-port-guide.md
   assets/        bundled porting artifacts
     apps/        apk packages
-      faceid/    XOS 15 FaceID fix for Flamescian Project on X15
+      faceid/    XOS 15 FaceID fix for Flamescion Project on X15
     libs/        .so blobs / HAL libraries (empty by default)
 ```

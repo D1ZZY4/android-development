@@ -7,7 +7,7 @@ Reference guides for creating and deploying Android system modification packages
 
 - `magisk-ksu-module-guide.md` -- module structure, module.prop format, boot-stage scripts (post-fs-data, service, post-mount, boot-completed), system overlay, sepolicy rules, Zygisk, and KSU-specific extras (WebUI/webroot/)
 - `anykernel3-guide.md` -- AnyKernel3 flashable zip structure, anykernel.sh properties and variables, ramdisk and cmdline patching, GKI vendor_boot support, multi-partition and multi-slot zips
-- `flashable-zip-guide.md` -- upstream tools and repos for building flashable ZIPs, including `osmosim/AnyKernel3`, `ramabondanp/AnyKernel3`, and `ramabondanp/android_tools`
+- `flashable-zip-guide.md` -- upstream tools and repos for building flashable ZIPs, including `osm0sis/AnyKernel3`, `ramabondanp/AnyKernel3`, and `ramabondanp/android_tools`
 
 ## How the module domain relates to other domains
 
