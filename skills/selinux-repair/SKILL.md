@@ -9,7 +9,6 @@ description: >-
   and patch output contract.
 path: skills/selinux-repair/
 ---
-
 For AI agents: read AGENTS.md.
 
 For human contributors and users: read README.md.

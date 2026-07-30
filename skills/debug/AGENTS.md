@@ -54,4 +54,4 @@ skills/debug/
 
 - User mentions a device that is already flashed and misbehaving (bootloop, crash, "doesn't boot", "app keeps crashing", "X isn't working"): Debug Workflow -- do not jump to rebuilding until evidence points there.
 - User mentions avc: denied, neverallow, sepolicy: see selinux-repair skill.
-- User mentions a build failure: route to the relevant build skill (rom-build, kernel, gki-kernel) based on the build type.
+- User mentions a build failure: route to the relevant build skill (rom, kernel, gki-kernel) based on the build type.

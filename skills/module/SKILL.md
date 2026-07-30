@@ -8,7 +8,6 @@ description: >-
   Read AGENTS.md for the module workflow, lifecycle hooks, and safety rules.
 path: skills/module/
 ---
-
 For AI agents: read AGENTS.md.
 
 For human contributors and users: read README.md.

@@ -8,7 +8,6 @@ description: >-
   Read AGENTS.md for the port workflow, partition strategy, and boot fixes.
 path: skills/port-rom/
 ---
-
 For AI agents: read AGENTS.md.
 
 For human contributors and users: read README.md.

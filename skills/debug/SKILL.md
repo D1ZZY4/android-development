@@ -8,7 +8,6 @@ description: >-
   strict diagnosis workflow.
 path: skills/debug/
 ---
-
 For AI agents: read AGENTS.md.
 
 For human contributors and users: read README.md.

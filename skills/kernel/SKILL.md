@@ -7,7 +7,6 @@ description: >-
   Read AGENTS.md for the domain router, workflows, and hard constraints.
 path: skills/kernel/
 ---
-
 For AI agents: read AGENTS.md.
 
 For human contributors and users: read README.md.
