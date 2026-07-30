@@ -32,7 +32,7 @@ Source URL: https://android.googlesource.com/platform/system/sepolicy/
 
 ## Validation is not only logcat
 
-AOSP validation guidance recommends checking global mode with `getenforce`, examining per-domain mode with `sepolicy-analyze -p`, reading denials from `dmesg` and `logcat`, inspecting previous boot logs from pstore, and disabling audit rate limiting with `auditctl -r 0` when necessary.
+AOSP validation guidance recommends checking global mode with `getenforce`, examining per-domain mode with `sepolicy-analyze -p`, reading denials from `dmesg` and `logcat`, inspecting previous boot logs from pstore, and disabling audit rate limiting with `setprop ctl.stop auditd` when necessary.
 
 Practical rule: capture `logcat -b all`, `dmesg`, pstore, `getenforce`, and `ps -AZ`; do not rely on a single late logcat snapshot.
 
