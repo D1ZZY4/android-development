@@ -8,9 +8,30 @@ Reference playbooks for porting an existing Android ROM build to a new device, o
 1. `partition-strategy.md` -- which images to extract, how to handle extra
    vendor partitions, and the vendor 64-bit conversion approach.
 2. `transsion-xos-boot-fixes.md` -- known boot blockers and prop fixes for XOS 16
-   (Transsion) ROM ports: required file removals, init.rc edits, and prop table.
+   (Transsion) ROM ports: required file removals, init.rc edits, prop table,
+   dt2w fix, and FaceID X15 packages.
 3. `nfc-oos-post-port.md` -- NFC HAL labels, library placement, and debugging
    for OOS/ColorOS ports (Oplus NFC HAL context fixes).
+
+## Audio and feature porting
+
+- `dolby-atmos-fix.md` -- Dolby Atmos bring-up on HyperOS / XOS ports where
+  MiSound is present instead of Dolby.
+- `misound-dolby-replacement.md` -- replace MiSound with Dolby on HyperOS 2.
+
+## Asset packages
+
+Bundled firmware artifacts live under `assets/`:
+
+```
+assets/
+  apps/     APK packages and firmware-bundled apps
+    faceid/ --- XOS 15 FaceID fix for Flamescion Project on X15
+  libs/     .so blobs / HAL libraries extracted from donor firmware
+```
+
+Only copy assets that are actually needed for the target device. Verify
+placement, SELinux labels, and runtime dependencies before packaging the port.
 
 ## How port-rom relates to the other domains
 

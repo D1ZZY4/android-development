@@ -11,12 +11,19 @@ Structured instructions, command references, templates, and playbooks for ROM po
 
 ```
 port-rom/
-  AGENTS.md            AI agent entry point
-  SKILL.md             skills.sh entry point
-  REFERENCE.md         command reference
-  template/   port_checklist.md, props_fragment.md
-  scripts/    check_port_images.sh
-  references/ partition-strategy.md, transsion-xos-boot-fixes.md, nfc-oos-post-port.md
+  AGENTS.md      AI agent entry point
+  SKILL.md       skills.sh entry point
+  REFERENCE.md   command reference
+  template/      port_checklist.md, props_fragment.md
+  scripts/       check_port_images.sh
+  references/    partition-strategy.md, transsion-xos-boot-fixes.md,
+                 nfc-oos-post-port.md, dolby-atmos-fix.md,
+                 misound-dolby-replacement.md, signing-guide.md,
+                 gsi-port-guide.md
+  assets/        bundled porting artifacts
+    apps/        APK packages
+      faceid/    XOS 15 FaceID fix for Flamescion Project on X15
+    libs/        .so blobs / HAL libraries (empty by default)
 ```
 
 ## Requirements

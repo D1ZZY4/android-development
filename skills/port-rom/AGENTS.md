@@ -27,11 +27,18 @@ Read REFERENCE.md for commands. Use references/ for deep-dive playbooks.
 
 ```
 skills/port-rom/
-  AGENTS.md   AI agent router and workflow
-  README.md   human-readable overview
-  REFERENCE.md command reference
-  SKILL.md    skills.sh entry point
-  template/   port_checklist.md, props_fragment.md
-  scripts/    check_port_images.sh
-  references/ partition-strategy.md, transsion-xos-boot-fixes.md, nfc-oos-post-port.md
+  AGENTS.md      AI agent router and workflow
+  README.md      human-readable overview
+  REFERENCE.md   command reference
+  SKILL.md       skills.sh entry point
+  template/      port_checklist.md, props_fragment.md
+  scripts/       check_port_images.sh
+  references/    partition-strategy.md, transsion-xos-boot-fixes.md,
+                 nfc-oos-post-port.md, dolby-atmos-fix.md,
+                 misound-dolby-replacement.md, signing-guide.md,
+                 gsi-port-guide.md
+  assets/        bundled porting artifacts
+    apps/        apk packages
+      faceid/    XOS 15 FaceID fix for Flamescian Project on X15
+    libs/        .so blobs / HAL libraries (empty by default)
 ```

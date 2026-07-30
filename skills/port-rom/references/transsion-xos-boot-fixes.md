@@ -84,6 +84,71 @@ Apply these after a successful first boot if the relevant feature misbehaves. Do
 # DPI -- adjust to match physical display density of the target device
 ro.sf.lcd_density=440
 
+# Multi-slot / hardware SKU config for 3-slot or tri-SIM devices
+ro.boot.product.hardware.sku=tsts
+persist.radio.multisim.config=tsts
+ro.telephony.sim.count=3
+telephony.active_modems.max_count=3
+persist.vendor.radio.msimmode=tsts
+ro.vendor.radio.max.multisim=tsts
+persist.vendor.radio.tsd.multisimmode=2
+
+# Touch and rendering toggles
+ro.tran.touch.ctl=1
+ro.transsion.fling_render_boost_support=1
+ro.tran_sounds_V3.9_support=1
+
+# Brightness fix
+ro.vendor.transsion.backlight_hal.optimization=1
+ro.transsion.backlight.level=-1
+ro.transsion.physical.backlight.optimization=1
+
+# Effect engine / blur disable
+ro.tran.effectengine.dynamicblur.support=0
+ro.surface_flinger.supports_background_blur=0
+
+# AOD disable
+ro.tran_aod_v3_support=0
+
+# 5G switches
+ro.tran_smart_5g_3nd_support=0
+ro.tran_5g_switch_support=0
+
+# Fingerprint mode
+ro.optical_fingerprint_support=0
+ro.side_fingerprint_support=1
+ro.os_fingerprint_incallrecord_support=1
+ro.os_fingerprint_answer_call_support=1
+
+# Vibrator fix
+ro.tran_vibrate_ontouch2.0.support=0
+
+# Game mode toggles
+ro.os_game_tp_optimization.support=1
+ro.os_game_hot.support=1
+ro.os_game_changer.support=1
+ro.os_game_reverse_color.support=1
+ro.os_game_enhancement_support=1
+ro.os_game_space_user_center.support=1
+ro.os_game_xunyou_accelerate.support=1
+
+# Flashlight
+ro.os_alldegree_flashlight_support=1
+
+# Dolby / DTS audio
+ro.dolby.atmos.support=false
+ro.dolby.atmos.game.support=false
+ro.tran_dts.support=1
+
+# Charge behavior
+ro.tran_multi_level_charge_count=0
+os.charging_animation_type=33
+ro.os_charge_animation_support=1
+
+# HBM disable
+ro.tran_high_brightness_mode.support=0
+ro.vendor.transsion.hbm_mode_hal.support=0
+
 # Disable TNE fatal crash reporting (crashes the system_server on custom ROMs)
 ro.transsion.tne.support=false
 
@@ -134,6 +199,30 @@ key 183   F13
 # To:
 key 183   WAKEUP
 ```
+
+### Alternative: property-based dt2w trigger
+
+Some XOS builds expose dt2w through a sysfs node that can be written from a boot script. If the keylayout fix alone does not enable dt2w, try this trigger:
+
+```
+on property:sys.boot_completed=1
+    write /proc/gesture_function cc1
+```
+
+Add it to a custom `init.rc` snippet included from the device's init rc, or run it once from `service.sh` after boot.
+
+---
+
+## FaceID fix (XOS 15 / Flamescion Project on X15)
+
+If FaceID is broken after porting, a patched FaceID package is included in this skill's assets.
+
+Use the packaged files from `skills/port-rom/assets/apps/faceid/`:
+- `FaceID/FaceID.apk`
+- `FaceID/oat/arm64/FaceID.odex`
+- `FaceID/oat/arm64/FaceID.vdex`
+
+Place the APK in the system overlay and preserve the `oat/arm64/` artifacts under the same package path in the ported `system` layer. The `.odex` and `.vdex` files belong beside the APK in the runtime ART cache path for the target partition.
 
 ---
 
