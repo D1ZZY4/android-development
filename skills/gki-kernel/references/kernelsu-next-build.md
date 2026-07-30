@@ -96,7 +96,8 @@ Or use the helper script:
 ```bash
 bash scripts/build_gki_ksun.sh \
   common-android12-5.10 \
-  common/build.config.gki.aarch64
+  common/build.config.gki.aarch64 \
+  full
 ```
 
 ### LTO options
@@ -105,7 +106,7 @@ bash scripts/build_gki_ksun.sh \
 |---|---|---|
 | `full` | Full link-time optimisation -- one single IR pass across all compilation units | Production/release builds; produces smaller, faster code but takes significantly longer to link |
 | `thin` | ThinLTO -- faster, parallelised LTO approximation | Development iterations where build time matters more than peak optimisation |
-| (unset) | No LTO | Fastest build; do not ship |
+| `none` | No LTO | Fastest build; do not ship |
 
 `LTO=full` is required for shipping a GKI-compliant kernel to end users. Use `LTO=thin` locally while iterating on the KSU integration, then switch to `full` for the release build.
 

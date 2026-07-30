@@ -38,13 +38,13 @@ npx skills add D1ZZY4/android-development-skills --list
 
 ```
 skills/
-  rom/             ROM build skill (AGENTS.md, SKILL.md, README.md, REFERENCE.md, template/rom/, scripts/rom/)
-  kernel/          Legacy kernel build skill
-  gki-kernel/      GKI kernel build skill (includes KernelSU-Next)
-  debug/           Device/boot diagnosis skill
-  selinux-repair/  SELinux policy repair skill (includes Python tooling)
-  port-rom/        ROM porting skill
-  module/          Magisk/KSU/AnyKernel3 module skill
+  rom/             AGENTS.md, SKILL.md, README.md, REFERENCE.md, template/, scripts/, references/
+  kernel/          AGENTS.md, SKILL.md, README.md, REFERENCE.md, template/, scripts/, references/
+  gki-kernel/      AGENTS.md, SKILL.md, README.md, REFERENCE.md, template/, scripts/, references/
+  debug/           AGENTS.md, SKILL.md, README.md, REFERENCE.md, template/, scripts/, references/
+  selinux-repair/  AGENTS.md, SKILL.md, README.md, REFERENCE.md, template/, scripts/, references/
+  port-rom/        AGENTS.md, SKILL.md, README.md, REFERENCE.md, template/, scripts/, references/
+  module/          AGENTS.md, SKILL.md, README.md, REFERENCE.md, template/, scripts/, references/
 ```
 
 ## Detailed documentation

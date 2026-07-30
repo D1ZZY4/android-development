@@ -2,7 +2,7 @@
 # verify_module.sh -- validate a Magisk/KernelSU module directory before packaging
 #
 # Usage:
-#   bash scripts/module/verify_module.sh <module_dir>
+#   bash scripts/verify_module.sh <module_dir>
 #
 # Checks:
 #   - module.prop exists and has all required fields filled in
