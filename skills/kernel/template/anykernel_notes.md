@@ -20,8 +20,8 @@ supported.patchlevels=
 '; }
 
 ## AnyKernel install
-boot_patch.sh --header
-write_boot
+dump_boot;
+write_boot;
 ## end install
 ```
 

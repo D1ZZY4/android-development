@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Legacy (non-GKI) kernel build wrapper template. Assumes a single
 # monolithic kernel tree with arch/arm64/configs/<defconfig>. For GKI
-# trees use build_gki_kernel.sh instead — this script's `make` approach
+# trees use the gki-kernel skill instead — this script's `make` approach
 # will not produce a correct GKI split-module build.
 #
 # Usage: ./build_kernel.sh <defconfig_name> [jobs]
