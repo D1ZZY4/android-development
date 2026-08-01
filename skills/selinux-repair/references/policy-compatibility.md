@@ -10,7 +10,7 @@ This page describes how Android handles the policy compatibility issues with pla
 ## Object ownership and labeling
 
 Ownership must be clearly defined for each object to keep platform and vendor policy separate. For example, if the vendor policy labels /dev/foo and the platform policy labels /dev/foo in a subsequent OTA, there is undefined behavior like an unexpected denial, or more critically, a boot failure. For SELinux, this manifests as a labeling collision. The device node can have only a single label that resolves to whichever label is applied last. As a result:
-- Processes that need access to the unsuccessfully applied label loses access to the resource.
+- Processes that need access to the unsuccessfully applied label lose access to the resource.
 - Processes that gain access to the file might break because the wrong device node was created.
 Collisions between platform and vendor labels can occur for any object that has an SELinux label, including properties, services, processes, files, and sockets. To avoid these issues, clearly define ownership of these objects.
 
