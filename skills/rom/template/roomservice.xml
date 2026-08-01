@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   LineageOS-style alternative to local_manifest.xml, placed at
-  .repo/local_manifests/roomservice.xml. Functionally the same purpose —
+  .repo/local_manifests/roomservice.xml. Functionally the same purpose --
   pulls device/vendor/kernel trees not in the main manifest.
-  `breakfast <codename>` will auto-generate a starter version of this if
+  `breakfast CODENAME` will auto-generate a starter version of this if
   the device tree already exists on GitHub under the expected naming
-  convention (android_device_<vendor>_<codename>).
+  convention (android_device_VENDOR_CODENAME).
+  Replace GITHUB_USER_OR_ORG, VENDOR, CODENAME, and LINEAGE_BRANCH with
+  real values for the target device.
 -->
 <manifest>
-  <project name="<github_user_or_org>/android_device_<vendor>_<codename>"
-           path="device/<vendor>/<codename>"
+  <project name="GITHUB_USER_OR_ORG/android_device_VENDOR_CODENAME"
+           path="device/VENDOR/CODENAME"
            remote="github"
-           revision="<lineage_branch>" />
+           revision="LINEAGE_BRANCH" />
 </manifest>
