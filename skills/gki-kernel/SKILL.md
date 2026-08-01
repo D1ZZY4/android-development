@@ -1,11 +1,11 @@
 ---
 name: gki-kernel
 description: >-
-  Build Generic Kernel Image (GKI) kernels with build.sh or Bazel/Kleaf.
-  Trigger on: build.config, tools/bazel, common/, GKI, KMI/ABI, vendor_boot,
-  android-kernel, KernelSU-Next, KSU-Next, KSUN, build.sh GKI.
+  Build GKI kernels with build.sh or Bazel/Kleaf, including KernelSU-Next.
+  Trigger on: build.config, build/build.sh, tools/bazel, Kleaf, common/, GKI,
+  KMI/ABI, ABI mismatch, vendor_boot, android-kernel, KernelSU-Next, KSU-Next,
+  KSUN, LTO, android12-5.10, android13-5.15, android14-6.1, android15-6.6.
   Read AGENTS.md for the domain router, workflows, and hard constraints.
-path: skills/gki-kernel/
 ---
 For AI agents: read AGENTS.md.
 

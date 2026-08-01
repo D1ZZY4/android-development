@@ -2,10 +2,10 @@
 name: kernel-build
 description: >-
   Build legacy/monolithic device kernels (non-GKI). Trigger on: defconfig,
-  Image.gz-dtb, make ARCH=arm64, kernel won't compile, monolithic kernel
-  tree, arch/arm64/configs/, mkbootimg, AnyKernel3 packaging for non-GKI.
+  make ARCH=arm64, CROSS_COMPILE, aarch64-linux-android, Image.gz-dtb,
+  Image.lz4, boot.img, mkbootimg, avbtool, kernel won't compile,
+  arch/arm64/configs/, non-GKI kernel tree, AnyKernel3 packaging.
   Read AGENTS.md for the domain router, workflows, and hard constraints.
-path: skills/kernel/
 ---
 For AI agents: read AGENTS.md.
 
