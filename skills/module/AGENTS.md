@@ -45,5 +45,5 @@ skills/module/
   SKILL.md    skills.sh entry point
   template/   module.prop.template, lifecycle hook templates, sepolicy.rule.template, anykernel.sh.template, webroot-index.html.template
   scripts/    verify_module.sh
-  references/ magisk-ksu-module-guide.md, anykernel3-guide.md
+  references/ magisk-ksu-module-guide.md, anykernel3-guide.md, flashable-zip-guide.md
 ```

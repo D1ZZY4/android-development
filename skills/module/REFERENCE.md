@@ -9,6 +9,7 @@ Use this domain for a Magisk, KernelSU, or KernelSU-Next systemless module, or f
 |---|---|
 | `references/magisk-ksu-module-guide.md` | module.prop, system/ overlays, boot hooks, Zygisk, sepolicy.rule, KernelSU WebUI |
 | `references/anykernel3-guide.md` | anykernel.sh, GKI vendor_boot, slots, ramdisk edits, cmdline patches |
+| `references/flashable-zip-guide.md` | upstream tools and repos for building flashable ZIPs (AnyKernel3, android_tools) |
 | `template/` | Copyable module metadata, lifecycle hooks, SELinux rule guardrails, GKI AnyKernel3 template |
 | `scripts/verify_module.sh` | Structural validation for a completed module directory |
 

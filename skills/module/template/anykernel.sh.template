@@ -1,7 +1,7 @@
 # AnyKernel3 Ramdisk Mod Script
 # osm0sis @ xda-developers
 # Template for GKI devices (vendor_boot, A/B slot).
-# For legacy single-partition devices set block=boot and is_slot_device=0.
+# For legacy single-partition devices set BLOCK=boot and IS_SLOT_DEVICE=0.
 
 ## AnyKernel setup
 # begin properties
@@ -21,10 +21,10 @@ supported.patchlevels=
 
 # Shell variables -- set outside the properties block.
 # GKI devices: vendor_boot partition, A/B slot, auto compression.
-block=vendor_boot;
-is_slot_device=auto;
-ramdisk_compression=auto;
-patch_vbmeta_flag=auto;
+BLOCK=vendor_boot;
+IS_SLOT_DEVICE=auto;
+RAMDISK_COMPRESSION=auto;
+PATCH_VBMETA_FLAG=auto;
 
 ## AnyKernel methods (DO NOT CHANGE)
 . tools/ak3-core.sh;

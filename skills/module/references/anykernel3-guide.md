@@ -47,16 +47,16 @@ supported.patchlevels=
 Set partition and slot behavior outside that block:
 
 ```sh
-block=vendor_boot;
-is_slot_device=auto;
-ramdisk_compression=auto;
-patch_vbmeta_flag=auto;
+BLOCK=vendor_boot;
+IS_SLOT_DEVICE=auto;
+RAMDISK_COMPRESSION=auto;
+PATCH_VBMETA_FLAG=auto;
 ```
 
-- `block` accepts a partition name such as `boot`, `vendor_boot`, or `auto`.
-- `is_slot_device=auto` detects active-slot suffixes for A/B devices.
-- `ramdisk_compression=auto` preserves the detected ramdisk compression.
-- `patch_vbmeta_flag=auto` retains the upstream automatic AVB flag behavior.
+- `BLOCK` accepts a partition name such as `boot`, `vendor_boot`, or `auto`.
+- `IS_SLOT_DEVICE=auto` detects active-slot suffixes for A/B devices.
+- `RAMDISK_COMPRESSION=auto` preserves the detected ramdisk compression.
+- `PATCH_VBMETA_FLAG=auto` retains the upstream automatic AVB flag behavior.
 
 Use `template/anykernel.sh.template` as a GKI-oriented starting point. Confirm the actual partition, device names, and boot image layout from the target's known-good configuration before distributing a ZIP.
 
@@ -65,9 +65,9 @@ Use `template/anykernel.sh.template` as a GKI-oriented starting point. Confirm t
 The `template/anykernel.sh.template` shows a small, concrete GKI package:
 
 ```sh
-block=vendor_boot;
-is_slot_device=auto;
-ramdisk_compression=auto;
+BLOCK=vendor_boot;
+IS_SLOT_DEVICE=auto;
+RAMDISK_COMPRESSION=auto;
 
 . tools/ak3-core.sh;
 
